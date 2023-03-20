@@ -2,7 +2,7 @@
 
 # Elevator pitch
 
-We're developing an open-world RPG game set in a medieval fantasy world inspired by European folklore. Its gameplay is strongly story-driven and based on the best-selling book "Earl of the Rings". It's "The Witcher" meets "Dark Souls" meets "Game of Thrones".
+
 
 # Concept Overview
 
@@ -10,9 +10,9 @@ We're developing an open-world RPG game set in a medieval fantasy world inspired
 
 ### Target audience:
 
-> Age: 15-30
+> Age: 16-35
 > 
-> Gender: Male/Female
+> Gender: 
 > 
 > ...
 
@@ -55,12 +55,14 @@ What evidence will you use to measure each criteria?
 
 # Game Setting
 
-The game is set in the wild west where the local sherif must aprehend bandits living out on the dusty prarie. 
+The game is set in a dystopian city
 
 ## The old habour 
 General description
 
-The old harbor is a place bustling with activity. It's always full of noise: the shouts of fishermen auctioning their fish, the loud thuds of crates being loaded off the boats, the cries of hungry seagulls.  is located at the heart of the harbor.
+The old harbor is a place
+
+ bustling with activity. It's always full of noise: the shouts of fishermen auctioning their fish, the loud thuds of crates being loaded off the boats, the cries of hungry seagulls.  is located at the heart of the harbor.
 
 In ,  reaches the harbor after surviving a shipwreck and being rescued by a fisherman. 
 
@@ -78,9 +80,9 @@ Inspiration
 # Characters
 
 ## The Protagonist
- Backstory:
+ Backstory: 
 
- Personality:
+ Personality: 
 
  Appearance:
 
