@@ -6,12 +6,13 @@ kanban-plugin: basic
 
 ## Backlog❄❄
 
--[ ] Map
--[ ] Title screen
--[ ] Adding a second level
--[ ] Moving Enemies
+- [ ] Map
+- [ ] Keyboard Functions
+- [ ] Game Idea
+
 
 ## Doing
+
 - [ ] Moving Enemies(built into map)
 
 

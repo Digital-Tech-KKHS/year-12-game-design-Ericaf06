@@ -1,4 +1,3 @@
-import random
 import arcade
 
 WIDTH = 1200
@@ -9,9 +8,7 @@ GRAVITY = 1
 JUMP_SPEED = 30
 LEFT_FACING = 1
 RIGHT_FACING = 0
-TILE_SCALING = 0.5
-SPRITE_PIXEL_SIZE = 128
-GRID_PIXEL_SIZE = SPRITE_PIXEL_SIZE * TILE_SCALING
+
 class Player(arcade.Sprite):
     def __init__(self):
         super().__init__(':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png')
@@ -83,9 +80,9 @@ class GameView(arcade.View):
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
 
-        #if self.reset_score:
-        #    self.score = 0
-        #self.reset_score = True
+        if self.reset_score:
+           self.score = 0
+        self.reset_score = True
 
         self.player = Player()
         self.scene['player'].append(self.player)
@@ -108,11 +105,6 @@ class GameView(arcade.View):
             health.center_x = 50 + 40 * i
             health.center_y = HEIGHT - 100
             self.health_list.append(health)
-
-        self.tile_map_width = 120
-        self.score = 0
-        self.reset_score = True
-        self.end_of_map = self.tile_map_width * GRID_PIXEL_SIZE
 
     def on_draw(self):
         self.clear()
