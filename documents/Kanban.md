@@ -7,13 +7,15 @@ kanban-plugin: basic
 ## Backlog❄❄
 
 - [ ] Map
-- [ ] Keyboard Functions
 - [ ] Game Idea
+- [ ] Adding more levels
+- [ ] Character and enemy menu
 
 
 ## Doing
 
-- [ ] Moving Enemies(built into map)
+- [ ] Moving Enemies
+- [ ] Keyboard Functions
 
 
 ## Testing \ Trialing

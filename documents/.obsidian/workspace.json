@@ -20,18 +20,6 @@
             }
           },
           {
-            "id": "6eb7077a7f592aa4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "().md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "b64ae878e4a6ea47",
             "type": "leaf",
             "state": {
@@ -42,17 +30,19 @@
             }
           },
           {
-            "id": "c62b3ccd0489d6fa",
+            "id": "6eb7077a7f592aa4",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Kanban.md"
+                "file": "().md",
+                "mode": "source",
+                "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -198,12 +188,12 @@
       "obsidian-spaced-repetition:Review flashcards": false
     }
   },
-  "active": "c62b3ccd0489d6fa",
+  "active": "b64ae878e4a6ea47",
   "lastOpenFiles": [
-    "Flash cards.md",
-    "Kanban.md",
     "Temp.md",
+    "Kanban.md",
     "Game Design Document.md",
+    "Flash cards.md",
     "().md",
     "Final Hand in statement .md",
     "testing-and-trialing/Trialing Example.md",
