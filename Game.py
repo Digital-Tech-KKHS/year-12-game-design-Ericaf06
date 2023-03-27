@@ -1,5 +1,5 @@
 import arcade
-
+import random
 WIDTH = 1200
 HEIGHT = 900
 TITLE = "platform"
@@ -8,6 +8,10 @@ GRAVITY = 1
 JUMP_SPEED = 30
 LEFT_FACING = 1
 RIGHT_FACING = 0
+PLAYER_SCALING = 0.8
+COIN_SCALING = 0.3
+LASER_SCALING = 0.5
+BULLET_SPEED = 15
 
 class Player(arcade.Sprite):
     def __init__(self):
@@ -86,9 +90,11 @@ class GameView(arcade.View):
 
         self.player = Player()
         self.scene['player'].append(self.player)
+        self.set_mouse_visible = (False)
         self.coin_sound = arcade.load_sound(':resources:sounds/coin1.wav')
         self.jump_sound = arcade.load_sound(':resources:sounds/jump1.wav')
         self.kill_sound = arcade.load_sound(':resources:sounds/hurt3.wav')
+        self.laser_sound = arcade.load_sound(':resources:sounds/laser3.wav')
         self.game_over_sound = arcade.load_sound(':resources:sounds/jump5.wav')
         self.physics_engine = arcade.PhysicsEnginePlatformer(
                 self.player,
@@ -105,6 +111,11 @@ class GameView(arcade.View):
             health.center_x = 50 + 40 * i
             health.center_y = HEIGHT - 100
             self.health_list.append(health)
+        for i in range(80):
+            coin = arcade.Sprite(':resources:images/space_shooter/meteorGrey_med2.png')
+            coin.center_x = random.randint(0, WIDTH)
+            coin.center_y = random.randint(250, HEIGHT)
+            self.coin_list.append(coin)
 
     def on_draw(self):
         self.clear()
