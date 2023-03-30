@@ -8,6 +8,7 @@ GRAVITY = 1
 JUMP_SPEED = 30
 LEFT_FACING = 1
 RIGHT_FACING = 0
+BULLET_SPEED = 20
 
 class Player(arcade.Sprite):
     def __init__(self):
@@ -58,16 +59,6 @@ class Enemy(arcade.Sprite):
     def __init__(self):
         super().__init__(':resources:images/tiles/dirtCenter_rounded.png') 
 
-   # def update_animation(self, delta_time: float = 1 / 60):
-        
-        
-       
-    
-class Robot(Enemy):
-    def __init__(self):
-        super().__init__(':resources:images/tiles/boxCrate_double.png')
-        self.center_x = 600
-        self.center_y = 400
 def load_texture_pair(filename):
     return [
         arcade.load_texture(filename),
@@ -78,6 +69,7 @@ class GameView(arcade.View):
         super().__init__()
         self.setup()
         self.tile_map = None
+        self.bullet_list = None
 
     def setup(self):
         arcade.set_background_color(arcade.color.CEIL)
@@ -88,9 +80,9 @@ class GameView(arcade.View):
             }
         
         self.tile_map = arcade.load_tilemap('./Ground.tmx', layer_options=layer_options)
-
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
+        self.bullet_list = arcade.SpriteList()
 
         if self.reset_score:
            self.score = 0
@@ -98,9 +90,11 @@ class GameView(arcade.View):
 
         self.player = Player()
         self.scene['player'].append(self.player)
+        self.bullet_list = None
         self.coin_sound = arcade.load_sound(':resources:sounds/coin1.wav')
         self.jump_sound = arcade.load_sound(':resources:sounds/jump1.wav')
         self.kill_sound = arcade.load_sound(':resources:sounds/hurt3.wav')
+        self.bullet_sound = arcade.load_sound(':resources:sounds/laser3.wav')
         self.game_over_sound = arcade.load_sound(':resources:sounds/jump5.wav')
         self.physics_engine = arcade.PhysicsEnginePlatformer(
                 self.player,
@@ -122,11 +116,13 @@ class GameView(arcade.View):
         self.clear()
         self.camera.use()
         self.scene.draw()
+        self.bullet_list.draw()
         self.HUD_camera.use()
         arcade.draw_text(str(self.score), 15, HEIGHT - 50, font_size=50)
         self.health_list.draw()
 
     def on_update(self, dt):
+        self.bullet_list.update()
         self.physics_engine.update()
         self.player.update_animation()
         camera_x = self.player.center_x - WIDTH / 2
@@ -157,6 +153,13 @@ class GameView(arcade.View):
                 arcade.play_sound(self.game_over_sound)
                 self.window.show_view(self.window.game_over)
 
+        for bullet in self.bullet_list:
+            touching = arcade.check_for_collision_with_list(bullet, ['Coins'])
+            for coin in touching:
+                coin.kill()
+                self.score += 1
+                arcade.play_sound(self.coin_sound)
+
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.D:
             self.player.change_x  = PLAYER_MOVEMENT_SPEED
@@ -184,6 +187,15 @@ class GameView(arcade.View):
         elif symbol == arcade.key.E:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
+
+    def on_mouse_press(self, x, y, button, modifiers):
+        bullet = arcade.Sprite(':resources:images/space_shooter/laserBlue01.png')
+        bullet.center_x = x
+        bullet.center_y = self.player.center_y
+        bullet.change_y = BULLET_SPEED
+        bullet.angle = 90
+        self.bullet_list.append(bullet)
+        arcade.play_sound(self.laser_sound)
 
 class WelcomeView(arcade.View):
     def __init__(self):
@@ -219,7 +231,7 @@ class Game(arcade.Window):
         self.game_over = GameOverView()
         self.show_view(self.welcome_view)
 
-game = Game()
+game = GameView()
 arcade.run()
 
 #if __name__ == "__main__":

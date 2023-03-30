@@ -1,5 +1,6 @@
 import arcade
-from math import cos, sin
+from math import cos, sin, degrees
+from math import atan2
 WIDTH = 800
 HEIGHT = 800
 TITLE = "game"
@@ -19,11 +20,19 @@ class Game(arcade.Window):
         self.coin.center_y = HEIGHT/2 + 0
 
     def update(self, delta_time):
-        pass
+        diff_y =self.coin.center_y - self.player.center_y
+        diff_x =self.coin.center_x - self.player.center_x
+        angle = atan2(diff_y, diff_x)
+        self.player.angle = degrees(angle)
+        self.player.change_x = 5 * cos(angle)
+        self.player.change_y = 5 * sin(angle)
+        self.player.update()
 
     def on_draw(self):
         arcade.start_render
         self.coin.draw()
+        self.player.draw()
+
     def on_mouse_motion(self, x, y, dx, dy):
         self.coin.center_x = x
         self.coin.center_y = y
