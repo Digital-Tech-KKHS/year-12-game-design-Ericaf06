@@ -58,7 +58,9 @@ class Player(arcade.Sprite):
 class Enemy(arcade.Sprite):
     def __init__(self):
         super().__init__(':resources:images/tiles/dirtCenter_rounded.png') 
-
+class Bullet():
+    def __init__(self):
+        super().__init__(":resources:images/space_shooter/playerLife1_blue.png")
 def load_texture_pair(filename):
     return [
         arcade.load_texture(filename),
@@ -195,7 +197,7 @@ class GameView(arcade.View):
         bullet.change_y = BULLET_SPEED
         bullet.angle = 90
         self.bullet_list.append(bullet)
-        arcade.play_sound(self.laser_sound)
+        arcade.play_sound(self.bullet_sound)
 
 class WelcomeView(arcade.View):
     def __init__(self):

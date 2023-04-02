@@ -1,21 +1,18 @@
-_Name:_ YOUR NAME HERE
+_Name:_ Erica Ford
 
 _Date:_ 
 
 Involved in the trial
->- Jimmy Jackson
->- Te Kahu
->- Mrs Teacher
+>- Mitchell
+>- 
+>- 
 
 ## Trial goal:
-> To Ensure the main menu screen of our app was intuative to use and aesthetically pleasing, present two colour options. 
+> To make sure the ladders are functional smooth to use. Also to see which way trial candidates prefferred to use the ladders.
 
 
 ## Describe the trail
 > We loaded the main menu of our app and asked our 3 candidates to navigate to the game. After this we asked each candidate what they though each button did and if they liked the colour scheme. 
-
-![main_menu](main_menu.png)
-![main_menu](menu_orange.png)
 
 ## Results
 > - Te Kahu resized the screen causing the image to be laid out in a less desireable layout. 

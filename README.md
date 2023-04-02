@@ -15,7 +15,7 @@ This template creates student repositories for senior game design projects.
 ###  🔥 Read the [Marking Schedule](documents/task/year-12/Marking%20Schedule.md)
 
 ###  🔥 Complete the [Game Design Document](documents/Game%20Design%20Document.md)
-###  🔥 Get familiar with the [Testing](documents/testing-and-trialing/testing.md) and [Trialing](documents/testing-and-trialing/trialing.md) examples
+###  🔥 Get familiar with the [Testing](Testing.md) and [Trialing](documents/testing-and-trialing/trialing.md) examples
 
 # Year 13
 ###  🔥 Check out the [Year 13 Task](documents/task/year-13/Game%20Development%20project%20assessment%20task%202022.docx)
