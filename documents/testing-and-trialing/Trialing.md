@@ -1,31 +1,34 @@
 _Name:_ Erica Ford
 
-_Date:_ 
+_Date:_  4/04/2023
 
 Involved in the trial
 >- Mitchell
->- 
+>- Braedyn
 >- 
 
 ## Trial goal:
-> To make sure the ladders are functional smooth to use. Also to see which way trial candidates prefferred to use the ladders.
+>To see which speed of the bullets the candidates prefer and if the having coins was better to collect than having rocks
 
 
 ## Describe the trail
-> We loaded the main menu of our app and asked our 3 candidates to navigate to the game. After this we asked each candidate what they though each button did and if they liked the colour scheme. 
+>I made an aracde window for testing only the bullets and and set the speed to 6 first. I had the user test that speed and give feedback. i then changed the speed to 20 and had the users test that. I also first had rocks in the place of coins first then changed them to coins to see which they prefered. I also changed the shoot button from having the key Q to having the mouse press as my shoot button.
 
 ## Results
-> - Te Kahu resized the screen causing the image to be laid out in a less desireable layout. 
-> - Jimmy was unsure what the difference between the buttons were and was confused by the 3 options. 
-> - All candidates knew to push one of the buttons to proceed
-> - No one liked the blue colour
-> - Mrs Teacher did not understand the title
-> - Bug found when buttons are still active after being selected
+> - Braedyn preferred having 20 as the speed.
+> - Braedyn also said that in my game I should make the speed slightly slower so that the player can't go through and collect/kill everything too quickly.
+> - Brayden preferred having the rocks instead of the traditional coins.
+> - Brayden liked having a space shooter as the character as it was on theme with having rocks as my coins.
+> - Braedyn liked having the mouse as the shoot button instead of the Q key.
+> - Mitchell also preferred having 20 as the speed
+> - 
+> - 
 
 ## Breifly describe the changes you have made based on this trial
-> - Planning on changing button wording to "Placenames" and "1000 common words"  
-> - include a 'maori \ english' toggle switch
-> - Leaving the title as is
-> - Fix layout issue with different screen sizes
-> - Fix Button bug
-> - Go with orange colour
+> - I will keep the player and the type of coins I have the same.
+> - I will change the speed to something between 6 and 20.
+> - 
+> - 
+> - 
+> - 
+> - 

@@ -3,12 +3,12 @@ import random
 
 WIDTH = 800
 HEIGHT = 800
-TITLE = "lasers"
+TITLE = "bullet"
 
 PLAYER_SCALING = 0.8
 COIN_SCALING = 0.3
 LAZER_SCALING = 0.5
-BULLET_SPEED = 15
+BULLET_SPEED = 20
 
 class Game(arcade.Window):
     def __init__(self):
@@ -20,7 +20,7 @@ class Game(arcade.Window):
         self.score = 0 
         self.set_mouse_visible = (False)
         self.coin_sound = arcade.load_sound(':resources:sounds/coin1.wav')
-        self.laser_sound = arcade.load_sound(':resources:sounds/laser3.wav')
+        self.bullet_sound = arcade.load_sound(':resources:sounds/laser3.wav')
    
     def setup(self):
         self.player = arcade.Sprite(":resources:images/space_shooter/playerShip1_blue.png")
@@ -29,7 +29,7 @@ class Game(arcade.Window):
         self.coin_list = arcade.SpriteList()
         self.bullet_list = arcade.SpriteList()
         self.score = 0
-        arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.color.AMETHYST)
         for i in range(80):
             coin = arcade.Sprite(':resources:images/space_shooter/meteorGrey_med2.png')
             coin.center_x = random.randint(0, WIDTH)
@@ -51,9 +51,7 @@ class Game(arcade.Window):
                 coin.kill()
                 self.score += 1
                 arcade.play_sound(self.coin_sound)
-
-   
-
+        
     def on_mouse_motion(self, x, y, dx, dy):
         self.player.center_x = x
    
@@ -64,7 +62,7 @@ class Game(arcade.Window):
         bullet.change_y = BULLET_SPEED
         bullet.angle = 90
         self.bullet_list.append(bullet)
-        arcade.play_sound(self.laser_sound)
+        arcade.play_sound(self.bullet_sound)
 
    
 

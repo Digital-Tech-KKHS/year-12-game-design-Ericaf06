@@ -24,6 +24,8 @@ kanban-plugin: basic
 
 ## Complete 🎈🎉✨
 
+- [ ] Player Shooting
+- [ ] Keyboard Functions
 
 
 ## Bug list 🦋🐛🦟🐜🦗🐝🐞
