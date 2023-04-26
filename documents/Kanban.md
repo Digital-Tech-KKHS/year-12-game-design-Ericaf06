@@ -8,14 +8,15 @@ kanban-plugin: basic
 
 - [ ] Map
 - [ ] Game Idea
-- [ ] Adding more levels
-- [ ] Character and enemy menu
+- [ ] Art
+- [ ] Main start menu
+- [ ] 
 
 
 ## Doing
 
 - [ ] Moving Enemies
-- [ ] Keyboard Functions
+- [ ] Adding more levels
 
 
 ## Testing \ Trialing
@@ -24,8 +25,9 @@ kanban-plugin: basic
 
 ## Complete 🎈🎉✨
 
-- [ ] Player Shooting
+- [ ] Shooting mechanism
 - [ ] Keyboard Functions
+- [ ] Ladder functions
 
 
 ## Bug list 🦋🐛🦟🐜🦗🐝🐞

@@ -11,11 +11,9 @@
             "id": "afd2da0def8e2e4b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "documents/sprint-docs/Sprint Document.md",
-                "mode": "source",
-                "source": false
+                "file": "documents/Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documents/sprint-docs/Sprint Document.md",
+                "file": "documents/Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documents/sprint-docs/Sprint Document.md",
+                "file": "documents/Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "documents/sprint-docs/Sprint Document.md"
+                "file": "documents/Kanban.md"
               }
             }
           }
@@ -148,8 +146,10 @@
   },
   "active": "afd2da0def8e2e4b",
   "lastOpenFiles": [
-    "documents/testing-and-trialing/Testing.md",
+    "ladderr.tmx.XnlbFG",
+    "ladderr.tmx.CRduAc",
     "documents/sprint-docs/Sprint Document.md",
+    "documents/testing-and-trialing/Testing.md",
     "documents/sprint-docs/What is a Sprint.md",
     "documents/Final Hand in statement .md",
     "documents/Flash cards.md",
