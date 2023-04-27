@@ -1,6 +1,5 @@
 import arcade
-from math import cos, sin, degrees
-from math import atan2
+import math 
 WIDTH = 800
 HEIGHT = 800
 TITLE = "game"

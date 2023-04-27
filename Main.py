@@ -1,5 +1,6 @@
 import arcade
 import math
+from math import *
 import random
 
 WIDTH = 1200
@@ -36,7 +37,7 @@ class MyGame(arcade.Window):
                 }
             }
        
-        self.tile_map = arcade.load_tilemap('./ladderr.tmx', layer_options=layer_options)
+        self.tile_map = arcade.load_tilemap('./mapp.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
         self.bullet_list = arcade.SpriteList()
@@ -109,13 +110,8 @@ class MyGame(arcade.Window):
         if camera_y < 15:
             camera_y = 15
         self.camera.move_to((camera_x, camera_y))
-           
-        coins = arcade.check_for_collision_with_list(self.bullet, self.scene['Coins'])
-        for coin in coins:
-            self.score += 1
-            coin.kill()
 
-        spikes = arcade.check_for_collision_with_list(self.player, self.scene['Do not touch'])
+        spikes = arcade.check_for_collision_with_list(self.player, self.scene['Do Not Touch'])
        
         if spikes:
             self.player.center_x = 400
@@ -143,13 +139,18 @@ class MyGame(arcade.Window):
        
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(self.bullet, self.enemy_list)
-           
+        
             if len(enemy_bullet) > 0:
                 self.bullet.kill
                 enemy_bullet[0].kill()
 
         if self.bullet.center_x >1000 or self.bullet.center_y < 0:
             self.bullet.kill()
+
+        coins = arcade.check_for_collision_with_list(self.player, self.scene['Coins'])
+        for coin in coins:
+            self.score += 1
+            coin.kill()
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.D:
@@ -231,9 +232,12 @@ def load_texture_pair(filename):
         arcade.load_texture(filename),
         arcade.load_texture(filename, flipped_horizontally=True)    ]
 
-class WelcomeView(arcade.Window):
+class WelcomeView(arcade.View):
     def __init__(self):
         super().__init__()
+        arcade.set_background_color(arcade.color.AFRICAN_VIOLET)
+
+    def on_show(self):
         arcade.set_background_color(arcade.color.AFRICAN_VIOLET)
    
     def on_draw(self):
@@ -248,8 +252,7 @@ class WelcomeView(arcade.Window):
 class GameOverView(arcade.View):
     def __init__(self):
         super().__init__()
-        arcade.set_background_color(arcade.color.AFRICAN_VIOLET)
-   
+
     def on_draw(self):
         self.clear()
         arcade.draw_text("dead", 200, 400)
@@ -268,6 +271,8 @@ class Game(arcade.Window):
 
 def main():
     window = MyGame()
+    welcome_view = WelcomeView()
+    game_over = GameOverView()
     window.setup()
     arcade.run()
 
