@@ -11,11 +11,9 @@
             "id": "afd2da0def8e2e4b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "documents/sprint-docs/Sprint Document 1.md",
-                "mode": "source",
-                "source": false
+                "file": "documents/Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documents/sprint-docs/Sprint Document 1.md",
+                "file": "documents/Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documents/sprint-docs/Sprint Document 1.md",
+                "file": "documents/Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "documents/sprint-docs/Sprint Document 1.md"
+                "file": "documents/Kanban.md"
               }
             }
           }
@@ -148,20 +146,21 @@
   },
   "active": "afd2da0def8e2e4b",
   "lastOpenFiles": [
-    "Pasted image 20230501092005.png",
-    "documents/Kanban.md",
     "documents/sprint-docs/Sprint Document 1.md",
+    "documents/Kanban.md",
+    "documents/Game Design Document.md",
+    "documents/readme.md",
+    "documents/testing-and-trialing/Testing.md",
+    "Pasted image 20230501092005.png",
     "Pasted image 20230501091904.png",
     "Pasted image 20230501091800.png",
     "mapp.tmx.NEmIrz",
     "ladderr.tmx.XnlbFG",
     "ladderr.tmx.CRduAc",
-    "documents/testing-and-trialing/Testing.md",
     "documents/sprint-docs/What is a Sprint.md",
     "documents/Final Hand in statement .md",
     "documents/Flash cards.md",
     "ladderr.tmx.iunnDY",
-    "documents/Game Design Document.md",
     "documents/testing-and-trialing/Trialing.md",
     "menu_orange.png.md"
   ]

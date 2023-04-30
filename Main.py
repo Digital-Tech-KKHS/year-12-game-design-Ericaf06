@@ -253,6 +253,10 @@ class GameOverView(arcade.View):
     def __init__(self):
         super().__init__()
 
+    def on_show_view(self):
+        arcade.set_background_color(arcade.color.ARSENIC)
+        
+
     def on_draw(self):
         self.clear()
         arcade.draw_text("dead", 200, 400)

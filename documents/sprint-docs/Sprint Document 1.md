@@ -7,7 +7,7 @@ Erica Ford
 **Sprint Number:**
 1
 **Start Date:**
-
+20/03/2023
 **End Date:**
 6/4/2023
 **Work hard rating**
@@ -48,3 +48,4 @@ I acheived more in my sprint than I planned on doing, and have my kanban board t
 
 
 ## **Notes for next time, future improvements**
+Next time I should focus on completing one aspect at a time, because I worked on multiple aspects at one time I found it was all over the place and things didn't get fully completed. I also want to have a wider range of things on my kanban to work on to be more efficient.
