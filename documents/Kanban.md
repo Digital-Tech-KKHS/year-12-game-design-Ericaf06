@@ -13,6 +13,7 @@ kanban-plugin: basic
 - [ ] Death window
 - [ ] Enemies that follow
 - [ ] spring fan
+- [ ] Moving platforms
 
 
 ## Doing

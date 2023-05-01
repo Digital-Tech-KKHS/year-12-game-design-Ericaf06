@@ -244,7 +244,7 @@ class WelcomeView(arcade.View):
         self.clear()
         arcade.draw_text(" you wanna play? press enter", 200, 400)
    
-    def on_key_press(self, symbol: int, modifiers: int):
+    def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ENTER:
             self.window.show_view(self.window.game_view)
        
@@ -253,15 +253,12 @@ class GameOverView(arcade.View):
     def __init__(self):
         super().__init__()
 
-    def on_show_view(self):
-        arcade.set_background_color(arcade.color.ARSENIC)
         
-
     def on_draw(self):
         self.clear()
         arcade.draw_text("dead", 200, 400)
    
-    def on_key_press(self, symbol: int, modifiers: int):
+    def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ENTER:
             self.window.show_view(self.window.welcome_view)
 
