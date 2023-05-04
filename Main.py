@@ -25,9 +25,11 @@ class MyGame(arcade.Window):
         self.bullet_list = None
         self.score = 0
         self.level = 1
+        self.load_new_level =('./mapp%s.tmx' % self.level)
         self.game_over_sound = arcade.load_sound(':resources:sounds/hurt3.wav')
         self.bullet = arcade.Sprite(':resources:images/space_shooter/laserBlue01.png')
         self.enemy = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big4.png')
+
 
     def setup(self):
         arcade.set_background_color(arcade.color.CEIL)
@@ -53,8 +55,9 @@ class MyGame(arcade.Window):
         self.game_over_sound = arcade.load_sound(':resources:sounds/jump5.wav')
         self.physics_engine = arcade.PhysicsEnginePlatformer(
                 self.player,
-                self.scene['Ground'],
+                platforms = self.scene['Moving platforms'],
                 ladders = self.scene['Ladders'],
+                walls = self.scene['Ground'],
                 gravity_constant=GRAVITY
         )
 
@@ -67,6 +70,7 @@ class MyGame(arcade.Window):
             health.center_y = HEIGHT - 100
             self.health_list.append(health)
 
+
     def on_draw(self):
         self.clear()
         self.camera.use()
@@ -74,7 +78,7 @@ class MyGame(arcade.Window):
         self.bullet_list.draw()
         self.enemy_list.draw()
         self.HUD_camera.use()
-        arcade.draw_text(str(self.score), 15, HEIGHT - 50, font_size=50)
+        arcade.draw_text(str(self.score), 15, HEIGHT - 50, arcade.csscolor.BLACK, font_size=50)
         self.health_list.draw()
 
     def on_mouse_press(self, x, y, button, modifiers):
@@ -151,6 +155,7 @@ class MyGame(arcade.Window):
         for coin in coins:
             self.score += 1
             coin.kill()
+            
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.D:

@@ -62,6 +62,14 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "83ca840a98724709",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -146,6 +154,9 @@
   },
   "active": "afd2da0def8e2e4b",
   "lastOpenFiles": [
+    "spongey.png",
+    "main.py",
+    "mapp.tmx.VlpxqC",
     "documents/sprint-docs/Sprint Document 1.md",
     "documents/Kanban.md",
     "documents/Game Design Document.md",

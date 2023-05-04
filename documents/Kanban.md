@@ -7,19 +7,22 @@ kanban-plugin: basic
 ## Backlog❄❄
 
 - [ ] Map
-- [ ] Game Idea
+- [ ] Game Idea/concept
 - [ ] Art
+- [ ] Moving Enemies
 - [ ] Main start menu
+- [ ] Moving platforms
 - [ ] Death window
 - [ ] Enemies that follow
+- [ ] Following enemies
+- [ ] Adding more levels
 - [ ] spring fan
-- [ ] Moving platforms
+- [ ] Following enermy
 
 
 ## Doing
 
-- [ ] Moving Enemies
-- [ ] Adding more levels
+- [ ] Player winning
 
 
 ## Testing \ Trialing
@@ -31,6 +34,7 @@ kanban-plugin: basic
 - [ ] Shooting mechanism
 - [ ] Keyboard Functions
 - [ ] Ladder functions
+- [ ] Player losing
 
 
 ## Bug list 🦋🐛🦟🐜🦗🐝🐞
