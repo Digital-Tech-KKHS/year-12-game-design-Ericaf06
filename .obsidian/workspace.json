@@ -11,9 +11,11 @@
             "id": "afd2da0def8e2e4b",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "documents/Kanban.md"
+                "file": "documents/testing-and-trialing/Testing.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -46,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Ladderlogic",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -71,7 +73,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -91,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documents/Kanban.md",
+                "file": "documents/testing-and-trialing/Testing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documents/Kanban.md",
+                "file": "documents/testing-and-trialing/Testing.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "documents/Kanban.md"
+                "file": "documents/testing-and-trialing/Testing.md"
               }
             }
           }
@@ -152,13 +155,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "afd2da0def8e2e4b",
+  "active": "7eefc58752ed55ea",
   "lastOpenFiles": [
+    "documents/Kanban.md",
     "spongey.png",
     "main.py",
     "mapp.tmx.VlpxqC",
     "documents/sprint-docs/Sprint Document 1.md",
-    "documents/Kanban.md",
     "documents/Game Design Document.md",
     "documents/readme.md",
     "documents/testing-and-trialing/Testing.md",

@@ -46,4 +46,39 @@ Date: 3/4/2023
 | ---------------------------- | ------------------------------- | ------------------------------ |
 | Player climbing up ladder   | Player smoothly moves up ladder with climbing texture ||
 | Player climbing down ladder |Player smoothly moves down ladder with climbing texture | |
-| Player standing still on ladder| Player is able to standing still facing the direction they were jumping to | |
+| Player standing still on ladder| Player is able to standing still facing the direction they were jumping to |
+
+
+## Test 3 :
+Shooting Bullets
+4/05/2023
+```python
+
+ def on_mouse_press(self, x, y, button, modifiers):
+
+        bullet = arcade.Sprite(':resources:images/space_shooter/laserBlue01.png')
+        start_x = self.player.center_x
+        start_y = self.player.center_y
+        bullet.center_x = start_x
+        bullet.center_y = start_y
+		arcade.play_sound(self.bullet_sound)
+
+
+        dest_x = x
+        dest_y = y
+        x_diff = dest_x - start_x
+        y_diff = dest_y - start_y
+        angle = math.atan2(y_diff, x_diff)
+        bullet.angle = math.degrees(angle)
+        bullet.change_x = math.cos(angle) * BULLET_SPEED
+        bullet.change_y = math.sin(angle) * BULLET_SPEED
+        
+        self.bullet_list.append(bullet)
+```
+| Test Data                    | Expected                        | Observed                       |
+| ---------------------------- | ------------------------------- | ------------------------------ |
+| Mouse pressed to bottom left of player  | Bullet shoots to the bottom left of the player|As expected
+| Player shooting in a horizontal line on a ladder|Bullet shoots out horizontally |Bullet doesn't shoot
+| | |
+
+## Test 4:
