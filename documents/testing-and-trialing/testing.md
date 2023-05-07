@@ -1,6 +1,4 @@
-## Test 1 :
-# Collecting coins
-
+## Test 1:  Collecting coins
 Date: 3/4/2023
 
 ```python
@@ -21,8 +19,7 @@ Date: 3/4/2023
 | Player touching/colliding with a coin | Score to increase by 1|  |
 | Player touching/colliding with multiple coins at a time  |Score increases with the amount of coins the player collided with|  |
 
-## Test 2 :
-# Ladder logic
+## Test 2: Ladder logic
 Date: 3/4/2023
 
 ```python
@@ -49,8 +46,7 @@ Date: 3/4/2023
 | Player standing still on ladder| Player is able to standing still facing the direction they were jumping to |
 
 
-## Test 3 :
-Shooting Bullets
+## Test 3: Shotting bullets
 4/05/2023
 ```python
 
@@ -79,6 +75,61 @@ Shooting Bullets
 | ---------------------------- | ------------------------------- | ------------------------------ |
 | Mouse pressed to bottom left of player  | Bullet shoots to the bottom left of the player|As expected
 | Player shooting in a horizontal line on a ladder|Bullet shoots out horizontally |Bullet doesn't shoot
-| | |
+| Mouse pressed in direction of enemy|Bullet shoots towards enemy | As expected|
 
-## Test 4:
+## Test 4: Player Movement
+8/05/2023
+```python
+def on_key_press(self, symbol, modifiers):
+        if symbol == arcade.key.D:
+            self.player.change_x  = PLAYER_MOVEMENT_SPEED
+        elif symbol == arcade.key.A:
+            self.player.change_x  = -PLAYER_MOVEMENT_SPEED
+        if symbol == arcade.key.W:
+            if self.physics_engine.can_jump():
+                self.player.change_y = JUMP_SPEED
+                arcade.play_sound(self.jump_sound)
+        elif symbol == arcade.key.E:
+            if self.physics_engine.is_on_ladder():
+                self.player.change_y = PLAYER_MOVEMENT_SPEED
+                arcade.play_sound(self.climbing_sound)
+      
+def on_key_release(self, symbol: int, modifiers: int):
+        print(symbol, modifiers)
+        if symbol == arcade.key.D:
+            self.player.change_x  = 0
+        if symbol == arcade.key.A:
+            self.player.change_x  = 0
+        elif symbol == arcade.key.E:
+            if self.physics_engine.is_on_ladder():
+                self.player.change_y = 0
+
+
+```
+
+| Test Data                    | Expected                        | Observed                       |
+| ---------------------------- | ------------------------------- | ------------------------------ |
+|W pressed| Player jumps in place|As expected
+|W pressed while D is pressed|Player Jumps foward|As expected
+|E pressed while player is infront of ladder | Player moves up the ladder| As expected |
+
+## Test 5: Spikes
+```python
+ spikes = arcade.check_for_collision_with_list(self.player, self.scene['Do Not Touch'])
+ 
+        if spikes:
+            self.player.center_x = 400
+            self.player.center_y = 400
+            self.health_list.pop()
+            arcade.play_sound(self.kill_sound)
+            if len(self.health_list) <= 0:
+                self.player.kill()
+                arcade.play_sound(self.game_over_sound)
+                self.window.show_view(self.window.game_over)
+```
+
+| Test Data                    | Expected                        | Observed                       |
+| ---------------------------- | ------------------------------- | ------------------------------ |
+|Player lands on spikes layer|Health decreases by one and player restarts|Health list not functional yet
+|W pressed while D is pressed|Player Jumps foward|As expected
+|E pressed while player is infront of ladder | Player moves up the ladder| As expected |

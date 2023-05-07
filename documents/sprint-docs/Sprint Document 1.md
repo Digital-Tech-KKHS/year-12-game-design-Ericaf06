@@ -49,3 +49,51 @@ I acheived more in my sprint than I planned on doing, and have my kanban board t
 
 ## **Notes for next time, future improvements**
 Next time I should focus on completing one aspect at a time, because I worked on multiple aspects at one time I found it was all over the place and things didn't get fully completed. I also want to have a wider range of things on my kanban to work on to be more efficient.
+
+
+
+
+
+Sprint Document 2:
+# Details
+**Name:**
+Erica Ford
+
+**Git Hash:**
+
+**Sprint Number:**
+2
+**Start Date:**
+
+**End Date:**
+
+**Work hard rating**
+☆☆☆☆
+
+# Project at the start of the sprint
+## **KANBAN board at the start of the sprint**
+
+## **Screenshot of the game at the start of the sprint**
+![[Pasted image 20230508095157.png]]
+# Sprint Summary
+## **Sprint Reflection and summary**
+
+
+## **Major Changes and Achievements Described**
+
+
+
+## **Brief Description of your testing**
+[[Testing]]
+## **Link to testing results/tables**
+[[Trialing]]
+
+# Project at the end of the sprint
+## **KANBAN board at the end of the sprint**
+![[Pasted image 20230508094920.png]]
+## **Screenshot of the game at the end of the sprint**
+
+## Link to **Video of the game at the end of the sprint**
+
+
+## **Notes for next time, future improvements**

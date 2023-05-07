@@ -1,5 +1,6 @@
 _Name:_ Erica Ford
 
+Trial #1
 _Date:_  4/04/2023
 
 Involved in the trial
@@ -21,14 +22,38 @@ Involved in the trial
 > - Brayden liked having a space shooter as the character as it was on theme with having rocks as my coins.
 > - Braedyn liked having the mouse as the shoot button instead of the Q key.
 > - Mitchell also preferred having 20 as the speed
-> - 
-> - 
+
 
 ## Breifly describe the changes you have made based on this trial
 > - I will keep the player and the type of coins I have the same.
 > - I will change the speed to something between 6 and 20.
 > - 
 > - 
+> - 
+> - 
+
+Trial #2
+_Date:_  8/05/2023
+
+Involved in the trial
+>- Mitchell
+>- Braedyn
+>- Kiwa
+
+
+## Trial goal:
+>To test wether the candidates prefer moving enemies or non-moving enemies both kill the player when touched.
+
+
+## Describe the trail
+>I made an aracde window for testing the enemies and added both moving and non-moving enemies with a player who will have bullets as a ways of killing the enemies.
+
+## Results
+> - Braedyn preferred 
+> - 
+## Breifly describe the changes you have made based on this trial
+> - I will 
+> -
 > - 
 > - 
 > - 
