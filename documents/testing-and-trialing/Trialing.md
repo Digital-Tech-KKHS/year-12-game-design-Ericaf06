@@ -42,11 +42,11 @@ Involved in the trial
 
 
 ## Trial goal:
->To test wether the candidates prefer moving enemies or non-moving enemies both kill the player when touched.
+>To test wether the candidates prefer enemies coming towards them along the x-axis or whether they prefer enemies floating down towards them
 
 
 ## Describe the trail
->I made an aracde window for testing the enemies and added both moving and non-moving enemies with a player who will have bullets as a ways of killing the enemies.
+>I made an aracde window for testing the enemies and added both x-axis and y-axis enemies
 
 ## Results
 > - Braedyn preferred 
