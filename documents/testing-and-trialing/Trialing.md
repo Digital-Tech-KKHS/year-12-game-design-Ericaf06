@@ -60,4 +60,8 @@ Involved in the trial
 > - I will change my code so that a bullet can only hit one thing at a time and the bullet dies after hitting the thing
 > - I will try adding enemies coming from all directions
 > -I will change the enemies on the x-axis so that they move faster and they spawn at different levels 
+<<<<<<< HEAD
 > - I will make the enemies on the x-axis spawn behind the player and move foward towards the player
+=======
+> - I will make the enemies on the x-axis spawn behind the player and move foward towards the player
+>>>>>>> 2ecbd388b950ac77ca6330a04194946c60a9145c

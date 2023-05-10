@@ -15,9 +15,9 @@ Date: 3/4/2023
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-| Player not touching/colliding with a coin  | Nothing happens in terms of score| |
-| Player touching/colliding with a coin | Score to increase by 1|  |
-| Player touching/colliding with multiple coins at a time  |Score increases with the amount of coins the player collided with|  |
+| Player not touching/colliding with a coin  | Nothing happens in terms of score| As expected |
+| Player touching/colliding with a coin | Score to increase by 1| As expected |
+| Player touching/colliding with multiple coins at a time  |Score increases with the amount of coins the player collided with| As expected |
 
 ## Test 2: Ladder logic
 Date: 3/4/2023
@@ -43,7 +43,7 @@ Date: 3/4/2023
 | ---------------------------- | ------------------------------- | ------------------------------ |
 | Player climbing up ladder   | Player smoothly moves up ladder with climbing texture ||
 | Player climbing down ladder |Player smoothly moves down ladder with climbing texture | |
-| Player standing still on ladder| Player is able to standing still facing the direction they were jumping to |
+| Player standing still on ladder| Player is able to standing still facing the direction they were jumping to |As expected|
 
 
 ## Test 3: Shotting bullets
@@ -131,5 +131,5 @@ def on_key_release(self, symbol: int, modifiers: int):
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
 |Player lands on spikes layer|Health decreases by one and player restarts|Health list not functional yet
-|W pressed while D is pressed|Player Jumps foward|As expected
-|E pressed while player is infront of ladder | Player moves up the ladder| As expected |
+|||
+| | |  |

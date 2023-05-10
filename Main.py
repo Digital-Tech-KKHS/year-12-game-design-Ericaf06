@@ -24,12 +24,15 @@ class MyGame(arcade.Window):
         self.tile_map = None
         self.bullet_list = None
         self.score = 0
-        self.level = 1
-        self.load_new_level =('./mapp%s.tmx' % self.level)
         self.game_over_sound = arcade.load_sound(':resources:sounds/hurt3.wav')
         self.bullet = arcade.Sprite(':resources:images/space_shooter/laserBlue01.png')
         self.enemy = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big4.png')
+<<<<<<< HEAD
         self.boss = arcade.Sprite('')
+=======
+        self.enemy_2 = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big2.png')
+        
+>>>>>>> 2ecbd388b950ac77ca6330a04194946c60a9145c
 
 
     def setup(self):
@@ -40,12 +43,16 @@ class MyGame(arcade.Window):
                 }
             }
        
-        self.tile_map = arcade.load_tilemap('./mapp.tmx', layer_options=layer_options)
+        self.tile_map = arcade.load_tilemap('./ladders.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
         self.bullet_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
+<<<<<<< HEAD
         self.boss = arcade.Sprite()
+=======
+        self.enemy_2_list = arcade.SpriteList()
+>>>>>>> 2ecbd388b950ac77ca6330a04194946c60a9145c
         self.score = 0
         self.player = Player()
         self.scene['player'].append(self.player)
@@ -57,7 +64,6 @@ class MyGame(arcade.Window):
         self.game_over_sound = arcade.load_sound(':resources:sounds/jump5.wav')
         self.physics_engine = arcade.PhysicsEnginePlatformer(
                 self.player,
-                platforms = self.scene['Moving platforms'],
                 ladders = self.scene['Ladders'],
                 walls = self.scene['Ground'],
                 gravity_constant=GRAVITY
@@ -86,6 +92,7 @@ class MyGame(arcade.Window):
         self.scene.draw()
         self.bullet_list.draw()
         self.enemy_list.draw()
+        self.enemy_2_list.draw()
         self.HUD_camera.use()
         arcade.draw_text(str(self.score), 15, HEIGHT - 50, arcade.color.BLACK, font_size = 50)
         self.health_list.draw()
@@ -144,19 +151,39 @@ class MyGame(arcade.Window):
             self.enemy_list.append(self.enemy)
         for self.enemy in self.enemy_list:
             self.enemy.center_x -=2
+
+        if random.random() < 0.01:
+            self.enemy_2 = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big4.png')
+            self.enemy_2.center_x = 500
+            self.enemy_2.center_y = 600
+            self.enemy_2_list.append(self.enemy_2)
+        for self.enemy_2 in self.enemy_2_list:
+            self.enemy_2.center_y -=2
        
         enemy_collisions = arcade.check_for_collision_with_list(self.player, self.enemy_list)
         if len(enemy_collisions) > 0:
               self.player.kill()
               arcade.play_sound(self.game_over_sound)
               self.window.show_view(self.view.game_over)
+
+        enemy_2_collisions = arcade.check_for_collision_with_list(self.player, self.enemy_2_list)
+        if len(enemy_2_collisions) > 0:
+              self.player.kill()
+              arcade.play_sound(self.game_over_sound)
+              self.window.show_view(self.view.game_over)
+        
        
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(self.bullet, self.enemy_list)
-        
             if len(enemy_bullet) > 0:
                 self.bullet.kill
                 enemy_bullet[0].kill()
+
+        for self.bullet in self.bullet_list:
+            enemy_2_bullet = arcade.check_for_collision_with_list(self.bullet, self.enemy_2_list)
+            if len(enemy_2_bullet) > 0:
+                self.bullet.kill
+                enemy_2_bullet[0].kill()
 
         if self.bullet.center_x >1000 or self.bullet.center_y < 0:
             self.bullet.kill()
@@ -198,11 +225,22 @@ class MyGame(arcade.Window):
 
 class Enemy(arcade.Sprite):
     def __init__(self):
+<<<<<<< HEAD
         super().__init__('spongey.png')
         self.boss_center_x = 600
         self.boss_center_y = 400
 
     def enemy_update_anitmation(self):
+=======
+        super().__init__(':resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png')
+        self.boss_center_x = 600
+        self.boss_center_y = 400
+        self.boss_idle_textures = load_texture_pair(':resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png')
+        self.boss_walk_textures = []
+        for i in range(2):
+            boss_frames = load_texture_pair(':resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png')
+            self.boss_walk_textures.append(boss_frames)
+>>>>>>> 2ecbd388b950ac77ca6330a04194946c60a9145c
 
 class Player(arcade.Sprite):
     def __init__(self):
