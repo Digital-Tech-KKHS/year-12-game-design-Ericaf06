@@ -27,12 +27,11 @@ class MyGame(arcade.Window):
         self.game_over_sound = arcade.load_sound(':resources:sounds/hurt3.wav')
         self.bullet = arcade.Sprite(':resources:images/space_shooter/laserBlue01.png')
         self.enemy = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big4.png')
-<<<<<<< HEAD
-        self.boss = arcade.Sprite('')
-=======
         self.enemy_2 = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big2.png')
+        self.boss = arcade.Sprite(':resources:images/tiles/mushroomRed.png')
+        self.health = arcade.Sprite(':resources:images/space_shooter/playerLife1_green.png')
+        self.boss_health = arcade.Sprite(':resources:images/tiles/mushroomRed.png')
         
->>>>>>> 2ecbd388b950ac77ca6330a04194946c60a9145c
 
 
     def setup(self):
@@ -43,16 +42,15 @@ class MyGame(arcade.Window):
                 }
             }
        
-        self.tile_map = arcade.load_tilemap('./ladders.tmx', layer_options=layer_options)
+        self.tile_map = arcade.load_tilemap('./square.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
         self.bullet_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
-<<<<<<< HEAD
+        self.health_list = arcade.SpriteList()
+        self.boss_health_list = arcade.SpriteList()
         self.boss = arcade.Sprite()
-=======
         self.enemy_2_list = arcade.SpriteList()
->>>>>>> 2ecbd388b950ac77ca6330a04194946c60a9145c
         self.score = 0
         self.player = Player()
         self.scene['player'].append(self.player)
@@ -71,13 +69,12 @@ class MyGame(arcade.Window):
 
         self.camera = arcade.Camera(WIDTH, HEIGHT)
         self.HUD_camera = arcade.Camera(WIDTH, HEIGHT)
-        self.health_list = arcade.SpriteList()
-        self.boss_health_list = arcade.SpriteList()
         for i in range(5):
-            health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png")
-            health.center_x = 50 + 40 * i
-            health.center_y = HEIGHT - 100
-            self.health_list.append(health)
+            self.health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png")
+            self.health.center_x = 50 + 40 * i
+            self.health.center_y = HEIGHT - 100
+            self.health_list.append(self.health)
+
         for i in range (5):
             self.boss_health = arcade.Sprite(':resources:images/tiles/mushroomRed.png')
             self.boss_health.center_x = 60 + 40 * i
@@ -93,8 +90,11 @@ class MyGame(arcade.Window):
         self.bullet_list.draw()
         self.enemy_list.draw()
         self.enemy_2_list.draw()
+        self.boss.draw()
         self.HUD_camera.use()
         arcade.draw_text(str(self.score), 15, HEIGHT - 50, arcade.color.BLACK, font_size = 50)
+        arcade.draw_text(str(self.health_list), 15, HEIGHT - 50, arcade.color.BLACK, font_size = 50)
+        arcade.draw_text(str(self.boss_health_list), 15, HEIGHT - 50, arcade.color.BLACK, font_size = 50)
         self.health_list.draw()
         self.boss_health_list.draw()
 
@@ -223,15 +223,14 @@ class MyGame(arcade.Window):
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 
-class Enemy(arcade.Sprite):
+class Boss(arcade.Sprite):
     def __init__(self):
-<<<<<<< HEAD
         super().__init__('spongey.png')
-        self.boss_center_x = 600
-        self.boss_center_y = 400
+        self.center_x = 600
+        self.center_y = 400
 
     def enemy_update_anitmation(self):
-=======
+
         super().__init__(':resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png')
         self.boss_center_x = 600
         self.boss_center_y = 400
@@ -240,7 +239,7 @@ class Enemy(arcade.Sprite):
         for i in range(2):
             boss_frames = load_texture_pair(':resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png')
             self.boss_walk_textures.append(boss_frames)
->>>>>>> 2ecbd388b950ac77ca6330a04194946c60a9145c
+
 
 class Player(arcade.Sprite):
     def __init__(self):
