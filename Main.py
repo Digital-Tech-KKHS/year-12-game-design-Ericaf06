@@ -133,6 +133,7 @@ class MyGame(arcade.Window):
         self.camera.move_to((camera_x, camera_y))
 
         spikes = arcade.check_for_collision_with_list(self.player, self.scene['Do Not Touch'])
+        boss = arcade.check_for_collision_with_list(self.player, self.boss)
        
         if spikes:
             self.player.center_x = 400
@@ -143,6 +144,10 @@ class MyGame(arcade.Window):
                 self.player.kill()
                 arcade.play_sound(self.game_over_sound)
                 self.window.show_view(self.window.game_over)
+        if boss:
+            self.boss_centre_x = 700
+            self.boss_centre_y = 400
+            
 
         if random.random() < 0.01:
             self.enemy = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big4.png')
@@ -222,23 +227,6 @@ class MyGame(arcade.Window):
         elif symbol == arcade.key.E:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
-
-class Boss(arcade.Sprite):
-    def __init__(self):
-        super().__init__('spongey.png')
-        self.center_x = 600
-        self.center_y = 400
-
-    def enemy_update_anitmation(self):
-
-        super().__init__(':resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png')
-        self.boss_center_x = 600
-        self.boss_center_y = 400
-        self.boss_idle_textures = load_texture_pair(':resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png')
-        self.boss_walk_textures = []
-        for i in range(2):
-            boss_frames = load_texture_pair(':resources:images/animated_characters/female_adventurer/femaleAdventurer_idle.png')
-            self.boss_walk_textures.append(boss_frames)
 
 
 class Player(arcade.Sprite):
