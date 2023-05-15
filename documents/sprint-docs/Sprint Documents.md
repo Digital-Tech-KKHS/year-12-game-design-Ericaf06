@@ -77,10 +77,12 @@ Erica Ford
 ![[Pasted image 20230508095157.png]]
 # Sprint Summary
 ## **Sprint Reflection and summary**
-
+Because we had a lot of time off school during this sprint I had to manage my time at home. 
+I originally intended on adding moving platfroms but I chnaged my focus on to making a way for the player to win so that I could have an MVP.
 
 ## **Major Changes and Achievements Described**
 -Map development
+-Windows/views
 -Enemies from different directions added
 
 

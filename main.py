@@ -25,6 +25,7 @@ class MyGame(arcade.Window):
         self.bullet_list = None
         self.score = 0
         self.game_over_sound = arcade.load_sound(':resources:sounds/hurt3.wav')
+        self.game_win_sound = arcade.load_sound(':resources:sounds/upgrade2.wav')
         self.bullet = arcade.Sprite(':resources:images/space_shooter/laserBlue01.png')
         self.enemy = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big4.png')
         self.enemy_2 = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big2.png')
@@ -32,8 +33,6 @@ class MyGame(arcade.Window):
         self.health = arcade.Sprite(':resources:images/space_shooter/playerLife1_green.png')
         self.boss_health = arcade.Sprite(':resources:images/tiles/mushroomRed.png')
         
-
-
     def setup(self):
         arcade.set_background_color(arcade.color.CEIL)
         layer_options = {
@@ -45,15 +44,19 @@ class MyGame(arcade.Window):
         self.tile_map = arcade.load_tilemap('./square.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
+        self.scene.add_sprite_list('boss')
         self.bullet_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
         self.boss_health_list = arcade.SpriteList()
         self.boss = arcade.Sprite()
+        self.boss.center_x = 400
+        self.boss.center_y = 800
         self.enemy_2_list = arcade.SpriteList()
         self.score = 0
         self.player = Player()
         self.scene['player'].append(self.player)
+        self.scene['boss'].append(self.boss)
         self.climbing_sound = arcade.load_sound(':resources:sounds/upgrade4.wav')
         self.coin_sound = arcade.load_sound(':resources:sounds/coin1.wav')
         self.jump_sound = arcade.load_sound(':resources:sounds/jump1.wav')
@@ -62,6 +65,7 @@ class MyGame(arcade.Window):
         self.game_over_sound = arcade.load_sound(':resources:sounds/jump5.wav')
         self.physics_engine = arcade.PhysicsEnginePlatformer(
                 self.player,
+                self.boss,
                 ladders = self.scene['Ladders'],
                 walls = self.scene['Ground'],
                 gravity_constant=GRAVITY
@@ -81,8 +85,6 @@ class MyGame(arcade.Window):
             self.boss_health.center_y = HEIGHT -100
             self.boss_health_list.append(self.boss_health)
 
-
-
     def on_draw(self):
         self.clear()
         self.camera.use()
@@ -95,9 +97,7 @@ class MyGame(arcade.Window):
         arcade.draw_text(str(self.score), 15, HEIGHT - 50, arcade.color.BLACK, font_size = 50)
         arcade.draw_text(str(self.health_list), 15, HEIGHT - 50, arcade.color.BLACK, font_size = 50)
         arcade.draw_text(str(self.boss_health_list), 15, HEIGHT - 50, arcade.color.BLACK, font_size = 50)
-        self.health_list.draw()
-        self.boss_health_list.draw()
-
+    
     def on_mouse_press(self, x, y, button, modifiers):
         bullet = arcade.Sprite(':resources:images/space_shooter/laserBlue01.png')
         start_x = self.player.center_x
@@ -117,7 +117,6 @@ class MyGame(arcade.Window):
 
         self.bullet_list.append(bullet)
    
-
     def on_update(self, dt):
         self.bullet_list.update()
         self.physics_engine.update()
@@ -133,8 +132,7 @@ class MyGame(arcade.Window):
         self.camera.move_to((camera_x, camera_y))
 
         spikes = arcade.check_for_collision_with_list(self.player, self.scene['Do Not Touch'])
-        boss = arcade.check_for_collision_with_list(self.player, self.boss)
-       
+    
         if spikes:
             self.player.center_x = 400
             self.player.center_y = 400
@@ -143,12 +141,26 @@ class MyGame(arcade.Window):
             if len(self.health_list) <= 0:
                 self.player.kill()
                 arcade.play_sound(self.game_over_sound)
-                self.window.show_view(self.window.game_over)
-        if boss:
-            self.boss_centre_x = 700
-            self.boss_centre_y = 400
-            
 
+        self.window.show_view(self.game_over)
+        self.boss_diff_y = self.boss.center_y - self.player.center_y
+        self.boss_diff_x = self.boss.center_x - self.player.center_x
+        angle = atan2(self.boss_diff_y, self.boss_diff_x)
+        self.player.angle = degrees(angle)
+        self.player.change_x = 5 * cos(angle)
+        self.player.change_y = 5 * sin(angle)
+        
+        boss = arcade.check_for_collision_with_list(self.player, self.scene)
+
+        if boss:
+            self.player.center_x = 400
+            self.player.center_y = 400
+            arcade.play_sound(self.kill_sound)
+            if len(self.boss_health_list) <= 0:
+                self.boss.kill()
+                arcade.play_sound(self.game_win_sound)
+                self.window.show_view(self.game_win)
+            
         if random.random() < 0.01:
             self.enemy = arcade.Sprite(':resources:images/space_shooter/meteorGrey_big4.png')
             self.enemy.center_x = 500
@@ -169,15 +181,14 @@ class MyGame(arcade.Window):
         if len(enemy_collisions) > 0:
               self.player.kill()
               arcade.play_sound(self.game_over_sound)
-              self.window.show_view(self.view.game_over)
+              self.window.show_view(self.game_over)
 
         enemy_2_collisions = arcade.check_for_collision_with_list(self.player, self.enemy_2_list)
         if len(enemy_2_collisions) > 0:
               self.player.kill()
               arcade.play_sound(self.game_over_sound)
-              self.window.show_view(self.view.game_over)
-        
-       
+              self.window.show_view(self.view_game_over)
+             
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(self.bullet, self.enemy_list)
             if len(enemy_bullet) > 0:
@@ -198,7 +209,6 @@ class MyGame(arcade.Window):
             self.score += 1
             coin.kill()
             
-
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.D:
             self.player.change_x  = PLAYER_MOVEMENT_SPEED
@@ -227,7 +237,6 @@ class MyGame(arcade.Window):
         elif symbol == arcade.key.E:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
-
 
 class Player(arcade.Sprite):
     def __init__(self):
@@ -294,36 +303,44 @@ class WelcomeView(arcade.View):
    
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ENTER:
-            self.window.show_view(self.window.game_view)
-       
+            game_view = MyGame()
+            self.window.show_view(game_view)
+
+class GameWinView(arcade.View):
+    def __init__(self):
+        super().__init__()
+
+    def on_draw(self):
+        self.clear()
+        arcade.draw_text("you win", 200, 400)
+
+    def on_key_press(self, symbol, modifiers):
+        if symbol == arcade.key.ENTER:
+            game_view = MyGame()
+            self.window.show_view(game_view)
 
 class GameOverView(arcade.View):
     def __init__(self):
         super().__init__()
-
-        
+ 
     def on_draw(self):
         self.clear()
         arcade.draw_text("dead", 200, 400)
    
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ENTER:
-            self.window.show_view(self.window.welcome_view)
+            game_view = MyGame()
+            self.window.show_view(game_view)
 
 class Game(arcade.Window):
     def __init__(self):
         super().__init__(WIDTH,HEIGHT,TITLE)
         self.game_view = MyGame()
+        self.win_view = GameWinView()
         self.welcome_view = WelcomeView()
         self.game_over = GameOverView()
         self.show_view(self.welcome_view)
 
-def main():
-    window = MyGame()
-    welcome_view = WelcomeView()
-    game_over = GameOverView()
-    window.setup()
-    arcade.run()
+game = Game()
+arcade.run()
 
-if __name__ == "__main__":
-    main()

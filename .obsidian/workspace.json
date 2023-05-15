@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "de8d17a5a62b56b6",
@@ -158,6 +157,7 @@
   },
   "active": "392c378c6450fc6e",
   "lastOpenFiles": [
+    "square.tmx.FsmjPQ",
     "documents/Kanban.md",
     "square.tmx.bMeVpa",
     "square.tmx",
