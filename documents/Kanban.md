@@ -9,15 +9,11 @@ kanban-plugin: basic
 - [ ] Map
 - [ ] Game Idea/concept
 - [ ] Art
-- [ ] Moving Enemies
-- [ ] Main start menu
 - [ ] Moving platforms
-- [ ] Death window
-- [ ] Enemies that follow
+- [ ] Main start menu
 - [ ] Following enemies
 - [ ] Adding more levels
 - [ ] spring fan
-- [ ] Following enermy
 
 
 ## Doing
@@ -34,6 +30,8 @@ kanban-plugin: basic
 - [ ] Shooting mechanism
 - [ ] Keyboard Functions
 - [ ] Ladder functions
+- [ ] Different views
+- [ ] Moving Enemies
 - [ ] Player losing
 
 
@@ -43,10 +41,6 @@ kanban-plugin: basic
 - [ ] When goes off map and comes back player becomes invisible
 - [ ] When player walks past ladder player is unable to shoot
 - [ ] Start window and Death window doesn't work
-
-
-## Feature ideas 🧐🧐
-
 
 
 

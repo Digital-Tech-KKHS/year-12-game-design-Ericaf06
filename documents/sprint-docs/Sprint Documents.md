@@ -119,7 +119,7 @@ Erica Ford
 
 # Project at the start of the sprint
 ## **KANBAN board at the start of the sprint**
-![[Pasted image 20230515090611.png]]
+![[Pasted image 20230517130743.png]]
 ## **Screenshot of the game at the start of the sprint**
 ![[Pasted image 20230515090919.png]]
 # Sprint Summary

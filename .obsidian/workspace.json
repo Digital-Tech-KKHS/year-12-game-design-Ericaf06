@@ -11,11 +11,9 @@
             "id": "392c378c6450fc6e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "documents/sprint-docs/Sprint Documents.md",
-                "mode": "source",
-                "source": false
+                "file": "documents/Kanban.md"
               }
             }
           }
@@ -78,7 +76,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "de8d17a5a62b56b6",
@@ -94,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documents/sprint-docs/Sprint Documents.md",
+                "file": "documents/Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documents/sprint-docs/Sprint Documents.md",
+                "file": "documents/Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "documents/sprint-docs/Sprint Documents.md"
+                "file": "documents/Kanban.md"
               }
             }
           }
@@ -147,18 +146,20 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "switcher:Open quick switcher": false
     }
   },
   "active": "392c378c6450fc6e",
   "lastOpenFiles": [
-    "square.tmx.FsmjPQ",
+    "documents/sprint-docs/Sprint Documents.md",
+    "Pasted image 20230517130743.png",
     "documents/Kanban.md",
+    "square.tmx.FsmjPQ",
     "square.tmx.bMeVpa",
     "square.tmx",
     "square.tmx.rgEbgb",
@@ -166,7 +167,6 @@
     "spritesheet_ground.tsx.zqSHhv",
     "ladderr.tmx.vDTuRK",
     "ladderr.tmx.aRwpsB",
-    "documents/sprint-docs/Sprint Documents.md",
     "Pasted image 20230515090951.png",
     "Pasted image 20230515090919.png",
     "Pasted image 20230515090611.png",
@@ -175,7 +175,6 @@
     "main.py",
     "documents/testing-and-trialing/testing.md",
     "Main.py",
-    "trial.py",
     "Pasted image 20230508095157.png",
     "documents/testing-and-trialing/Testing.md",
     "Pasted image 20230508094920.png",
@@ -187,7 +186,6 @@
     "documents/readme.md",
     "Pasted image 20230501092005.png",
     "Pasted image 20230501091904.png",
-    "Pasted image 20230501091800.png",
     "documents/sprint-docs/What is a Sprint.md",
     "documents/Final Hand in statement .md",
     "documents/Flash cards.md",

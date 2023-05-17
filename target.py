@@ -1,5 +1,5 @@
 import arcade
-import math 
+from math import *
 WIDTH = 800
 HEIGHT = 800
 TITLE = "game"
