@@ -75,9 +75,8 @@ class MyGame(arcade.Window):
         self.game_over_sound = arcade.load_sound(':resources:sounds/jump5.wav')
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
-            self.boss,
+            walls =self.scene['Ground'],
             ladders=self.scene['Ladders'],
-            walls=self.scene['Ground'],
             gravity_constant=GRAVITY
         )
 
@@ -163,7 +162,7 @@ class MyGame(arcade.Window):
         self.player.change_x = 5 * cos(angle)
         self.player.change_y = 5 * sin(angle)
 
-        boss = arcade.check_for_collision_with_list(self.player, self.boss)
+        boss = arcade.check_for_collision(self.player, self.boss)
 
         if boss:
             self.player.center_x = 400
@@ -196,6 +195,7 @@ class MyGame(arcade.Window):
         enemy_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_list)
         if len(enemy_collisions) > 0:
+            s
             self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
@@ -207,7 +207,7 @@ class MyGame(arcade.Window):
             self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
-            self.window.show_view(game_over)
+            (game_over)
 
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(
@@ -378,10 +378,9 @@ class Game(arcade.Window):
         self.show_view(self.welcome_view)
 
 def main():
-        window = MyGame()
-        window.setup()
+        game = MyGame()
+        game.setup()
         arcade.run()
 
 if __name__ == "__main__":
     main()
-
