@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "b14dbfa8b1a02292",
+        "id": "9d876203fa1dda6b",
         "type": "tabs",
         "children": [
           {
-            "id": "8d3332156fd69a48",
+            "id": "5fa6b111bebaab1c",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {}
             }
           }
@@ -148,11 +148,16 @@
       "switcher:Open quick switcher": false
     }
   },
-  "active": "8d3332156fd69a48",
+  "active": "5fa6b111bebaab1c",
   "lastOpenFiles": [
-    "documents/Final Review.md",
+    "Sprint Document 2.md",
+    "Sprint Document 3.md",
+    "documents/sprint-docs/Sprint Document 1.md",
+    "Pasted image 20230522092925.png",
     "documents/Kanban.md",
-    "documents/sprint-docs/Sprint Documents.md",
+    "Pasted image 20230501091904.png.md",
+    "Pasted image 20230522092754.png",
+    "documents/Final Review.md",
     "Pasted image 20230517130743.png",
     "square.tmx.FsmjPQ",
     "square.tmx.bMeVpa",
@@ -179,8 +184,6 @@
     "spongey.png",
     "documents/Game Design Document.md",
     "documents/readme.md",
-    "Pasted image 20230501092005.png",
-    "Pasted image 20230501091904.png",
     "documents/sprint-docs/What is a Sprint.md",
     "documents/Final Hand in statement .md",
     "documents/Flash cards.md",

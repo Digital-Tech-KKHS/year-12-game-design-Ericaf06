@@ -51,57 +51,6 @@ I acheived more in my sprint than I planned on doing, and have my kanban board t
 Next time I should focus on completing one aspect at a time, because I worked on multiple aspects at one time I found it was all over the place and things didn't get fully completed. I also want to have a wider range of things on my kanban to work on to be more efficient.
 
 
-
-
-
-Sprint Document 2:
-# Details
-**Name:**
-Erica Ford
-
-**Git Hash:**
-
-**Sprint Number:**
-2
-**Start Date:**
-
-**End Date:**
-
-**Work hard rating**
-☆☆☆☆
-
-# Project at the start of the sprint
-## **KANBAN board at the start of the sprint**
-
-## **Screenshot of the game at the start of the sprint**
-![[Pasted image 20230508095157.png]]
-# Sprint Summary
-## **Sprint Reflection and summary**
-Because we had a lot of time off school during this sprint I had to manage my time at home. 
-I originally intended on adding moving platfroms but I chnaged my focus on to making a way for the player to win so that I could have an MVP.
-
-## **Major Changes and Achievements Described**
--Map development
--Windows/views
--Enemies from different directions added
-
-
-## **Brief Description of your testing**
-[[Testing]]
-## **Link to testing results/tables**
-[[Trialing]]
-
-# Project at the end of the sprint
-## **KANBAN board at the end of the sprint**
-![[Pasted image 20230508094920.png]]
-## **Screenshot of the game at the end of the sprint**
-![[Pasted image 20230515090951.png]]
-## Link to **Video of the game at the end of the sprint**
-
-
-## **Notes for next time, future improvements**
-
-
 Sprint Document 3:
 # Details
 **Name:**

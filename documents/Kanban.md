@@ -11,14 +11,15 @@ kanban-plugin: basic
 - [ ] Art
 - [ ] Moving platforms
 - [ ] Main start menu
-- [ ] Following enemies
+- [ ] Different views
 - [ ] Adding more levels
-- [ ] spring fan
 
 
 ## Doing
 
 - [ ] Player winning
+- [ ] Following enemies
+- [ ] Moving Enemies
 
 
 ## Testing \ Trialing
@@ -30,8 +31,6 @@ kanban-plugin: basic
 - [ ] Shooting mechanism
 - [ ] Keyboard Functions
 - [ ] Ladder functions
-- [ ] Different views
-- [ ] Moving Enemies
 - [ ] Player losing
 
 
