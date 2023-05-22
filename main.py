@@ -1,8 +1,10 @@
+'''Imports'''
 import arcade
 import math
-from math import *
+from math import sin,cos, degrees, atan2
 import random
 
+'''Global variables'''
 WIDTH = 1200
 HEIGHT = 900
 TITLE = "platform"
@@ -17,31 +19,65 @@ LEFT_FACING = 1
 RIGHT_FACING = 0
 BULLET_SPEED = 20
 
-
+def load_texture_pair(filename):
+    return [
+        arcade.load_texture(filename),
+        arcade.load_texture(filename, flipped_horizontally=True)]
+    
 class MyGame(arcade.Window):
+    '''Game class '''
     def __init__(self):
         super().__init__()
         self.setup()
         self.tile_map = None
         self.bullet_list = None
         self.score = 0
-        self.game_over_sound = arcade.load_sound(':resources:sounds/hurt3.wav')
+        self.bullet_list = arcade.SpriteList()
+        self.enemy_list = arcade.SpriteList()
+        self.health_list = arcade.SpriteList()
+        self.boss_health_list = arcade.SpriteList()
+        self.game_over_sound = arcade.load_sound(
+            ':resources:sounds/hurt3.wav'
+        )
         self.game_win_sound = arcade.load_sound(
-            ':resources:sounds/upgrade2.wav')
+            ':resources:sounds/upgrade2.wav'
+        )
+        self.climbing_sound = arcade.load_sound(
+            ':resources:sounds/upgrade4.wav'
+        )
+        self.coin_sound = arcade.load_sound(
+            ':resources:sounds/coin1.wav'
+        )
+        self.jump_sound = arcade.load_sound(
+            ':resources:sounds/jump1.wav'
+        )
+        self.kill_sound = arcade.load_sound(
+            ':resources:sounds/hurt3.wav'
+        )
+        self.bullet_sound = arcade.load_sound(
+            ':resources:sounds/laser3.wav'
+        )
         self.bullet = arcade.Sprite(
-            ':resources:images/space_shooter/laserBlue01.png')
+            ':resources:images/space_shooter/laserBlue01.png'
+        )
         self.enemy = arcade.Sprite(
-            ':resources:images/space_shooter/meteorGrey_big4.png')
+            ':resources:images/space_shooter/meteorGrey_big4.png'
+        )
         self.enemy_2 = arcade.Sprite(
-            ':resources:images/space_shooter/meteorGrey_big2.png')
+            ':resources:images/space_shooter/meteorGrey_big2.png'
+        )
         self.boss = arcade.Sprite(
-            ':resources:images/animated_characters/zombie/zombie_idle.png')
+            ':resources:images/animated_characters/zombie/zombie_idle.png'
+        )
         self.health = arcade.Sprite(
-            ':resources:images/space_shooter/playerLife1_green.png')
+            ':resources:images/space_shooter/playerLife1_green.png'
+        )
         self.boss_health = arcade.Sprite(
-            ':resources:images/tiles/mushroomRed.png')
+            ':resources:images/tiles/mushroomRed.png'
+        )
 
     def setup(self):
+        '''Set up function for game, loads scene, map and, sprites'''
         arcade.set_background_color(arcade.color.CEIL)
         layer_options = {
             'Ground': {
@@ -54,25 +90,18 @@ class MyGame(arcade.Window):
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
         self.scene.add_sprite_list('boss')
-        self.bullet_list = arcade.SpriteList()
-        self.enemy_list = arcade.SpriteList()
-        self.health_list = arcade.SpriteList()
-        self.boss_health_list = arcade.SpriteList()
+        self.scene.add_sprite_list('health')
+        self.scene.add_sprite_list('boss health')
         self.boss = arcade.Sprite()
+        self.health = arcade.Sprite()
         self.boss.center_x = 400
         self.boss.center_y = 800
         self.enemy_2_list = arcade.SpriteList()
-        self.score = 0
         self.player = Player()
+        self.scene['health'].append(self.health)
         self.scene['player'].append(self.player)
         self.scene['boss'].append(self.boss)
-        self.climbing_sound = arcade.load_sound(
-            ':resources:sounds/upgrade4.wav')
-        self.coin_sound = arcade.load_sound(':resources:sounds/coin1.wav')
-        self.jump_sound = arcade.load_sound(':resources:sounds/jump1.wav')
-        self.kill_sound = arcade.load_sound(':resources:sounds/hurt3.wav')
-        self.bullet_sound = arcade.load_sound(':resources:sounds/laser3.wav')
-        self.game_over_sound = arcade.load_sound(':resources:sounds/jump5.wav')
+        self.scene['boss health'].append(self.boss_health)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
             walls =self.scene['Ground'],
@@ -84,19 +113,22 @@ class MyGame(arcade.Window):
         self.HUD_camera = arcade.Camera(WIDTH, HEIGHT)
         for i in range(5):
             self.health = arcade.Sprite(
-                ":resources:images/space_shooter/playerLife1_green.png")
+                ":resources:images/space_shooter/playerLife1_green.png"
+            )
             self.health.center_x = 50 + 40 * i
             self.health.center_y = HEIGHT - 100
-            self.health_list.append(self.health)
+
 
         for i in range(5):
             self.boss_health = arcade.Sprite(
-                ':resources:images/tiles/mushroomRed.png')
+                ':resources:images/tiles/mushroomRed.png'
+            )
             self.boss_health.center_x = 60 + 40 * i
             self.boss_health.center_y = HEIGHT - 100
-            self.boss_health_list.append(self.boss_health)
+
 
     def on_draw(self):
+        '''Draws lists and text'''
         self.clear()
         self.camera.use()
         self.scene.draw()
@@ -105,12 +137,16 @@ class MyGame(arcade.Window):
         self.enemy_2_list.draw()
         self.boss.draw()
         self.HUD_camera.use()
-        arcade.draw_text(str(self.score), WIDTH + 15, HEIGHT - 100,
-                         arcade.color.BLACK, font_size=50)
+        arcade.draw_text(
+            str(self.score), WIDTH + 15,
+            HEIGHT - 100,
+            arcade.color.BLACK, font_size=50)
 
     def on_mouse_press(self, x, y, button, modifiers):
+        '''Called when mouse is pressed'''
         bullet = arcade.Sprite(
-            ':resources:images/space_shooter/laserBlue01.png')
+            ':resources:images/space_shooter/laserBlue01.png'
+        )
         start_x = self.player.center_x
         start_y = self.player.center_y
         bullet.center_x = start_x
@@ -128,6 +164,7 @@ class MyGame(arcade.Window):
         self.bullet_list.append(bullet)
 
     def on_update(self, dt):
+        '''Updates scene'''
         self.bullet_list.update()
         self.physics_engine.update()
         self.player.update_animation()
@@ -153,7 +190,7 @@ class MyGame(arcade.Window):
                 self.player.kill()
                 arcade.play_sound(self.game_over_sound)
                 game_over = GameOverView()
-                self.window.show_view(game_over)
+                
 
         self.boss_diff_y = self.boss.center_y - self.player.center_y
         self.boss_diff_x = self.boss.center_x - self.player.center_x
@@ -176,7 +213,8 @@ class MyGame(arcade.Window):
 
         if random.random() < 0.01:
             self.enemy = arcade.Sprite(
-                ':resources:images/space_shooter/meteorGrey_big4.png')
+                ':resources:images/space_shooter/meteorGrey_big4.png'
+            )
             self.enemy.center_x = 500
             self.enemy.center_y = 300
             self.enemy_list.append(self.enemy)
@@ -185,7 +223,8 @@ class MyGame(arcade.Window):
 
         if random.random() < 0.01:
             self.enemy_2 = arcade.Sprite(
-                ':resources:images/space_shooter/meteorGrey_big4.png')
+                ':resources:images/space_shooter/meteorGrey_big4.png'
+            )
             self.enemy_2.center_x = 500
             self.enemy_2.center_y = 600
             self.enemy_2_list.append(self.enemy_2)
@@ -195,11 +234,10 @@ class MyGame(arcade.Window):
         enemy_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_list)
         if len(enemy_collisions) > 0:
-            s
             self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
-            self.window.show_view(game_over)
+            (game_over)
 
         enemy_2_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_2_list)
@@ -233,6 +271,7 @@ class MyGame(arcade.Window):
             coin.kill()
 
     def on_key_press(self, symbol, modifiers):
+        '''Called when key is pressed, controls player movement'''
         if symbol == arcade.key.D:
             self.player.change_x = PLAYER_MOVEMENT_SPEED
         elif symbol == arcade.key.A:
@@ -251,6 +290,7 @@ class MyGame(arcade.Window):
                 self.player.kill()
 
     def on_key_release(self, symbol, modifiers):
+        '''Called when key is released'''
         if symbol == arcade.key.D:
             self.player.change_x = 0
         if symbol == arcade.key.A:
@@ -266,27 +306,34 @@ class MyGame(arcade.Window):
 class Player(arcade.Sprite):
     def __init__(self):
         super().__init__(
-            ':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png')
+            ':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png'
+        )
         self.center_x = 400
         self.center_y = 400
         self.idle_textures = load_texture_pair(
-            ':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png')
+            ':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png'
+        )
         self.walk_textures = []
         for i in range(2):
             frames = load_texture_pair(
-                f':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png')
+                f':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png'
+        )
             self.walk_textures.append(frames)
         self.fall_textures = load_texture_pair(
-            ':resources:images/animated_characters/male_adventurer/maleAdventurer_fall.png')
+            ':resources:images/animated_characters/male_adventurer/maleAdventurer_fall.png'
+        )
         self.jump_textures = load_texture_pair(
-            ':resources:images/animated_characters/male_adventurer/maleAdventurer_jump.png')
+            ':resources:images/animated_characters/male_adventurer/maleAdventurer_jump.png'
+        )
         self.climb_textures = load_texture_pair(
-            ':resources:images/animated_characters/male_adventurer/maleAdventurer_climb0.png')
+            ':resources:images/animated_characters/male_adventurer/maleAdventurer_climb0.png'
+        )
         self.face_direction = RIGHT_FACING
         self.walk_index = 0
         self.odo = 0
 
     def update_animation(self):
+        '''Updates player movement and movement textures'''
         if self.odo < 2:
             self.odo += 1
             return
@@ -310,19 +357,15 @@ class Player(arcade.Sprite):
         if self.change_x != 0:
             self.walk_index += 1
             self.walk_index = self.walk_index % 2
-            self.texture = self.walk_textures[self.walk_index][self.face_direction]
+            self.texture = self.walk_textures[
+                self.walk_index][self.face_direction]
             return
 
         self.texture = self.idle_textures[self.face_direction]
 
 
-def load_texture_pair(filename):
-    return [
-        arcade.load_texture(filename),
-        arcade.load_texture(filename, flipped_horizontally=True)]
-
-
 class WelcomeView(arcade.View):
+    '''View that shows when game is loaded'''
     def __init__(self):
         super().__init__()
         arcade.set_background_color(arcade.color.AFRICAN_VIOLET)
@@ -341,12 +384,13 @@ class WelcomeView(arcade.View):
 
 
 class GameWinView(arcade.View):
+    '''View that shows when the player wins'''
     def __init__(self):
         super().__init__()
 
     def on_draw(self):
         self.clear()
-        arcade.draw_text("you win", 200, 400)
+        arcade.draw_text("win", 200, 400)
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ENTER:
@@ -355,6 +399,7 @@ class GameWinView(arcade.View):
 
 
 class GameOverView(arcade.View):
+    '''View that shows when player dies/loses'''
     def __init__(self):
         super().__init__()
 

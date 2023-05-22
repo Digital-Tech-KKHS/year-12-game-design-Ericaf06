@@ -11,8 +11,12 @@
             "id": "5fa6b111bebaab1c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "documents/code-review.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -91,6 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "documents/code-review.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -107,6 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "documents/code-review.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +134,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "documents/code-review.md"
+              }
             }
           }
         ]
@@ -150,11 +158,13 @@
   },
   "active": "5fa6b111bebaab1c",
   "lastOpenFiles": [
+    "square.tmx.PYxrXK",
+    "documents/Kanban.md",
+    "documents/code-review.md",
     "Sprint Document 2.md",
     "Sprint Document 3.md",
     "documents/sprint-docs/Sprint Document 1.md",
     "Pasted image 20230522092925.png",
-    "documents/Kanban.md",
     "Pasted image 20230501091904.png.md",
     "Pasted image 20230522092754.png",
     "documents/Final Review.md",

@@ -1,6 +1,5 @@
 # Code review 16/05
 
-don't use `from math import *`. Just import what you need
 
 Try to put all the properties your class will ever need in the __init__
 This will help with intellesence

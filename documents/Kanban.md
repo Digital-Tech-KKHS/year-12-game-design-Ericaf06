@@ -13,6 +13,9 @@ kanban-plugin: basic
 - [ ] Main start menu
 - [ ] Different views
 - [ ] Adding more levels
+- [ ] Add comments and docstrings
+- [ ] Make lines shorter
+- [ ] Make update function shorter
 
 
 ## Doing
