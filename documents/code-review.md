@@ -4,10 +4,9 @@
 Try to put all the properties your class will ever need in the __init__
 This will help with intellesence
 
-If you put your spritelists into the sceen, you'll avoid needing to call draw and update
+If you put your spritelists into the scene, you'll avoid needing to call draw and update
 on them individually
 
-some lines getting too long. Try breaking them up. 
 
 ```python
         arcade.draw_text(str(self.health_list), 15, HEIGHT - 50, arcade.color.BLACK, font_size = 50)
@@ -25,7 +24,6 @@ vs
     )
 ```
 
-You need lots of comments \ docstrings. Every function and every class needs a docstring
 
 Your update function is too long. Is there some duplicated code here?
 

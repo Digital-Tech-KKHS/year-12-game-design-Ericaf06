@@ -30,12 +30,25 @@ class MyGame(arcade.Window):
         super().__init__()
         self.setup()
         self.tile_map = None
-        self.bullet_list = None
         self.score = 0
+        self.scene.add_sprite_list('bullet')
+        self.scene.add_sprite_list('health')
+        self.scene.add_sprite_list('player')
+        self.scene.add_sprite_list('boss')
+        self.scene.add_sprite_list('boss health')
+        self.scene.add_sprite_list('enemy')
+        self.scene.add_sprite_list('ememy 2')
         self.bullet_list = arcade.SpriteList()
-        self.enemy_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
-        self.boss_health_list = arcade.SpriteList()
+        self.player = Player()
+        self.boss = Boss()
+        self.scene['bullet'].append(self.bullet)
+        self.scene['health'].append(self.health)
+        self.scene['player'].append(self.player)
+        self.scene['boss'].append(self.boss)
+        self.scene['boss health'].append(self.boss_health)
+        self.scene['enemy'].append(self.enemy)
+        self.scene['enemy 2'].append(self.enemy_2)
         self.game_over_sound = arcade.load_sound(
             ':resources:sounds/hurt3.wav'
         )
@@ -66,9 +79,6 @@ class MyGame(arcade.Window):
         self.enemy_2 = arcade.Sprite(
             ':resources:images/space_shooter/meteorGrey_big2.png'
         )
-        self.boss = arcade.Sprite(
-            ':resources:images/animated_characters/zombie/zombie_idle.png'
-        )
         self.health = arcade.Sprite(
             ':resources:images/space_shooter/playerLife1_green.png'
         )
@@ -86,22 +96,15 @@ class MyGame(arcade.Window):
         }
 
         self.tile_map = arcade.load_tilemap(
-            './square.tmx', layer_options=layer_options)
+            './squaree.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
-        self.scene.add_sprite_list('player')
-        self.scene.add_sprite_list('boss')
-        self.scene.add_sprite_list('health')
-        self.scene.add_sprite_list('boss health')
-        self.boss = arcade.Sprite()
-        self.health = arcade.Sprite()
-        self.boss.center_x = 400
-        self.boss.center_y = 800
+        self.bullet_list = arcade.SpriteList()
+        self.health_list = arcade.SpriteList()
+        self.boss = Boss()
+        self.boss_health_list = arcade.SpriteList()
+        self.enemy_list = arcade.SpriteList()
         self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
-        self.scene['health'].append(self.health)
-        self.scene['player'].append(self.player)
-        self.scene['boss'].append(self.boss)
-        self.scene['boss health'].append(self.boss_health)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
             walls =self.scene['Ground'],
@@ -117,7 +120,6 @@ class MyGame(arcade.Window):
             )
             self.health.center_x = 50 + 40 * i
             self.health.center_y = HEIGHT - 100
-
 
         for i in range(5):
             self.boss_health = arcade.Sprite(
@@ -135,7 +137,6 @@ class MyGame(arcade.Window):
         self.bullet_list.draw()
         self.enemy_list.draw()
         self.enemy_2_list.draw()
-        self.boss.draw()
         self.HUD_camera.use()
         arcade.draw_text(
             str(self.score), WIDTH + 15,
@@ -302,7 +303,13 @@ class MyGame(arcade.Window):
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 
-
+class Boss(arcade.Sprite):
+    def __init__(self):
+        super().__init__(':resources:images/animated_characters/zombie/zombie_idle.png'
+        )
+        self.center_x = 400
+        self.center_y = 600
+        
 class Player(arcade.Sprite):
     def __init__(self):
         super().__init__(
