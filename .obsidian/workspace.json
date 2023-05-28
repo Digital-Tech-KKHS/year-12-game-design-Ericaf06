@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "9d876203fa1dda6b",
+        "id": "b851b53a614cb889",
         "type": "tabs",
         "children": [
           {
-            "id": "5fa6b111bebaab1c",
+            "id": "1427018e5d813348",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "documents/code-review.md",
+                "file": "documents/testing-and-trialing/Trialing.md",
                 "mode": "source",
                 "source": false
               }
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "de8d17a5a62b56b6",
@@ -95,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documents/code-review.md",
+                "file": "documents/testing-and-trialing/Trialing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documents/code-review.md",
+                "file": "documents/testing-and-trialing/Trialing.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "documents/code-review.md"
+                "file": "documents/testing-and-trialing/Trialing.md"
               }
             }
           }
@@ -156,10 +155,23 @@
       "switcher:Open quick switcher": false
     }
   },
-  "active": "5fa6b111bebaab1c",
+  "active": "1427018e5d813348",
   "lastOpenFiles": [
+    "documents/assets/Sprint Document 3.md",
+    "documents/assets/Sprint Document 2.md",
+    "documents/assets/Sprint Document 1.md",
+    "Pasted image 20230529091846.png",
+    "Pasted image 20230529091123.png.md",
     "documents/Kanban.md",
     "documents/code-review.md",
+    "documents/assets/spritesheet_tiles.png",
+    "documents/assets/spritesheet_ground.png",
+    "documents/assets/spongey.png",
+    "documents/assets/Pasted image 20230529091110.png",
+    "Pasted image 20230529091123.png",
+    "Pasted image 20230529091110.png",
+    "documents/testing-and-trialing/Trialing.md",
+    "documents/testing-and-trialing/Testing.md",
     "square.tmx.PYxrXK",
     "Sprint Document 2.md",
     "Sprint Document 3.md",
@@ -177,20 +189,10 @@
     "spritesheet_ground.tsx.zqSHhv",
     "ladderr.tmx.vDTuRK",
     "ladderr.tmx.aRwpsB",
-    "Pasted image 20230515090951.png",
-    "Pasted image 20230515090919.png",
-    "Pasted image 20230515090611.png",
-    "Pasted image 20230515090550.png",
-    "documents/testing-and-trialing/Trialing.md",
     "main.py",
-    "documents/testing-and-trialing/testing.md",
-    "Pasted image 20230508095157.png",
-    "documents/testing-and-trialing/Testing.md",
-    "Pasted image 20230508094920.png",
     "Untitled 1.canvas",
     "Untitled.canvas",
     "2023-05-08.md",
-    "spongey.png",
     "documents/Game Design Document.md",
     "documents/readme.md",
     "documents/sprint-docs/What is a Sprint.md",

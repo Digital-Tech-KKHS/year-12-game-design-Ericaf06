@@ -3,7 +3,7 @@
 Erica Ford
 
 **Git Hash:**
-
+a4cf1d11a2c450bbfde277d1212855ceb1b48973
 **Sprint Number:**
 1
 **Start Date:**
@@ -20,11 +20,11 @@ Erica Ford
 
 # Sprint Summary
 ## **Sprint Reflection and summary**
-I originally planned on acheiving only moving enemies in my game. However I also ended up adding shooting bullets through mouse press. I also added ladder logic in my physics engine and key press. 
+I originally planned on achieving only moving enemies in my game. However I also ended up adding shooting bullets through mouse press. I also added ladder logic in my physics engine and key press. 
 
-My end users so far are guiding me into making decsisions such as having a mouse press for shooting bullets instead of a key press. I also found that allowing the bullets to shoot in any direction is easier to achieve through mouse press is easier than key press.
+My end users so far are guiding me into making decisions such as having a mouse press for shooting bullets instead of a key press. I also found that allowing the bullets to shoot in any direction is easier to achieve through mouse press is easier than key press.
 
-I acheived more in my sprint than I planned on doing, and have my kanban board to help me decide what I need to work on next sprint.
+I achieved more in my sprint than I planned on doing, and have my kanban board to help me decide what I need to work on next sprint.
 
 ## **Major Changes and Achievements Described**
 - Moving enemies added

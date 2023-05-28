@@ -38,10 +38,6 @@ class MyGame(arcade.Window):
         self.scene.add_sprite_list('boss health')
         self.scene.add_sprite_list('enemy')
         self.scene.add_sprite_list('ememy 2')
-        self.bullet_list = arcade.SpriteList()
-        self.health_list = arcade.SpriteList()
-        self.player = Player()
-        self.boss = Boss()
         self.scene['bullet'].append(self.bullet)
         self.scene['health'].append(self.health)
         self.scene['player'].append(self.player)
@@ -114,6 +110,7 @@ class MyGame(arcade.Window):
 
         self.camera = arcade.Camera(WIDTH, HEIGHT)
         self.HUD_camera = arcade.Camera(WIDTH, HEIGHT)
+        
         for i in range(5):
             self.health = arcade.Sprite(
                 ":resources:images/space_shooter/playerLife1_green.png"
@@ -125,7 +122,7 @@ class MyGame(arcade.Window):
             self.boss_health = arcade.Sprite(
                 ':resources:images/tiles/mushroomRed.png'
             )
-            self.boss_health.center_x = 60 + 40 * i
+            self.boss_health.center_x = 70 + 40 * i
             self.boss_health.center_y = HEIGHT - 100
 
 
@@ -134,9 +131,6 @@ class MyGame(arcade.Window):
         self.clear()
         self.camera.use()
         self.scene.draw()
-        self.bullet_list.draw()
-        self.enemy_list.draw()
-        self.enemy_2_list.draw()
         self.HUD_camera.use()
         arcade.draw_text(
             str(self.score), WIDTH + 15,
@@ -246,8 +240,21 @@ class MyGame(arcade.Window):
             self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
+            #(game_over)
+                 
+        for self.player in enemy_collisions:
+            self.health -= 1
+            self.player.kill()
+            arcade.play_sound(self.kill_sound)
+            game = MyGame()
+            (game)
+            if len(self.health_list) > 0:
+                self.player.kill()
+            arcade.play_sound(self.game_over_sound)
+            game_over = GameOverView()
             (game_over)
-
+            
+            
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(
                 self.bullet, self.enemy_list)

@@ -1,4 +1,4 @@
-## Test 1:  Collecting coins
+## Test 1: Collecting coins
 Date: 3/4/2023
 
 ```python
@@ -39,6 +39,7 @@ Date: 3/4/2023
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 ```
+
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
 | Player climbing up ladder   | Player smoothly moves up ladder with climbing texture ||
@@ -46,8 +47,8 @@ Date: 3/4/2023
 | Player standing still on ladder| Player is able to standing still facing the direction they were jumping to |As expected|
 
 
-## Test 3: Shotting bullets
-4/05/2023
+## Test 3: Shooting bullets
+Date: 4/05/2023
 ```python
 
  def on_mouse_press(self, x, y, button, modifiers):
@@ -70,15 +71,19 @@ Date: 3/4/2023
         bullet.change_y = math.sin(angle) * BULLET_SPEED
         
         self.bullet_list.append(bullet)
-```
+
+````
+
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-| Mouse pressed to bottom left of player  | Bullet shoots to the bottom left of the player|As expected
-| Player shooting in a horizontal line on a ladder|Bullet shoots out horizontally |Bullet doesn't shoot
-| Mouse pressed in direction of enemy|Bullet shoots towards enemy | As expected|
+|Mouse pressed to bottom left of player|  Bullet shoots to the bottom left of the player | As expected
+|Player shooting in a horizontal line on a ladder| Bullet shoots out horizontally |Bullet doesn't shoot
+|Mouse pressed in direction of enemy| Bullet shoots towards enemy | As expected |
+
+
 
 ## Test 4: Player Movement
-8/05/2023
+Date: 8/05/2023
 ```python
 def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.D:
@@ -114,6 +119,7 @@ def on_key_release(self, symbol: int, modifiers: int):
 |E pressed while player is infront of ladder | Player moves up the ladder| As expected |
 
 ## Test 5: Spikes
+Date: 09/05/2023
 ```python
  spikes = arcade.check_for_collision_with_list(self.player, self.scene['Do Not Touch'])
  
@@ -130,6 +136,48 @@ def on_key_release(self, symbol: int, modifiers: int):
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-|Player lands on spikes layer|Health decreases by one and player restarts|Health list not functional yet
+|Player lands on spikes layer | Health decreases by one and player restarts | Health list not functional yet
 |||
-| | |  |
+| | |  
+
+## Test 6: Enemy Collisions
+Date: 25/05/2023
+```python
+ for self.player in enemy_collisions:
+            self.health -= 1
+            self.player.kill()
+            arcade.play_sound(self.kill_sound)
+            game = MyGame()
+            (game)
+            if len(self.health_list) > 0:
+                self.player.kill()
+            arcade.play_sound(self.game_over_sound)
+            game_over = GameOverView()
+            (game_over)
+```
+
+| Test Data                    | Expected                        | Observed                       |
+| ---------------------------- | ------------------------------- | ------------------------------ |
+|Player collides with enemy| Player restarts on game with one less health | As expected
+|Player loses all health | Player dies and Game over view is shown| Player dies but Game Over view doesn't appear
+| Player doesn't collide with enemy| Nothing happens | As expected |
+
+## Test 7:
+Date: 25/05/2023
+```python
+if random.random() < 0.01:
+            self.enemy = arcade.Sprite(
+                ':resources:images/space_shooter/meteorGrey_big4.png'
+            )
+            self.enemy.center_x = 500
+            self.enemy.center_y = 300
+            self.enemy_list.append(self.enemy)
+        for self.enemy in self.enemy_list:
+            self.enemy.center_x -= 2
+```
+
+| Test Data                    | Expected                        | Observed                       |
+| ---------------------------- | ------------------------------- | ------------------------------ |
+|Player collides with enemy| Player restarts on game with one less health | As expected
+|Player loses all health | Player dies and Game over view is shown| Player dies but Game Over view doesn't appear
+| Player doesn't collide with enemy| Nothing happens | As expected |

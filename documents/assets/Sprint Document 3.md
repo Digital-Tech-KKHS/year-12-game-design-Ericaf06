@@ -33,7 +33,7 @@ Erica Ford
 
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**
-
+![[Pasted image 20230529091846.png]]
 ## **Screenshot of the game at the end of the sprint**
 
 ## Link to **Video of the game at the end of the sprint**

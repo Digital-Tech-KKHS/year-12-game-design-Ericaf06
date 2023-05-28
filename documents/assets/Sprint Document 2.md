@@ -3,7 +3,7 @@
 **Name:**
 Erica Ford
 **Git Hash:**
-
+86ba3b59904396e4e4b3f7af71722a1e3548ba42
 **Sprint Number:**
 2
 **Start Date:**
@@ -21,11 +21,11 @@ Erica Ford
 # Sprint Summary
 ## **Sprint Reflection and summary**
 Because we had a lot of time off school during this sprint I had to manage my time at home. 
-I originally intended on adding moving platfroms but I changed my focus on to making a way for the player to win so that I could have an MVP.
+I originally intended on adding moving platforms but I changed my focus on to making a way for the player to win so that I could have an MVP.
 
 The people I used in my trial have helped me decide what to do in relation to enemies from different directions as well as made other suggestions such as speed of enemies and a more zoomed out view of the map.
 
-I have not yet acheived an MVP as I still need to fix some errors however I have started implimenting the winning functions and views.
+I have not yet achieved an MVP as I still need to fix some errors however I have started implementing the winning functions and views.
 
 ## **Major Changes and Achievements Described**
 -Map development

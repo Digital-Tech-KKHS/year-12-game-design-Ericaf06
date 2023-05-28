@@ -11,18 +11,17 @@ kanban-plugin: basic
 - [ ] Art
 - [ ] Moving platforms
 - [ ] Main start menu
-- [ ] Different views
 - [ ] Adding more levels
-- [ ] Add comments and docstrings
-- [ ] Make lines shorter
-- [ ] Make update function shorter
+- [ ] Fix bugs
 
 
 ## Doing
 
-- [ ] Player winning
+- [ ] Player winning/main boss
 - [ ] Following enemies
 - [ ] Moving Enemies
+- [ ] Add comments and docstrings
+- [ ] Different views
 
 
 ## Testing \ Trialing
@@ -35,6 +34,8 @@ kanban-plugin: basic
 - [ ] Keyboard Functions
 - [ ] Ladder functions
 - [ ] Player losing
+- [ ] Make update function shorter
+- [ ] Make lines shorter
 
 
 ## Bug list 🦋🐛🦟🐜🦗🐝🐞
