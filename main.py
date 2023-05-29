@@ -31,20 +31,8 @@ class MyGame(arcade.Window):
         self.setup()
         self.tile_map = None
         self.score = 0
-        self.scene.add_sprite_list('bullet')
-        self.scene.add_sprite_list('health')
-        self.scene.add_sprite_list('player')
-        self.scene.add_sprite_list('boss')
-        self.scene.add_sprite_list('boss health')
-        self.scene.add_sprite_list('enemy')
-        self.scene.add_sprite_list('ememy 2')
-        self.scene['bullet'].append(self.bullet)
-        self.scene['health'].append(self.health)
-        self.scene['player'].append(self.player)
-        self.scene['boss'].append(self.boss)
-        self.scene['boss health'].append(self.boss_health)
-        self.scene['enemy'].append(self.enemy)
-        self.scene['enemy 2'].append(self.enemy_2)
+        #self.scene.add_sprite_list('player')
+        #self.scene['player'].append(self.player)
         self.game_over_sound = arcade.load_sound(
             ':resources:sounds/hurt3.wav'
         )
@@ -94,6 +82,7 @@ class MyGame(arcade.Window):
         self.tile_map = arcade.load_tilemap(
             './squaree.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
+        self.scene.add_sprite_list('player')
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
         self.boss = Boss()
@@ -101,6 +90,7 @@ class MyGame(arcade.Window):
         self.enemy_list = arcade.SpriteList()
         self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
+        self.scene['player'].append(self.player)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
             walls =self.scene['Ground'],
@@ -288,7 +278,7 @@ class MyGame(arcade.Window):
             if self.physics_engine.can_jump():
                 self.player.change_y = JUMP_SPEED
                 arcade.play_sound(self.jump_sound)
-        elif symbol == arcade.key.E:
+        elif symbol == arcade.key.BAR:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = PLAYER_MOVEMENT_SPEED
                 arcade.play_sound(self.climbing_sound)
@@ -306,7 +296,7 @@ class MyGame(arcade.Window):
         if symbol == arcade.key.W:
             if self.physics_engine.can_jump():
                 self.player.change_y = 0
-        elif symbol == arcade.key.E:
+        elif symbol == arcade.key.BAR:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 

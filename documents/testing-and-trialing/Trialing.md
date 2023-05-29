@@ -13,7 +13,7 @@ Involved in the trial
 
 
 ## Describe the trail
->I made an arcade window for testing only the bullets and and set the speed to 6 first. I had the user test that speed and give feedback. i then changed the speed to 20 and had the users test that. I also first had rocks in the place of coins first then changed them to coins to see which they prefered. I also changed the shoot button from having the key Q to having the mouse press as my shoot button.
+>I made an arcade window for testing only the bullets and and set the speed to 6 first. I had the user test that speed and give feedback. i then changed the speed to 20 and had the users test that. I also first had rocks in the place of coins first then changed them to coins to see which they preferred. I also changed the shoot button from having the key Q to having the mouse press as my shoot button.
 
 ## Results
 > - Braedyn preferred having 20 as the speed.
@@ -73,10 +73,10 @@ Involved in the trial
 
 
 ## Trial goal:
->
+>To see whether candidates prefer Having the E key or the enter key for climbing a ladder.
 
 ## Describe the trail
->
+>I created a separate window from my main code and trialed candidates with first the E key for climbing, then the Enter key.
 
 ## Results
 > 
