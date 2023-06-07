@@ -31,8 +31,7 @@ class MyGame(arcade.Window):
         self.setup()
         self.tile_map = None
         self.score = 0
-        #self.scene.add_sprite_list('player')
-        #self.scene['player'].append(self.player)
+        
         self.game_over_sound = arcade.load_sound(
             ':resources:sounds/hurt3.wav'
         )
@@ -83,6 +82,7 @@ class MyGame(arcade.Window):
             './squaree.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
+        self.scene.add_sprite_list('boss')
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
         self.boss = Boss()
@@ -91,6 +91,7 @@ class MyGame(arcade.Window):
         self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
         self.scene['player'].append(self.player)
+        self.scene['boss'].append(self.boss)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
             walls =self.scene['Ground'],
@@ -119,6 +120,10 @@ class MyGame(arcade.Window):
     def on_draw(self):
         '''Draws lists and text'''
         self.clear()
+        self.health.draw()
+        self.enemy_list.draw()
+        self.enemy_2_list.draw()
+        self.bullet_list.draw()
         self.camera.use()
         self.scene.draw()
         self.HUD_camera.use()
@@ -169,7 +174,6 @@ class MyGame(arcade.Window):
         if spikes:
             self.player.center_x = 400
             self.player.center_y = 400
-            self.health_list.pop()
             arcade.play_sound(self.kill_sound)
             if len(self.health_list) <= 0:
                 self.player.kill()
@@ -177,12 +181,12 @@ class MyGame(arcade.Window):
                 game_over = GameOverView()
                 
 
-        self.boss_diff_y = self.boss.center_y - self.player.center_y
-        self.boss_diff_x = self.boss.center_x - self.player.center_x
+        self.boss_diff_y = self.player.center_y - self.boss.center_y
+        self.boss_diff_x = self.player.center_x - self.boss.center_x
         angle = atan2(self.boss_diff_y, self.boss_diff_x)
-        self.player.angle = degrees(angle)
-        self.player.change_x = 5 * cos(angle)
-        self.player.change_y = 5 * sin(angle)
+        self.boss.angle = degrees(angle)
+        self.boss.change_x = 5 * cos(angle)
+        self.boss.change_y = 5 * sin(angle)
 
         boss = arcade.check_for_collision(self.player, self.boss)
 
@@ -194,7 +198,6 @@ class MyGame(arcade.Window):
                 self.boss.kill()
                 arcade.play_sound(self.game_win_sound)
                 game_win = GameWinView()
-                self.window.show_view(game_win)
 
         if random.random() < 0.01:
             self.enemy = arcade.Sprite(
@@ -230,11 +233,10 @@ class MyGame(arcade.Window):
             self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
-            #(game_over)
+            (game_over)
                  
         for self.player in enemy_collisions:
             self.health -= 1
-            self.player.kill()
             arcade.play_sound(self.kill_sound)
             game = MyGame()
             (game)
@@ -278,7 +280,7 @@ class MyGame(arcade.Window):
             if self.physics_engine.can_jump():
                 self.player.change_y = JUMP_SPEED
                 arcade.play_sound(self.jump_sound)
-        elif symbol == arcade.key.BAR:
+        elif symbol == arcade.key.E:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = PLAYER_MOVEMENT_SPEED
                 arcade.play_sound(self.climbing_sound)
@@ -296,7 +298,7 @@ class MyGame(arcade.Window):
         if symbol == arcade.key.W:
             if self.physics_engine.can_jump():
                 self.player.change_y = 0
-        elif symbol == arcade.key.BAR:
+        elif symbol == arcade.key.E:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 
@@ -304,8 +306,8 @@ class Boss(arcade.Sprite):
     def __init__(self):
         super().__init__(':resources:images/animated_characters/zombie/zombie_idle.png'
         )
-        self.center_x = 400
-        self.center_y = 600
+        self.center_x = 300
+        self.center_y = 400
         
 class Player(arcade.Sprite):
     def __init__(self):
