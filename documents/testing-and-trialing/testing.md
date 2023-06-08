@@ -3,13 +3,9 @@ Date: 3/4/2023
 
 ```python
   coins = arcade.check_for_collision_with_list(self.player, self.scene['Coins'])
-
         for coin in coins:
-
             self.score += 1
-
             coin.kill()
-
             arcade.play_sound(self.coin_sound)
 ```
 

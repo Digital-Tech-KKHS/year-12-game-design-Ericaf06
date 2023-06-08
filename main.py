@@ -120,11 +120,11 @@ class MyGame(arcade.Window):
     def on_draw(self):
         '''Draws lists and text'''
         self.clear()
+        self.camera.use()
         self.health.draw()
         self.enemy_list.draw()
         self.enemy_2_list.draw()
         self.bullet_list.draw()
-        self.camera.use()
         self.scene.draw()
         self.HUD_camera.use()
         arcade.draw_text(
