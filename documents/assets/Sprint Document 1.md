@@ -1,7 +1,6 @@
 # Details
 **Name:**
 Erica Ford
-
 **Git Hash:**
 a4cf1d11a2c450bbfde277d1212855ceb1b48973
 **Sprint Number:**
@@ -35,6 +34,8 @@ I achieved more in my sprint than I planned on doing, and have my kanban board t
 
 
 ## **Brief Description of your testing**
+For the testing in this sprint I focused on the player collecting coins and the logic for the ladder functioning in the game. 
+Testing these pieces of code allowed me to spot bugs such as the player not being able to shoot on the ladder as well as some errors in my code preventing the score from going up when a player collects the coins. This will help me improve the quality of my game.
 [[Testing]]
 ## **Link to testing results/tables**
 [[Trialing]]
@@ -43,12 +44,12 @@ I achieved more in my sprint than I planned on doing, and have my kanban board t
 ## **KANBAN board at the end of the sprint**
 ![[Pasted image 20230501092005.png]]
 ## **Screenshot of the game at the end of the sprint**
-![[Pasted image 20230501091904.png]]
+
 ## Link to **Video of the game at the end of the sprint**
 
 
 ## **Notes for next time, future improvements**
-Next time I should focus on completing one aspect at a time, because I worked on multiple aspects at one time I found it was all over the place and things didn't get fully completed. I also want to have a wider range of things on my kanban to work on to be more efficient.
+Next time I should focus on completing one aspect at a time, because I worked on multiple aspects at one time I found it was all over the place and things didn't get fully completed. I also want to have a wider range of things on my kanban to work on to be more efficient. My main goal is developing and mvp therefore I should focus on completing the aspects that make an mvp before moving onto map design and art in future sprints.
 
 
 

@@ -13,12 +13,17 @@ kanban-plugin: basic
 - [ ] Main start menu
 - [ ] Adding more levels
 - [ ] Fix bugs
+- [ ] Add in pathlib
+- [ ] Make a take damage function
+- [ ] mp3 folder?
+- [ ] add enemies/bullets to scene
+- [ ] GUI scene?
+- [ ] Fix views
 
 
 ## Doing
 
 - [ ] Player winning/main boss
-- [ ] Following enemies
 - [ ] Moving Enemies
 - [ ] Add comments and docstrings
 - [ ] Different views
@@ -26,6 +31,7 @@ kanban-plugin: basic
 
 ## Testing \ Trialing
 
+- [ ] Ladders
 
 
 ## Complete 🎈🎉✨

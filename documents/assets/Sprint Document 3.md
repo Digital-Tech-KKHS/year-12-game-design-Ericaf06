@@ -20,20 +20,24 @@ Erica Ford
 ![[Pasted image 20230515090919.png]]
 # Sprint Summary
 ## **Sprint Reflection and summary**
+In this sprint I focused on developing the mvp fully. To do this I still had to make a way for the player to win. Like I suggested I do in my last sprint I have begun adding a boss enemy which takes damage and when killed makes the player win and displays a win screen. 
+The main functions of this final boss that I have begun adding is that
 
 
 ## **Major Changes and Achievements Described**
 -Code format changed to be better
+-Boss added into the game
 
 
 ## **Brief Description of your testing**
-[[Testing]]
+For my testing in this sprint I tested the do not touch function which represents things in the map that kill the player and the function for handling collisions with enemies. 
+
 ## **Link to testing results/tables**
 [[Trialing]]
-
+[[Testing]]
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**
-![[Pasted image 20230529091846.png]]
+
 ## **Screenshot of the game at the end of the sprint**
 
 ## Link to **Video of the game at the end of the sprint**
