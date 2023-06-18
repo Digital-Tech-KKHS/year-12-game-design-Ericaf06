@@ -16,7 +16,6 @@ kanban-plugin: basic
 - [ ] Add in pathlib
 - [ ] Make a take damage function
 - [ ] mp3 folder?
-- [ ] add enemies/bullets to scene
 - [ ] GUI scene?
 - [ ] Fix views
 
@@ -24,14 +23,15 @@ kanban-plugin: basic
 ## Doing
 
 - [ ] Player winning/main boss
-- [ ] Moving Enemies
 - [ ] Add comments and docstrings
 - [ ] Different views
+- [ ] add enemies/bullets to scene
 
 
 ## Testing \ Trialing
 
 - [ ] Ladders
+- [ ] Moving Enemies
 
 
 ## Complete 🎈🎉✨

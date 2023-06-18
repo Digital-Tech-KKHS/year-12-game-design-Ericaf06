@@ -3,6 +3,7 @@ import arcade
 import math
 from math import sin,cos, degrees, atan2
 import random
+from pathlib import Path
 
 '''Global variables'''
 WIDTH = 1200
@@ -18,8 +19,10 @@ JUMP_SPEED = 30
 LEFT_FACING = 1
 RIGHT_FACING = 0
 BULLET_SPEED = 20
+BOSS_SPEED = 10
 
 def load_texture_pair(filename):
+    '''Loads players textures'''
     return [
         arcade.load_texture(filename),
         arcade.load_texture(filename, flipped_horizontally=True)]
@@ -83,15 +86,23 @@ class MyGame(arcade.Window):
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.scene.add_sprite_list('player')
         self.scene.add_sprite_list('boss')
+        self.scene.add_sprite_list('health')
+        self.scene.add_sprite_list('boss health')
+        self.scene.add_sprite_list('enemy')
+        self.scene.add_sprite_list('enemy 2')
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
-        self.boss = Boss()
+        self.boss = arcade.SpriteList()
         self.boss_health_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
         self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
+        #self.scene['enemy'].append(self.enemy)
+        #self.scene['enemy 2'].append(self.enemy_2)
         self.scene['player'].append(self.player)
         self.scene['boss'].append(self.boss)
+        #self.scene['health'].append(self.health_list)
+        #self.scene['boss health'].append(self.boss_health_list)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
             walls =self.scene['Ground'],
@@ -121,7 +132,8 @@ class MyGame(arcade.Window):
         '''Draws lists and text'''
         self.clear()
         self.camera.use()
-        self.health.draw()
+        self.health_list.draw()
+        self.boss_health_list.draw()
         self.enemy_list.draw()
         self.enemy_2_list.draw()
         self.bullet_list.draw()
@@ -175,10 +187,13 @@ class MyGame(arcade.Window):
             self.player.center_x = 400
             self.player.center_y = 400
             arcade.play_sound(self.kill_sound)
+            self.health_list -= 1
             if len(self.health_list) <= 0:
                 self.player.kill()
                 arcade.play_sound(self.game_over_sound)
                 game_over = GameOverView()
+                (game_over)
+                self.window.show_view(game_over)
                 
 
         self.boss_diff_y = self.player.center_y - self.boss.center_y
@@ -187,9 +202,10 @@ class MyGame(arcade.Window):
         self.boss.angle = degrees(angle)
         self.boss.change_x = 5 * cos(angle)
         self.boss.change_y = 5 * sin(angle)
-
+        
+    #def take_damage(self):
+        
         boss = arcade.check_for_collision(self.player, self.boss)
-
         if boss:
             self.player.center_x = 400
             self.player.center_y = 400
@@ -198,6 +214,7 @@ class MyGame(arcade.Window):
                 self.boss.kill()
                 arcade.play_sound(self.game_win_sound)
                 game_win = GameWinView()
+                self.window.show_view(game_win)
 
         if random.random() < 0.01:
             self.enemy = arcade.Sprite(
@@ -222,19 +239,23 @@ class MyGame(arcade.Window):
         enemy_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_list)
         if len(enemy_collisions) > 0:
+            self.health_list -= 1
             self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
             (game_over)
+            self.window.show_view(game_over)
 
         enemy_2_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_2_list)
         if len(enemy_2_collisions) > 0:
+            self.health_list -= 1
             self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
             (game_over)
-                 
+            self.window.show_view(game_over)
+        
         for self.player in enemy_collisions:
             self.health -= 1
             arcade.play_sound(self.kill_sound)
@@ -245,7 +266,7 @@ class MyGame(arcade.Window):
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
             (game_over)
-            
+            self.window.show_view(game_over)
             
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(
@@ -260,6 +281,16 @@ class MyGame(arcade.Window):
             if len(enemy_2_bullet) > 0:
                 self.bullet.kill
                 enemy_2_bullet[0].kill()
+                
+        for self.bullet in self.bullet_list:
+            boss_bullet = arcade.check_for_collision_with_list(
+                self.bullet, self.boss)
+            if len(boss_bullet) > 0:
+                self.bullet.kill
+                boss_bullet[0].kill()   
+            if len(self.boss_health) > 0:
+                self.boss.kill
+                
 
         if self.bullet.center_x > 1000 or self.bullet.center_y < 0:
             self.bullet.kill()
@@ -302,14 +333,17 @@ class MyGame(arcade.Window):
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 
-class Boss(arcade.Sprite):
-    def __init__(self):
-        super().__init__(':resources:images/animated_characters/zombie/zombie_idle.png'
-        )
-        self.center_x = 300
-        self.center_y = 400
+#class Boss(arcade.Sprite):
+  #  '''Boss class, similar to player class'''
+   # def __init__(self):
+        #super().__init__(
+           # ':resources:images/animated_characters/zombie/zombie_idle.png'
+       # )
+       # self.center_x = 300
+        #self.center_y = 400
         
 class Player(arcade.Sprite):
+    '''Player class which manages players position, textures and movement'''
     def __init__(self):
         super().__init__(
             ':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png'
@@ -420,6 +454,7 @@ class GameOverView(arcade.View):
 
 
 class Game(arcade.Window):
+    '''Manages different game views and windows'''
     def __init__(self):
         super().__init__(WIDTH, HEIGHT, TITLE)
         self.game_view = MyGame()
@@ -429,9 +464,9 @@ class Game(arcade.Window):
         self.show_view(self.welcome_view)
 
 def main():
-        game = MyGame()
-        game.setup()
-        arcade.run()
+    game = MyGame()
+    game.setup()
+    arcade.run()
 
 if __name__ == "__main__":
     main()
