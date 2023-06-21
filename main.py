@@ -34,6 +34,12 @@ class MyGame(arcade.Window):
         self.setup()
         self.tile_map = None
         self.score = 0
+        self.enemy_list = None
+        self.enemy_2_list = None
+        self.health_list = None
+        self.boss_health_list = None
+        self.boss_center_x = 300
+        self.boss_center_y = 400
         
         self.game_over_sound = arcade.load_sound(
             ':resources:sounds/hurt3.wav'
@@ -84,12 +90,6 @@ class MyGame(arcade.Window):
         self.tile_map = arcade.load_tilemap(
             './squaree.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
-        self.scene.add_sprite_list('player')
-        self.scene.add_sprite_list('boss')
-        self.scene.add_sprite_list('health')
-        self.scene.add_sprite_list('boss health')
-        self.scene.add_sprite_list('enemy')
-        self.scene.add_sprite_list('enemy 2')
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
         self.boss = arcade.SpriteList()
@@ -97,15 +97,14 @@ class MyGame(arcade.Window):
         self.enemy_list = arcade.SpriteList()
         self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
-        #self.scene['enemy'].append(self.enemy)
-        #self.scene['enemy 2'].append(self.enemy_2)
-        self.scene['player'].append(self.player)
-        self.scene['boss'].append(self.boss)
-        #self.scene['health'].append(self.health_list)
-        #self.scene['boss health'].append(self.boss_health_list)
+        self.scene.add_sprite_list('enemy_list', sprite_list=self.enemy_list)
+        self.scene.add_sprite_list('enemy_2_list',sprite_list=self.enemy_2_list)
+        self.scene.add_sprite_list('player',sprite_list = self.player)
+        self.scene.add_sprite_list('health_list',sprite_list= self.health_list)
+        self.scene.add_sprite_list('boss_health_list',sprite_list=self.health_list)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
-            walls =self.scene['Ground'],
+            walls =self.scene['Ground'], 
             ladders=self.scene['Ladders'],
             gravity_constant=GRAVITY
         )
@@ -195,9 +194,9 @@ class MyGame(arcade.Window):
                 (game_over)
                 self.window.show_view(game_over)
                 
-
-        self.boss_diff_y = self.player.center_y - self.boss.center_y
-        self.boss_diff_x = self.player.center_x - self.boss.center_x
+        
+        self.boss_diff_y = self.player.center_y - self.boss_center_y
+        self.boss_diff_x = self.player.center_x - self.boss_center_x
         angle = atan2(self.boss_diff_y, self.boss_diff_x)
         self.boss.angle = degrees(angle)
         self.boss.change_x = 5 * cos(angle)
@@ -205,12 +204,13 @@ class MyGame(arcade.Window):
         
     #def take_damage(self):
         
-        boss = arcade.check_for_collision(self.player, self.boss)
+        boss = arcade.check_for_collision_with_list(self.player, self.boss)
         if boss:
             self.player.center_x = 400
             self.player.center_y = 400
+            self.scene['boss'].append(self.boss)
             arcade.play_sound(self.kill_sound)
-            if len(self.boss_health_list) <= 0:
+            if len(self.boss_health_list) > 0:
                 self.boss.kill()
                 arcade.play_sound(self.game_win_sound)
                 game_win = GameWinView()
@@ -333,14 +333,14 @@ class MyGame(arcade.Window):
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 
-#class Boss(arcade.Sprite):
-  #  '''Boss class, similar to player class'''
-   # def __init__(self):
-        #super().__init__(
-           # ':resources:images/animated_characters/zombie/zombie_idle.png'
-       # )
-       # self.center_x = 300
-        #self.center_y = 400
+class Boss(arcade.Sprite):
+    '''Boss class, similar to player class'''
+    def __init__(self):
+        super().__init__(
+            ':resources:images/animated_characters/zombie/zombie_idle.png'
+        )
+        self.center_x = 300
+        self.center_y = 400
         
 class Player(arcade.Sprite):
     '''Player class which manages players position, textures and movement'''
