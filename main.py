@@ -38,9 +38,7 @@ class MyGame(arcade.Window):
         self.enemy_2_list = None
         self.health_list = None
         self.boss_health_list = None
-        self.boss_center_x = 300
-        self.boss_center_y = 400
-        
+    
         self.game_over_sound = arcade.load_sound(
             ':resources:sounds/hurt3.wav'
         )
@@ -92,11 +90,12 @@ class MyGame(arcade.Window):
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
-        self.boss = arcade.SpriteList()
+        self.boss = Boss()
         self.boss_health_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
         self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
+        self.scene.add_sprite_list('boss', sprite_list=self.boss)
         self.scene.add_sprite_list('enemy_list', sprite_list=self.enemy_list)
         self.scene.add_sprite_list('enemy_2_list',sprite_list=self.enemy_2_list)
         self.scene.add_sprite_list('player',sprite_list = self.player)
@@ -193,8 +192,11 @@ class MyGame(arcade.Window):
                 game_over = GameOverView()
                 (game_over)
                 self.window.show_view(game_over)
+
+
+        self.boss_center_x = 300
+        self.boss_center_y = 400
                 
-        
         self.boss_diff_y = self.player.center_y - self.boss_center_y
         self.boss_diff_x = self.player.center_x - self.boss_center_x
         angle = atan2(self.boss_diff_y, self.boss_diff_x)
@@ -203,18 +205,6 @@ class MyGame(arcade.Window):
         self.boss.change_y = 5 * sin(angle)
         
     #def take_damage(self):
-        
-        boss = arcade.check_for_collision_with_list(self.player, self.boss)
-        if boss:
-            self.player.center_x = 400
-            self.player.center_y = 400
-            self.scene['boss'].append(self.boss)
-            arcade.play_sound(self.kill_sound)
-            if len(self.boss_health_list) > 0:
-                self.boss.kill()
-                arcade.play_sound(self.game_win_sound)
-                game_win = GameWinView()
-                self.window.show_view(game_win)
 
         if random.random() < 0.01:
             self.enemy = arcade.Sprite(
@@ -236,26 +226,19 @@ class MyGame(arcade.Window):
         for self.enemy_2 in self.enemy_2_list:
             self.enemy_2.center_y -= 2
 
+        boss_damage = arcade.check_for_collision_with_list(self.boss, self.bullet)
+        if boss_damage:
+            self.boss.center_x = 300
+            self.boss.center_y = 500
+            if len(self.boss_health_list) > 0:
+                self.boss.kill()
+                arcade.play_sound(self.game_win_sound)
+                game_win = GameWinView()
+                self.window.show_view(game_win)
+
+
         enemy_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_list)
-        if len(enemy_collisions) > 0:
-            self.health_list -= 1
-            self.player.kill()
-            arcade.play_sound(self.game_over_sound)
-            game_over = GameOverView()
-            (game_over)
-            self.window.show_view(game_over)
-
-        enemy_2_collisions = arcade.check_for_collision_with_list(
-            self.player, self.enemy_2_list)
-        if len(enemy_2_collisions) > 0:
-            self.health_list -= 1
-            self.player.kill()
-            arcade.play_sound(self.game_over_sound)
-            game_over = GameOverView()
-            (game_over)
-            self.window.show_view(game_over)
-        
         for self.player in enemy_collisions:
             self.health -= 1
             arcade.play_sound(self.kill_sound)
@@ -267,7 +250,30 @@ class MyGame(arcade.Window):
             game_over = GameOverView()
             (game_over)
             self.window.show_view(game_over)
-            
+
+        enemy_2_collisions = arcade.check_for_collision_with_list(
+            self.player, self.enemy_2_list)
+        for self.player in enemy_2_collisions:
+            self.health -= 1
+            arcade.play_sound(self.kill_sound)
+            game = MyGame()
+            (game)
+            if len(self.health_list) > 0:
+                self.player.kill()
+            arcade.play_sound(self.game_over_sound)
+            game_over = GameOverView()
+            (game_over)
+            self.window.show_view(game_over)
+
+        for self.player in boss_damage:
+            self.health -=1 
+            arcade.play_sound(self.kill_sound)
+            game = MyGame()
+            (game)
+            self.window.show_view(game)
+            if len(self.health_list) > 0 :
+                self.player.kill()
+
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(
                 self.bullet, self.enemy_list)
@@ -280,17 +286,7 @@ class MyGame(arcade.Window):
                 self.bullet, self.enemy_2_list)
             if len(enemy_2_bullet) > 0:
                 self.bullet.kill
-                enemy_2_bullet[0].kill()
-                
-        for self.bullet in self.bullet_list:
-            boss_bullet = arcade.check_for_collision_with_list(
-                self.bullet, self.boss)
-            if len(boss_bullet) > 0:
-                self.bullet.kill
-                boss_bullet[0].kill()   
-            if len(self.boss_health) > 0:
-                self.boss.kill
-                
+                enemy_2_bullet[0].kill()             
 
         if self.bullet.center_x > 1000 or self.bullet.center_y < 0:
             self.bullet.kill()
@@ -340,7 +336,7 @@ class Boss(arcade.Sprite):
             ':resources:images/animated_characters/zombie/zombie_idle.png'
         )
         self.center_x = 300
-        self.center_y = 400
+        self.center_y = 500
         
 class Player(arcade.Sprite):
     '''Player class which manages players position, textures and movement'''
