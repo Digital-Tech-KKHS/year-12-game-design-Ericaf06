@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## Backlog❄❄
 
-- [ ] Map
 - [ ] Game Idea/concept
 - [ ] Art
 - [ ] Moving platforms
@@ -25,6 +24,7 @@ kanban-plugin: basic
 - [ ] Player winning/main boss
 - [ ] Add comments and docstrings
 - [ ] Different views
+- [ ] Map
 - [ ] add enemies/bullets to scene
 
 

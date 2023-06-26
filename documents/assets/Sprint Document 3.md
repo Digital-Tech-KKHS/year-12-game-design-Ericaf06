@@ -27,20 +27,22 @@ The main functions of this final boss that I have begun adding is that
 ## **Major Changes and Achievements Described**
 -Code format changed to be better
 -Boss added into the game
+-Map design added
 
 
 ## **Brief Description of your testing**
-For my testing in this sprint I tested the do not touch function which represents things in the map that kill the player and the function for handling collisions with enemies. 
+For my testing in this sprint I tested the do not touch function which represents things in the map that kill the player such as enemies, spikes, and lava, as well as the function for handling collisions with enemies. 
 
 ## **Link to testing results/tables**
 [[Trialing]]
 [[Testing]]
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**
-
+![[Pasted image 20230627102808.png]]
 ## **Screenshot of the game at the end of the sprint**
-
+![[Pasted image 20230627102822.png]]
 ## Link to **Video of the game at the end of the sprint**
 
 
 ## **Notes for next time, future improvements**
+Form my trailing I need top focus

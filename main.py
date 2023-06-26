@@ -75,7 +75,7 @@ class MyGame(arcade.Window):
         self.boss_health = arcade.Sprite(
             ':resources:images/tiles/mushroomRed.png'
         )
-
+        
     def setup(self):
         '''Set up function for game, loads scene, map and, sprites'''
         arcade.set_background_color(arcade.color.CEIL)
@@ -95,12 +95,13 @@ class MyGame(arcade.Window):
         self.enemy_list = arcade.SpriteList()
         self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
+        self.scene.add_sprite_list('bullets',sprite_list=self.bullet_list)
         self.scene.add_sprite_list('boss', sprite_list=self.boss)
-        self.scene.add_sprite_list('enemy_list', sprite_list=self.enemy_list)
-        self.scene.add_sprite_list('enemy_2_list',sprite_list=self.enemy_2_list)
+        self.scene.add_sprite_list('enemy', sprite_list=self.enemy_list)
+        self.scene.add_sprite_list('enemy_2',sprite_list=self.enemy_2_list)
         self.scene.add_sprite_list('player',sprite_list = self.player)
-        self.scene.add_sprite_list('health_list',sprite_list= self.health_list)
-        self.scene.add_sprite_list('boss_health_list',sprite_list=self.health_list)
+        self.scene.add_sprite_list('health',sprite_list= self.health_list)
+        self.scene.add_sprite_list('boss_health',sprite_list=self.boss_health_list)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
             walls =self.scene['Ground'], 
@@ -112,18 +113,18 @@ class MyGame(arcade.Window):
         self.HUD_camera = arcade.Camera(WIDTH, HEIGHT)
         
         for i in range(5):
-            self.health = arcade.Sprite(
+            self.health_list = arcade.Sprite(
                 ":resources:images/space_shooter/playerLife1_green.png"
-            )
-            self.health.center_x = 50 + 40 * i
-            self.health.center_y = HEIGHT - 100
+            ) 
+            self.health_list.center_x = 50 + 40 * i
+            self.health_list.center_y = HEIGHT - 100
 
         for i in range(5):
-            self.boss_health = arcade.Sprite(
+            self.boss_health_list = arcade.Sprite(
                 ':resources:images/tiles/mushroomRed.png'
             )
-            self.boss_health.center_x = 70 + 40 * i
-            self.boss_health.center_y = HEIGHT - 100
+            self.boss_health_list.center_x = 70 + 40 * i
+            self.boss_health_list.center_y = HEIGHT - 100
 
 
     def on_draw(self):
@@ -137,8 +138,9 @@ class MyGame(arcade.Window):
         self.bullet_list.draw()
         self.scene.draw()
         self.HUD_camera.use()
-        arcade.draw_text(
-            str(self.score), WIDTH + 15,
+        score = f"score {self.score}"
+        arcade.draw_text(score
+            , WIDTH + 15,
             HEIGHT - 100,
             arcade.color.BLACK, font_size=50)
 
@@ -195,14 +197,14 @@ class MyGame(arcade.Window):
 
 
         self.boss_center_x = 300
-        self.boss_center_y = 400
+        self.boss_center_y = 300
                 
         self.boss_diff_y = self.player.center_y - self.boss_center_y
         self.boss_diff_x = self.player.center_x - self.boss_center_x
         angle = atan2(self.boss_diff_y, self.boss_diff_x)
-        self.boss.angle = degrees(angle)
-        self.boss.change_x = 5 * cos(angle)
-        self.boss.change_y = 5 * sin(angle)
+        self.boss_angle = degrees(angle)
+        self.boss_change_x = 5 * cos(angle)
+        self.boss_change_y = 5 * sin(angle)
         
     #def take_damage(self):
 
@@ -226,10 +228,11 @@ class MyGame(arcade.Window):
         for self.enemy_2 in self.enemy_2_list:
             self.enemy_2.center_y -= 2
 
-        boss_damage = arcade.check_for_collision_with_list(self.boss, self.bullet)
+        boss_damage = arcade.check_for_collision_with_list(self.boss, self.bullet_list)
         if boss_damage:
-            self.boss.center_x = 300
-            self.boss.center_y = 500
+            self.boss_center_x = 300
+            self.boss_center_y = 300
+            self.boss_health_list.pop()
             if len(self.boss_health_list) > 0:
                 self.boss.kill()
                 arcade.play_sound(self.game_win_sound)
@@ -240,36 +243,31 @@ class MyGame(arcade.Window):
         enemy_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_list)
         for self.player in enemy_collisions:
-            self.health -= 1
+            self.health_list.pop()
             arcade.play_sound(self.kill_sound)
             game = MyGame()
-            (game)
             if len(self.health_list) > 0:
                 self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
-            (game_over)
             self.window.show_view(game_over)
 
         enemy_2_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_2_list)
         for self.player in enemy_2_collisions:
-            self.health -= 1
+            self.health_list.pop()
             arcade.play_sound(self.kill_sound)
             game = MyGame()
-            (game)
             if len(self.health_list) > 0:
                 self.player.kill()
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
-            (game_over)
             self.window.show_view(game_over)
 
         for self.player in boss_damage:
-            self.health -=1 
+            self.boss_health_list.pop()
             arcade.play_sound(self.kill_sound)
             game = MyGame()
-            (game)
             self.window.show_view(game)
             if len(self.health_list) > 0 :
                 self.player.kill()
@@ -333,10 +331,10 @@ class Boss(arcade.Sprite):
     '''Boss class, similar to player class'''
     def __init__(self):
         super().__init__(
-            ':resources:images/animated_characters/zombie/zombie_idle.png'
+         ':resources:images/animated_characters/zombie/zombie_idle.png'
         )
         self.center_x = 300
-        self.center_y = 500
+        self.center_y = 190
         
 class Player(arcade.Sprite):
     '''Player class which manages players position, textures and movement'''

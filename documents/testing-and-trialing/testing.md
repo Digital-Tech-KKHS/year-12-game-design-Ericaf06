@@ -159,7 +159,7 @@ Date: 25/05/2023
 | Player doesn't collide with enemy| Nothing happens | As expected |
 
 ## Test 7:
-Date: 25/05/2023
+Date: 26/06/2023
 ```python
 if random.random() < 0.01:
             self.enemy = arcade.Sprite(
