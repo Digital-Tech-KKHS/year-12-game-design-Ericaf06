@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "documents/testing-and-trialing/Testing.md",
+                "file": "documents/assets/Sprint Document 3.md",
                 "mode": "source",
                 "source": false
               }
@@ -55,8 +55,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -193,21 +192,22 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "200b204f28a99bb1",
+  "active": "1427018e5d813348",
   "lastOpenFiles": [
+    "documents/testing-and-trialing/Testing.md",
     "Sprint document 4.md",
+    "documents/testing-and-trialing/Trialing.md",
+    "Pasted image 20230629141811.png",
     "documents/assets/Sprint Document 3.md",
     "Pasted image 20230627102822.png",
     "Pasted image 20230627102808.png",
     "documents/Kanban.md",
-    "documents/testing-and-trialing/Testing.md",
     "Pasted image 20230627102440.png",
     "squaree.tmx.rpiqSV",
     "documents/assets/Sprint Document 1.md",
     "Pasted image 20230626090344.png",
     "documents/assets/Sprint Document 2.md",
     "documents/code-review.md",
-    "documents/testing-and-trialing/Trialing.md",
     "documents/assets/Pasted image 20230501091904.png.md",
     "Pasted image 20230529091846.png",
     "Pasted image 20230529091123.png.md",
@@ -215,7 +215,6 @@
     "documents/assets/spritesheet_ground.png",
     "documents/assets/spongey.png",
     "documents/assets/Pasted image 20230529091110.png",
-    "Pasted image 20230529091123.png",
     "square.tmx.PYxrXK",
     "Sprint Document 2.md",
     "Sprint Document 3.md",

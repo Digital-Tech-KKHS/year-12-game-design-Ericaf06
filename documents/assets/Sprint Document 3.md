@@ -45,4 +45,4 @@ For my testing in this sprint I tested the do not touch function which represent
 
 
 ## **Notes for next time, future improvements**
-Form my trailing I need top focus
+From my trailing  that I did I will be implementing more key features that the users feel most comfortable using, I will also be moving more towards art design e.g. Characters, background and, tile sets. As well as making the map more interesting and fun for the player .

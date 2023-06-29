@@ -158,7 +158,7 @@ Date: 25/05/2023
 |Player loses all health | Player dies and Game over view is shown| Player dies but Game Over view doesn't appear
 | Player doesn't collide with enemy| Nothing happens | As expected |
 
-## Test 7:
+## Test 7: Enemy spawning
 Date: 26/06/2023
 ```python
 if random.random() < 0.01:
@@ -172,8 +172,25 @@ if random.random() < 0.01:
             self.enemy.center_x -= 2
 ```
 
-| Test Data                    | Expected                        | Observed                       |
-| ---------------------------- | ------------------------------- | ------------------------------ |
-|Player collides with enemy| Player restarts on game with one less health | As expected
-|Player loses all health | Player dies and Game over view is shown| Player dies but Game Over view doesn't appear
-| Player doesn't collide with enemy| Nothing happens | As expected |
+| Test Data                         | Expected                                     | Observed                                      |
+| --------------------------------- | -------------------------------------------- | --------------------------------------------- |
+| Player collides with enemy        | Player restarts on game with one less health | As expected                                   |
+| Player loses all health           | Player dies and Game over view is shown      | Player dies but Game Over view doesn't appear |
+| Player doesn't collide with enemy | Nothing happens                              | As expected                                   |
+
+
+
+## Test 8: Boss following
+Date: 29/06/2023
+```python
+self.boss_diff_y = self.player.center_y - self.boss_center_y
+        self.boss_diff_x = self.player.center_x - self.boss_center_x
+        angle = atan2(self.boss_diff_y, self.boss_diff_x)
+        self.boss_angle = degrees(angle)
+        self.boss_change_x = 5 * cos(angle)
+        self.boss_change_y = 5 * sin(angle)
+```
+| Test Data | Expected | Observed |
+| --------- | -------- | -------- |
+|               |              |             |           
+|               |              |             |           |

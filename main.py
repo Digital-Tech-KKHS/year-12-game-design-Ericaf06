@@ -195,10 +195,8 @@ class MyGame(arcade.Window):
                 (game_over)
                 self.window.show_view(game_over)
 
-
-        self.boss_center_x = 300
-        self.boss_center_y = 300
-                
+    
+             
         self.boss_diff_y = self.player.center_y - self.boss_center_y
         self.boss_diff_x = self.player.center_x - self.boss_center_x
         angle = atan2(self.boss_diff_y, self.boss_diff_x)
@@ -331,10 +329,10 @@ class Boss(arcade.Sprite):
     '''Boss class, similar to player class'''
     def __init__(self):
         super().__init__(
-         ':resources:images/animated_characters/zombie/zombie_idle.png'
+         ":resources:images/animated_characters/zombie/zombie_idle.png"
         )
         self.center_x = 300
-        self.center_y = 190
+        self.center_y = 300
         
 class Player(arcade.Sprite):
     '''Player class which manages players position, textures and movement'''

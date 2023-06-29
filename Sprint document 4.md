@@ -36,7 +36,7 @@ Erica Ford
 ## **KANBAN board at the end of the sprint**
 
 ## **Screenshot of the game at the end of the sprint**
-
+![[Pasted image 20230629141811.png]]
 ## Link to **Video of the game at the end of the sprint**
 
 
