@@ -90,18 +90,14 @@ class MyGame(arcade.Window):
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
-        self.boss = Boss()
-        self.boss_health_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
         self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
         self.scene.add_sprite_list('bullets',sprite_list=self.bullet_list)
-        self.scene.add_sprite_list('boss', sprite_list=self.boss)
         self.scene.add_sprite_list('enemy', sprite_list=self.enemy_list)
         self.scene.add_sprite_list('enemy_2',sprite_list=self.enemy_2_list)
         self.scene.add_sprite_list('player',sprite_list = self.player)
         self.scene.add_sprite_list('health',sprite_list= self.health_list)
-        self.scene.add_sprite_list('boss_health',sprite_list=self.boss_health_list)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
             walls =self.scene['Ground'], 
@@ -119,12 +115,6 @@ class MyGame(arcade.Window):
             self.health_list.center_x = 50 + 40 * i
             self.health_list.center_y = HEIGHT - 100
 
-        for i in range(5):
-            self.boss_health_list = arcade.Sprite(
-                ':resources:images/tiles/mushroomRed.png'
-            )
-            self.boss_health_list.center_x = 70 + 40 * i
-            self.boss_health_list.center_y = HEIGHT - 100
 
 
     def on_draw(self):
@@ -132,7 +122,6 @@ class MyGame(arcade.Window):
         self.clear()
         self.camera.use()
         self.health_list.draw()
-        self.boss_health_list.draw()
         self.enemy_list.draw()
         self.enemy_2_list.draw()
         self.bullet_list.draw()
@@ -226,18 +215,6 @@ class MyGame(arcade.Window):
         for self.enemy_2 in self.enemy_2_list:
             self.enemy_2.center_y -= 2
 
-        boss_damage = arcade.check_for_collision_with_list(self.boss, self.bullet_list)
-        if boss_damage:
-            self.boss_center_x = 300
-            self.boss_center_y = 300
-            self.boss_health_list.pop()
-            if len(self.boss_health_list) > 0:
-                self.boss.kill()
-                arcade.play_sound(self.game_win_sound)
-                game_win = GameWinView()
-                self.window.show_view(game_win)
-
-
         enemy_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_list)
         for self.player in enemy_collisions:
@@ -261,14 +238,6 @@ class MyGame(arcade.Window):
             arcade.play_sound(self.game_over_sound)
             game_over = GameOverView()
             self.window.show_view(game_over)
-
-        for self.player in boss_damage:
-            self.boss_health_list.pop()
-            arcade.play_sound(self.kill_sound)
-            game = MyGame()
-            self.window.show_view(game)
-            if len(self.health_list) > 0 :
-                self.player.kill()
 
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(
@@ -325,14 +294,6 @@ class MyGame(arcade.Window):
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 
-class Boss(arcade.Sprite):
-    '''Boss class, similar to player class'''
-    def __init__(self):
-        super().__init__(
-         ":resources:images/animated_characters/zombie/zombie_idle.png"
-        )
-        self.center_x = 300
-        self.center_y = 300
         
 class Player(arcade.Sprite):
     '''Player class which manages players position, textures and movement'''
