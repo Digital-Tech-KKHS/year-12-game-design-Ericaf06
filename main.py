@@ -37,7 +37,7 @@ class MyGame(arcade.Window):
         self.enemy_list = None
         self.enemy_2_list = None
         self.health_list = None
-        self.boss_health_list = None
+        self.level = 0
     
         self.game_over_sound = arcade.load_sound(
             ':resources:sounds/hurt3.wav'
@@ -66,15 +66,10 @@ class MyGame(arcade.Window):
         self.enemy = arcade.Sprite(
             ':resources:images/space_shooter/meteorGrey_big4.png'
         )
-        self.enemy_2 = arcade.Sprite(
-            ':resources:images/space_shooter/meteorGrey_big2.png'
-        )
         self.health = arcade.Sprite(
             ':resources:images/space_shooter/playerLife1_green.png'
         )
-        self.boss_health = arcade.Sprite(
-            ':resources:images/tiles/mushroomRed.png'
-        )
+      
         
     def setup(self):
         '''Set up function for game, loads scene, map and, sprites'''
@@ -86,16 +81,14 @@ class MyGame(arcade.Window):
         }
 
         self.tile_map = arcade.load_tilemap(
-            './squaree.tmx', layer_options=layer_options)
+            './main.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
-        self.enemy_2_list = arcade.SpriteList()
         self.player = Player()
         self.scene.add_sprite_list('bullets',sprite_list=self.bullet_list)
         self.scene.add_sprite_list('enemy', sprite_list=self.enemy_list)
-        self.scene.add_sprite_list('enemy_2',sprite_list=self.enemy_2_list)
         self.scene.add_sprite_list('player',sprite_list = self.player)
         self.scene.add_sprite_list('health',sprite_list= self.health_list)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
@@ -107,15 +100,6 @@ class MyGame(arcade.Window):
 
         self.camera = arcade.Camera(WIDTH, HEIGHT)
         self.HUD_camera = arcade.Camera(WIDTH, HEIGHT)
-        
-        for i in range(5):
-            self.health_list = arcade.Sprite(
-                ":resources:images/space_shooter/playerLife1_green.png"
-            ) 
-            self.health_list.center_x = 50 + 40 * i
-            self.health_list.center_y = HEIGHT - 100
-
-
 
     def on_draw(self):
         '''Draws lists and text'''
@@ -123,15 +107,23 @@ class MyGame(arcade.Window):
         self.camera.use()
         self.health_list.draw()
         self.enemy_list.draw()
-        self.enemy_2_list.draw()
         self.bullet_list.draw()
         self.scene.draw()
         self.HUD_camera.use()
-        score = f"score {self.score}"
-        arcade.draw_text(score
-            , WIDTH + 15,
-            HEIGHT - 100,
-            arcade.color.BLACK, font_size=50)
+        score_text = f"Score: {self.score}"
+        arcade.draw_text(
+            score_text,
+            10,
+            10,
+            arcade.csscolor.BLACK,
+            20,
+        )
+        for i in range(5):
+            self.health_list = arcade.Sprite(
+                ":resources:images/space_shooter/playerLife1_green.png"
+            ) 
+            self.health_list.center_x = 50 + 40 * i
+            self.health_list.center_y = HEIGHT - 100
 
     def on_mouse_press(self, x, y, button, modifiers):
         '''Called when mouse is pressed'''
@@ -183,15 +175,6 @@ class MyGame(arcade.Window):
                 game_over = GameOverView()
                 (game_over)
                 self.window.show_view(game_over)
-
-    
-             
-        self.boss_diff_y = self.player.center_y - self.boss_center_y
-        self.boss_diff_x = self.player.center_x - self.boss_center_x
-        angle = atan2(self.boss_diff_y, self.boss_diff_x)
-        self.boss_angle = degrees(angle)
-        self.boss_change_x = 5 * cos(angle)
-        self.boss_change_y = 5 * sin(angle)
         
     #def take_damage(self):
 
@@ -205,16 +188,6 @@ class MyGame(arcade.Window):
         for self.enemy in self.enemy_list:
             self.enemy.center_x -= 2
 
-        if random.random() < 0.01:
-            self.enemy_2 = arcade.Sprite(
-                ':resources:images/space_shooter/meteorGrey_big4.png'
-            )
-            self.enemy_2.center_x = 500
-            self.enemy_2.center_y = 600
-            self.enemy_2_list.append(self.enemy_2)
-        for self.enemy_2 in self.enemy_2_list:
-            self.enemy_2.center_y -= 2
-
         enemy_collisions = arcade.check_for_collision_with_list(
             self.player, self.enemy_list)
         for self.player in enemy_collisions:
@@ -224,20 +197,8 @@ class MyGame(arcade.Window):
             if len(self.health_list) > 0:
                 self.player.kill()
             arcade.play_sound(self.game_over_sound)
-            game_over = GameOverView()
-            self.window.show_view(game_over)
-
-        enemy_2_collisions = arcade.check_for_collision_with_list(
-            self.player, self.enemy_2_list)
-        for self.player in enemy_2_collisions:
-            self.health_list.pop()
-            arcade.play_sound(self.kill_sound)
-            game = MyGame()
-            if len(self.health_list) > 0:
-                self.player.kill()
-            arcade.play_sound(self.game_over_sound)
-            game_over = GameOverView()
-            self.window.show_view(game_over)
+            game_over_view = GameOverView()
+            self.window.show_view(game_over_view)
 
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(
@@ -246,12 +207,6 @@ class MyGame(arcade.Window):
                 self.bullet.kill
                 enemy_bullet[0].kill()
 
-        for self.bullet in self.bullet_list:
-            enemy_2_bullet = arcade.check_for_collision_with_list(
-                self.bullet, self.enemy_2_list)
-            if len(enemy_2_bullet) > 0:
-                self.bullet.kill
-                enemy_2_bullet[0].kill()             
 
         if self.bullet.center_x > 1000 or self.bullet.center_y < 0:
             self.bullet.kill()
@@ -261,6 +216,12 @@ class MyGame(arcade.Window):
         for coin in coins:
             self.score += 1
             coin.kill()
+
+        wins = arcade.check_for_collision_with_list(
+            self.player, self.scene['Win'])
+        for win in wins:
+            self.level += 1
+            win.kill()
 
     def on_key_press(self, symbol, modifiers):
         '''Called when key is pressed, controls player movement'''
