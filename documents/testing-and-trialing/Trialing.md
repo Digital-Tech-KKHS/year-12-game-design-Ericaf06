@@ -94,13 +94,10 @@ Involved in this trial:
 - Ace
 
 ## Trial goal
-This trial I will be investigating on whether or not the candidates prefer a robot boss or a zombie boss . As well as whether or not.
+
 ## Describe the trail 
-I altered the position of my boss from above the player for the purpose of the boss following/ flying towards the player. Compared to having it opposite to the player and changed it from a robot to a zombie.
+
 ## Results
-- Bede preferred having a zombie boss compared to having a robot as a boss.
-- For the position of the enemy bede preferred the boss to be above the player following the player
-- 
+
 ## Briefly describe the changes you have made based on this trial
-- For my future character design in the game I will incorporate having a zombie design for the final boss. This also means I should design my other characters and map design around the theme of zombies.
-- I will make my final boss a enemy that is able to fly above the player and follow them.
+
