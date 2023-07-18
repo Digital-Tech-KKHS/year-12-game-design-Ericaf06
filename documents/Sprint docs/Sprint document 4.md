@@ -19,12 +19,12 @@ Erica Ford
 ![[Pasted image 20230627102440.png]]
 # Sprint Summary
 ## **Sprint Reflection and summary**
-
+As this project is coming towards the end I have decied to make a few changes to my MVP. I have decided that instead of having a player win through killing a boss they can instead collect a prize hidden in the center of the map. 
 
 ## **Major Changes and Achievements Described**
-
-
-
+-Map development and animation
+-Player can win and can lose
+-Bugs fixed
 
 ## **Brief Description of your testing**
 
@@ -41,3 +41,4 @@ Erica Ford
 
 
 ## **Notes for next time, future improvements**
+For my next sprint I will focus on finishing my tile sets and completing my documentation for my game such as my trials and game design document.
