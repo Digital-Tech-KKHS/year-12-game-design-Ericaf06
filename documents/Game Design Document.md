@@ -11,10 +11,8 @@
 ### Target audience:
 
 > Age: 16-35
-> 
 > Gender: everyone
-> 
-> ...
+
 
 # Theme and setting
 
@@ -54,10 +52,9 @@ What evidence will you use to measure each criteria?
 | ...    |          |          |
 
 # Game Setting
+The game is set in a mystical forest 
 
-The game is set in a dystopian city
-
-## The old habour 
+## Mystical forest
 General description
 
 The old harbor is a place

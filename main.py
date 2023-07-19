@@ -81,7 +81,7 @@ class MyGame(arcade.Window):
         }
 
         self.tile_map = arcade.load_tilemap(
-            './Level_1.tmx', layer_options=layer_options)
+            './squaree.tmx', layer_options=layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
