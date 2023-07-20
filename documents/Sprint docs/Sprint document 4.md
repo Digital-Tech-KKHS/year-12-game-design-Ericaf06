@@ -8,7 +8,7 @@ Erica Ford
 **Start Date:**
 26/06/2023
 **End Date:**
-
+30/6/23
 **Work hard rating**
 ☆☆☆☆
 
@@ -19,26 +19,26 @@ Erica Ford
 ![[Pasted image 20230627102440.png]]
 # Sprint Summary
 ## **Sprint Reflection and summary**
-As this project is coming towards the end I have decied to make a few changes to my MVP. I have decided that instead of having a player win through killing a boss they can instead collect a prize hidden in the center of the map. 
+I have began moving around the boss and started working on my map development using my own art/ making my art to fit the theme of my game(mysitcal forest). I am fixing more bugs to make my game more polished.
+
+Because of the strike days at home continued I have had to do more work at home which can cause mishaps with the pushing and pulling down of repos, as well as tiled maps.
 
 ## **Major Changes and Achievements Described**
--Map development and animation
--Player can win and can lose
--Bugs fixed
+- More Map development
+- Art development using Aesprite
 
 ## **Brief Description of your testing**
-
+I tested enemy movement and boss following using atan2. 
 [[Testing]]
 ## **Link to testing results/tables**
 [[Trialing]]
 
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**
-
+![[Pasted image 20230720143141.png]]
 ## **Screenshot of the game at the end of the sprint**
 ![[Pasted image 20230629141811.png]]
 ## Link to **Video of the game at the end of the sprint**
 
 
 ## **Notes for next time, future improvements**
-For my next sprint I will focus on finishing my tile sets and completing my documentation for my game such as my trials and game design document.
