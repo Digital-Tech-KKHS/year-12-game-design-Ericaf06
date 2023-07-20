@@ -44,12 +44,14 @@ Testing these pieces of code allowed me to spot bugs such as the player not bein
 ## **KANBAN board at the end of the sprint**
 ![[Pasted image 20230501092005.png]]
 ## **Screenshot of the game at the end of the sprint**
-
+![[Pasted image 20230720143441.png]]
 ## Link to **Video of the game at the end of the sprint**
 
 
 ## **Notes for next time, future improvements**
 Next time I should focus on completing one aspect at a time, because I worked on multiple aspects at one time I found it was all over the place and things didn't get fully completed. I also want to have a wider range of things on my kanban to work on to be more efficient. My main goal is developing and mvp therefore I should focus on completing the aspects that make an mvp before moving onto map design and art in future sprints.
+
+
 
 
 
