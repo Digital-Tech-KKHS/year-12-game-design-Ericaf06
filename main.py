@@ -3,9 +3,10 @@ import arcade
 import math
 from math import sin,cos, degrees, atan2
 import random
-from pathlib import Path
+import pathlib
 
 '''Global variables'''
+PARENT_DIR = pathlib.Path(__file__).parent
 WIDTH = 1200
 HEIGHT = 900
 TITLE = "platform"
