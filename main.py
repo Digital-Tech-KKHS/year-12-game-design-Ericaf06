@@ -64,9 +64,6 @@ class MyGame(arcade.Window):
         self.bullet = arcade.Sprite(
             ':resources:images/space_shooter/laserBlue01.png'
         )
-        self.enemy = arcade.Sprite(
-            ':resources:images/space_shooter/meteorGrey_big4.png'
-        )
         self.health = arcade.Sprite(
             ':resources:images/space_shooter/playerLife1_green.png'
         )
@@ -86,10 +83,8 @@ class MyGame(arcade.Window):
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.bullet_list = arcade.SpriteList()
         self.health_list = arcade.SpriteList()
-        self.enemy_list = arcade.SpriteList()
         self.player = Player()
         self.scene.add_sprite_list('bullets',sprite_list=self.bullet_list)
-        self.scene.add_sprite_list('enemy', sprite_list=self.enemy_list)
         self.scene.add_sprite_list('player',sprite_list = self.player)
         self.scene.add_sprite_list('health',sprite_list= self.health_list)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
@@ -106,8 +101,7 @@ class MyGame(arcade.Window):
         '''Draws lists and text'''
         self.clear()
         self.camera.use()
-        self.health_list.draw()
-        self.enemy_list.draw()
+       #self.health_list.draw()
         self.bullet_list.draw()
         self.scene.draw()
         self.HUD_camera.use()
@@ -163,7 +157,7 @@ class MyGame(arcade.Window):
         self.camera.move_to((camera_x, camera_y))
 
         spikes = arcade.check_for_collision_with_list(
-            self.player, self.scene['Do Not Touch'])
+            self.player, self.scene['Do not touch'])
 
         if spikes:
             self.player.center_x = 400
@@ -177,36 +171,12 @@ class MyGame(arcade.Window):
                 (game_over)
                 self.window.show_view(game_over)
         
-    #def take_damage(self):
-
-        if random.random() < 0.01:
-            self.enemy = arcade.Sprite(
-                ':resources:images/space_shooter/meteorGrey_big4.png'
-            )
-            self.enemy.center_x = 500
-            self.enemy.center_y = 300
-            self.enemy_list.append(self.enemy)
-        for self.enemy in self.enemy_list:
-            self.enemy.center_x -= 2
-
-        enemy_collisions = arcade.check_for_collision_with_list(
-            self.player, self.enemy_list)
-        for self.player in enemy_collisions:
-            self.health_list.pop()
-            arcade.play_sound(self.kill_sound)
-            game = MyGame()
-            if len(self.health_list) > 0:
-                self.player.kill()
-            arcade.play_sound(self.game_over_sound)
-            game_over_view = GameOverView()
-            self.window.show_view(game_over_view)
-
-        for self.bullet in self.bullet_list:
-            enemy_bullet = arcade.check_for_collision_with_list(
-                self.bullet, self.enemy_list)
-            if len(enemy_bullet) > 0:
-                self.bullet.kill
-                enemy_bullet[0].kill()
+        #for self.bullet in self.bullet_list:
+           # enemy_bullet = arcade.check_for_collision_with_list(
+               # self.bullet, self.enemy_list)
+           # if len(enemy_bullet) > 0:
+               # self.bullet.kill
+                #enemy_bullet[0].kill()
 
 
         if self.bullet.center_x > 1000 or self.bullet.center_y < 0:
@@ -380,7 +350,6 @@ class Game(arcade.Window):
 
 def main():
     game = MyGame()
-    game.setup()
     arcade.run()
 
 if __name__ == "__main__":
