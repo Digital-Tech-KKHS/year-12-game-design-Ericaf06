@@ -101,7 +101,7 @@ class MyGame(arcade.Window):
         '''Draws lists and text'''
         self.clear()
         self.camera.use()
-       #self.health_list.draw()
+       # self.health_list.draw()
         self.bullet_list.draw()
         self.scene.draw()
         self.HUD_camera.use()
