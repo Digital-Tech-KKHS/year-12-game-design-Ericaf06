@@ -7,8 +7,8 @@ import pathlib
 
 '''Global variables'''
 PARENT_DIR = pathlib.Path(__file__).parent
-WIDTH = 1200
-HEIGHT = 900
+SCREEN_WIDTH = 1500
+SCREEN_HEIGHT = 1000
 TITLE = "platform"
 PLAYER_MOVEMENT_SPEED = 9
 PLAYER_JUMP_SPEED = 5
@@ -94,14 +94,14 @@ class MyGame(arcade.Window):
             gravity_constant=GRAVITY
         )
 
-        self.camera = arcade.Camera(WIDTH, HEIGHT)
-        self.HUD_camera = arcade.Camera(WIDTH, HEIGHT)
+        self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.HUD_camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
 
     def on_draw(self):
         '''Draws lists and text'''
         self.clear()
         self.camera.use()
-       # self.health_list.draw()
+        self.health_list.draw()
         self.bullet_list.draw()
         self.scene.draw()
         self.HUD_camera.use()
@@ -113,13 +113,13 @@ class MyGame(arcade.Window):
             arcade.csscolor.BLACK,
             20,
         )
-        for i in range(5):
-            self.health_list = arcade.Sprite(
+        for i in self.health_list(5):
+            self.health_listhealth = arcade.Sprite(
                 ":resources:images/space_shooter/playerLife1_green.png"
             ) 
-            self.health_list.center_x = 50 + 40 * i
-            self.health_list.center_y = HEIGHT - 100
-
+            self.health_list_center_x = 50 + 40 * i
+            self.health_list_center_y = SCREEN_HEIGHT + 100
+        
     def on_mouse_press(self, x, y, button, modifiers):
         '''Called when mouse is pressed'''
         bullet = arcade.Sprite(
@@ -146,8 +146,8 @@ class MyGame(arcade.Window):
         self.bullet_list.update()
         self.physics_engine.update()
         self.player.update_animation()
-        camera_x = self.player.center_x - WIDTH / 2
-        camera_y = self.player.center_y - HEIGHT / 2
+        camera_x = self.player.center_x - SCREEN_WIDTH / 2
+        camera_y = self.player.center_y - SCREEN_HEIGHT / 2
 
         if camera_x < 0:
             camera_x = 0
@@ -168,8 +168,7 @@ class MyGame(arcade.Window):
                 self.player.kill()
                 arcade.play_sound(self.game_over_sound)
                 game_over = GameOverView()
-                (game_over)
-                self.window.show_view(game_over)
+                self.show_view(game_over)
         
         #for self.bullet in self.bullet_list:
            # enemy_bullet = arcade.check_for_collision_with_list(
@@ -256,6 +255,7 @@ class Player(arcade.Sprite):
         self.face_direction = RIGHT_FACING
         self.walk_index = 0
         self.odo = 0
+    
 
     def update_animation(self):
         '''Updates player movement and movement textures'''
@@ -341,7 +341,7 @@ class GameOverView(arcade.View):
 class Game(arcade.Window):
     '''Manages different game views and windows'''
     def __init__(self):
-        super().__init__(WIDTH, HEIGHT, TITLE)
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE)
         self.game_view = MyGame()
         self.win_view = GameWinView()
         self.welcome_view = WelcomeView()
