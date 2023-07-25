@@ -113,12 +113,11 @@ class MyGame(arcade.Window):
             arcade.csscolor.BLACK,
             20,
         )
-        for i in self.health_list(5):
-            self.health_listhealth = arcade.Sprite(
-                ":resources:images/space_shooter/playerLife1_green.png"
-            ) 
-            self.health_list_center_x = 50 + 40 * i
-            self.health_list_center_y = SCREEN_HEIGHT + 100
+    for i in range(5):
+        health = arcade.sprite(PARENT_DIR/"")
+        health.center_x = 35 + 40 * i
+        health.center_y = height - 100
+        self.health_list.append(health)
         
     def on_mouse_press(self, x, y, button, modifiers):
         '''Called when mouse is pressed'''
@@ -163,12 +162,12 @@ class MyGame(arcade.Window):
             self.player.center_x = 400
             self.player.center_y = 400
             arcade.play_sound(self.kill_sound)
-            self.health_list -= 1
+            self.health_list.pop()
             if len(self.health_list) <= 0:
                 self.player.kill()
                 arcade.play_sound(self.game_over_sound)
                 game_over = GameOverView()
-                self.show_view(game_over)
+                self.window.show_view(game_over)
         
         #for self.bullet in self.bullet_list:
            # enemy_bullet = arcade.check_for_collision_with_list(
