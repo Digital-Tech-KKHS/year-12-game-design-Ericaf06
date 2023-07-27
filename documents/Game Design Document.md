@@ -6,7 +6,7 @@
 
 # Concept Overview
 
-### Genre: Open-world RPG / Action
+### Genre: 
 
 ### Target audience:
 
@@ -15,19 +15,11 @@
 
 
 # Theme and setting
-
-![The dark tower](https://cdn.segmentnext.com/wp-content/uploads/2016/08/ttRLShz.jpg)
-
-The Younger Scrolls V is a role-playing game set in a historical fantasy version of medieval Europe. The player takes on the role of the Chosen One and gets to explore an open world of 450 square kilometers. While the geographic setting of the game is historically accurate, the game features many supernatural elements.
-
-Learn more about the , , and  of the game.
+This Game set in a mystical forest with elves, gnomes and faries. The main player a garden knome who has to avoid evil faries. Mushrooms increase the players score but they have to be careful not to confuse the mushroom coins with the poinsonous mushrooms
 
 ...
 
 # Project scope
-
-## Our team
-... 
 
 
 # Timeline
