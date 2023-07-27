@@ -10,7 +10,7 @@ import random
 SCREEN_WIDTH = 1500
 SCREEN_HEIGHT = 1000
 TITLE = "platform"
-PLAYER_MOVEMENT_SPEED = 9
+PLAYER_MOVEMENT_SPEED = 13
 PLAYER_JUMP_SPEED = 5
 TILE_SCALING = 0.5
 SPRITE_PIXEL_SIZE = 128
@@ -125,11 +125,12 @@ class MyGame(arcade.Window):
         player_centered = screen_center_x, screen_center_y
 
         self.camera.move_to(player_centered)
+        
         #for i in range(5):
            # health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png")
            # health.center_x = 35 + 40 * i
            # health.center_y = SCREEN_HEIGHT - 100
-            #aself.health_list.append(health)
+            #self.health_list.append(health)
         
     def on_mouse_press(self, x, y, button, modifiers):
         '''Called when mouse is pressed'''
@@ -169,10 +170,11 @@ class MyGame(arcade.Window):
             
         self.camera.move_to((camera_x, camera_y))
 
-        spikes = arcade.check_for_collision_with_list(
+        enemies = arcade.check_for_collision_with_list(
             self.player, self.scene['Do not touch'])
+        
 
-        if spikes:
+        if enemies:
             self.player.center_x = 400
             self.player.center_y = 400
             arcade.play_sound(self.kill_sound)
@@ -183,12 +185,12 @@ class MyGame(arcade.Window):
                 game_over = GameOverView()
                 self.show_view(game_over)
                 
-        #for self.bullet in self.bullet_list:
-           # enemy_bullet = arcade.check_for_collision_with_list(
-               # self.bullet, self.enemy_list)
-           # if len(enemy_bullet) > 0:
-               # self.bullet.kill
-                #enemy_bullet[0].kill()
+        for self.bullet in self.bullet_list:
+            enemy_bullet = arcade.check_for_collision_with_list(
+                self.bullet, self.scene['Do not touch'])
+            if len(enemy_bullet) > 0:
+                self.bullet.kill
+                enemy_bullet[0].kill()
 
 
         if self.bullet.center_x > 1000 or self.bullet.center_y < 0:
@@ -199,6 +201,12 @@ class MyGame(arcade.Window):
         for coin in coins:
             self.score += 1
             coin.kill()
+        if self.score >= 100:
+            self.level +1
+        if self.score >= 100 and self.level == 3:
+            game_win = GameWinView
+            self.show_view(game_win)
+            
 
         #wins = arcade.check_for_collision_with_list(
            # self.player, self.scene['Win'])
