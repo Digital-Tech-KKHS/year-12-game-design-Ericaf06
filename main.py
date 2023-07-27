@@ -96,7 +96,7 @@ class MyGame(arcade.Window):
 
         self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.HUD_camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
-
+        
     def on_draw(self):
         '''Draws lists and text'''
         self.clear()
@@ -113,12 +113,23 @@ class MyGame(arcade.Window):
             arcade.csscolor.BLACK,
             20,
         )
-        
+    def center_camera_to_player(self):
+        screen_center_x = self.player.center_x - (self.camera.viewport_width / 3)
+        screen_center_y = self.player.center_y - (
+            self.camera.viewport_height / 3
+        )
+        if screen_center_x < 0:
+            screen_center_x = 0
+        if screen_center_y < 0:
+            screen_center_y = 0
+        player_centered = screen_center_x, screen_center_y
+
+        self.camera.move_to(player_centered)
         #for i in range(5):
-            #self.health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png")
-            #self.health.center_x = 35 + 40 * i
-            #self.health.center_y = SCREEN_HEIGHT - 100
-            #self.health_list.append(self.health)
+           # health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png")
+           # health.center_x = 35 + 40 * i
+           # health.center_y = SCREEN_HEIGHT - 100
+            #aself.health_list.append(health)
         
     def on_mouse_press(self, x, y, button, modifiers):
         '''Called when mouse is pressed'''
@@ -146,14 +157,16 @@ class MyGame(arcade.Window):
         self.bullet_list.update()
         self.physics_engine.update()
         self.player.update_animation()
-        camera_x = self.player.center_x - SCREEN_WIDTH / 2
-        camera_y = self.player.center_y - SCREEN_HEIGHT / 2
+        camera_x = self.player.center_x /3
+        camera_y = self.player.center_y /3
+        self.center_camera_to_player()
 
         if camera_x < 0:
             camera_x = 0
 
-        if camera_y < 15:
-            camera_y = 15
+        if camera_y < 20:
+            camera_y = 20
+            
         self.camera.move_to((camera_x, camera_y))
 
         spikes = arcade.check_for_collision_with_list(
@@ -163,13 +176,13 @@ class MyGame(arcade.Window):
             self.player.center_x = 400
             self.player.center_y = 400
             arcade.play_sound(self.kill_sound)
-            self.health_list -= 1
+            self.health_list.pop()
             if len(self.health_list) <= 0:
                 self.player.kill()
                 arcade.play_sound(self.game_over_sound)
                 game_over = GameOverView()
                 self.show_view(game_over)
-        
+                
         #for self.bullet in self.bullet_list:
            # enemy_bullet = arcade.check_for_collision_with_list(
                # self.bullet, self.enemy_list)
@@ -187,11 +200,11 @@ class MyGame(arcade.Window):
             self.score += 1
             coin.kill()
 
-        wins = arcade.check_for_collision_with_list(
-            self.player, self.scene['Win'])
-        for win in wins:
-            self.level += 1
-            win.kill()
+        #wins = arcade.check_for_collision_with_list(
+           # self.player, self.scene['Win'])
+        #for win in wins:
+           # self.level += 1
+           # win.kill()
 
     def on_key_press(self, symbol, modifiers):
         '''Called when key is pressed, controls player movement'''
@@ -203,11 +216,11 @@ class MyGame(arcade.Window):
             if self.physics_engine.can_jump():
                 self.player.change_y = JUMP_SPEED
                 arcade.play_sound(self.jump_sound)
-        elif symbol == arcade.key.Q:
+        elif symbol == arcade.key.E:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = PLAYER_MOVEMENT_SPEED
                 arcade.play_sound(self.climbing_sound)
-        elif symbol == arcade.key.E:
+        elif symbol == arcade.key.Q:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = -PLAYER_MOVEMENT_SPEED
         if symbol == arcade.key.X:
@@ -224,10 +237,10 @@ class MyGame(arcade.Window):
         if symbol == arcade.key.W:
             if self.physics_engine.can_jump():
                 self.player.change_y = 0
-        elif symbol == arcade.key.Q:
+        elif symbol == arcade.key.E:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
-        elif symbol == arcade.key.E:
+        elif symbol == arcade.key.Q:
             if self.physics_engine.is_on_ladder():
                 self.player.change_y = 0
 
