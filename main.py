@@ -91,8 +91,8 @@ class MyGame(arcade.Window):
             self.player,
             walls =self.scene['Ground'], 
             ladders=self.scene['Ladders'],
-            platforms =self.scene['Moving enemy']
-            gravity_constant=GRAVITY
+            gravity_constant=GRAVITY,
+            #platforms =self.scene['Moving enemy']
         )
 
         self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -109,7 +109,6 @@ class MyGame(arcade.Window):
         '''Draws lists and text'''
         self.clear()
         self.camera.use()
-        self.health_list.draw()
         self.bullet_list.draw()
         self.scene.draw()
         self.HUD_camera.use()
@@ -122,7 +121,8 @@ class MyGame(arcade.Window):
             20,
         )
     def player_camera(self, x, y):
-        screen_center_x = self.player.center_x - (self.camera.viewport_width / 3)
+        screen_center_x = self.player.center_x - (
+            self.camera.viewport_width / 3)
         screen_center_y = self.player.center_y - (
             self.camera.viewport_height / 3
         )
@@ -167,7 +167,7 @@ class MyGame(arcade.Window):
         self.player.update_animation()
         camera_x = self.player.center_x /3
         camera_y = self.player.center_y /3
-        self.center_camera_to_player()
+       # self.center_camera_to_player()
 
         if camera_x < 0:
             camera_x = 0
@@ -207,12 +207,6 @@ class MyGame(arcade.Window):
         for coin in coins:
             self.score += 1
             coin.kill()
-
-        #wins = arcade.check_for_collision_with_list(
-           # self.player, self.scene['Win'])
-        #for win in wins:
-           # self.level += 1
-           # win.kill()
 
     def on_key_press(self, symbol, modifiers):
         '''Called when key is pressed, controls player movement'''
