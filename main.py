@@ -1,12 +1,13 @@
+
+
 '''Imports'''
 import arcade
 import math
 from math import sin,cos, degrees, atan2
-import random
-#import pathlib
+import pathlib
 
 '''Global variables'''
-#PARENT_DIR = pathlib.Path(__file__).parent
+PARENT_DIR = pathlib.Path(__file__).parent
 SCREEN_WIDTH = 1500
 SCREEN_HEIGHT = 1000
 TITLE = "platform"
@@ -38,7 +39,7 @@ class MyGame(arcade.Window):
         self.enemy_list = None
         self.enemy_2_list = None
         self.health_list = None
-        self.level = 0
+        self.level = 1
     
         self.game_over_sound = arcade.load_sound(
             ':resources:sounds/hurt3.wav'
@@ -64,9 +65,6 @@ class MyGame(arcade.Window):
         self.bullet = arcade.Sprite(
             ':resources:images/space_shooter/laserBlue01.png'
         )
-        self.health = arcade.Sprite(
-            ':resources:images/space_shooter/playerLife1_green.png'
-        )
       
         
     def setup(self):
@@ -77,27 +75,24 @@ class MyGame(arcade.Window):
                 "use_spatial_hash": True
             }
         }
-
-        self.tile_map = arcade.load_tilemap(
-            './Trial_map.tmx', layer_options=layer_options)
+        self.level = 1
+        self.tile_map = PARENT_DIR / f"./assets/LEVEL_{self.level}.tmx",
+        layer_options=layer_options
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.bullet_list = arcade.SpriteList()
-        self.health_list = arcade.SpriteList()
         self.player = Player()
         self.scene.add_sprite_list('bullets',sprite_list=self.bullet_list)
         self.scene.add_sprite_list('player',sprite_list = self.player)
-        self.scene.add_sprite_list('health',sprite_list= self.health_list)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player,
             walls =self.scene['Ground'], 
             ladders=self.scene['Ladders'],
             gravity_constant=GRAVITY,
-            #platforms =self.scene['Moving enemy']
         )
 
         self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.HUD_camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
-
+        self.health = 5
         self.health_list = arcade.SpriteList()
         for i in range(5):
             health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png")
@@ -110,6 +105,7 @@ class MyGame(arcade.Window):
         self.clear()
         self.camera.use()
         self.bullet_list.draw()
+        '''self.health_list.draw()'''
         self.scene.draw()
         self.HUD_camera.use()
         score_text = f"Score: {self.score}"
@@ -122,9 +118,9 @@ class MyGame(arcade.Window):
         )
     def player_camera(self, x, y):
         screen_center_x = self.player.center_x - (
-            self.camera.viewport_width / 3)
+            self.camera.viewport_width / 2)
         screen_center_y = self.player.center_y - (
-            self.camera.viewport_height / 3
+            self.camera.viewport_height / 2
         )
         if screen_center_x < 0:
             screen_center_x = 0
@@ -133,11 +129,6 @@ class MyGame(arcade.Window):
         player_centered = screen_center_x, screen_center_y
 
         self.camera.move_to(player_centered)
-        #for i in range(5):
-           # health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png")
-           # health.center_x = 35 + 40 * i
-           # health.center_y = SCREEN_HEIGHT - 100
-            #aself.health_list.append(health)
         
     def on_mouse_press(self, x, y, button, modifiers):
         '''Called when mouse is pressed'''
@@ -165,8 +156,8 @@ class MyGame(arcade.Window):
         self.bullet_list.update()
         self.physics_engine.update()
         self.player.update_animation()
-        camera_x = self.player.center_x /3
-        camera_y = self.player.center_y /3
+        camera_x = self.player.center_x /2
+        camera_y = self.player.center_y /2
        # self.center_camera_to_player()
 
         if camera_x < 0:
@@ -177,26 +168,19 @@ class MyGame(arcade.Window):
             
         self.camera.move_to((camera_x, camera_y))
 
-        spikes = arcade.check_for_collision_with_list(
-            self.player, self.scene['Do not touch'])
+        danger = arcade.check_for_collision_with_list(
+            self.player, self.scene['Enemy'])
 
-        if spikes:
+        if danger:
             self.player.center_x = 400
             self.player.center_y = 400
             arcade.play_sound(self.kill_sound)
             self.health_list.pop()
             game_over = GameOverView()
-            if len(self.health_list) <= 0:
-                self.player.kill()
-                arcade.play_sound(self.game_over_sound)
-                self.window.show_view(game_over)
-                
-        #for self.bullet in self.bullet_list:
-           # enemy_bullet = arcade.check_for_collision_with_list(
-               # self.bullet, self.enemy_list)
-           # if len(enemy_bullet) > 0:
-               # self.bullet.kill
-                #enemy_bullet[0].kill()
+        '''if len(self.health_list) <= 0:
+              self.player.kill()
+             arcade.play_sound(self.game_over_sound)
+                self.window.show_view(game_over)'''
 
 
         if self.bullet.center_x > 1000 or self.bullet.center_y < 0:
@@ -207,6 +191,13 @@ class MyGame(arcade.Window):
         for coin in coins:
             self.score += 1
             coin.kill()
+
+        for self.bullet in self.bullet_list:
+            enemy_bullet = arcade.check_for_collision_with_list(
+                self.bullet, self.scene['Enemy'])
+            if len(enemy_bullet) > 0:
+                self.bullet.kill
+                enemy_bullet[0].kill()
 
     def on_key_press(self, symbol, modifiers):
         '''Called when key is pressed, controls player movement'''
@@ -365,9 +356,9 @@ class Game(arcade.Window):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE)
         self.game_view = MyGame()
         self.win_view = GameWinView()
-        self.welcome_view = WelcomeView()
+        welcome_view = WelcomeView()
         self.game_over = GameOverView()
-        self.window.show_view(self.welcome_view)
+        self.window.show_view(welcome_view)
 
 def main():
     game = MyGame()
