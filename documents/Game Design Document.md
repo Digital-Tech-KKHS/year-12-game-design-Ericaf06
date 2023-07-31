@@ -1,39 +1,35 @@
-# {Title}
+# {Arcade Game}
 
 # Elevator pitch
 
-
+My game is 2D Arcade style MVP. It contains enemies, coins, and other interactables.
 
 # Concept Overview
 
-### Genre: 
+### Genre: Open-world RPG / Action
 
 ### Target audience:
 
 > Age: 16-35
 > Gender: everyone
-
+> 
 
 # Theme and setting
-This Game set in a mystical forest with elves, gnomes and faries. The main player a garden knome who has to avoid evil faries. Mushrooms increase the players score but they have to be careful not to confuse the mushroom coins with the poinsonous mushrooms
-
-...
 
 # Project scope
 
+## Our team
+My team consisted of just me to develop my game.
 
 # Timeline
 
-...
-
-...
-
-...
+My time line began in term one and carried through to the beginning of term 3. I have made a total of 5 sprint documents that have a 2 week span. These sprint documents track my progress with my game.
 
 
 # Success Criteria
 Considering your intended audience and the objectives of your game come up with 5 or more criteria that you will use to determine if your game has been successful. 
 What evidence will you use to measure each criteria? 
+
 |     | Criteria | Evidence |
 | --- | -------- | -------- |
 | 1   |          |          |
@@ -43,84 +39,35 @@ What evidence will you use to measure each criteria?
 | 5   |          |          |
 | ...    |          |          |
 
-# Game Setting
-The game is set in a mystical forest 
+# Game Description
 
-## Mystical forest
-General description
+Set in a mystical forest. A fairy must travel through the forest and avoid the evil gnomes, poisonous mushrooms and cursed water. Fairy dust may be used as a weapon against the gnomes. There are 2 types of mushrooms one is poisonous the other increases the fairy's score allowing them to move up the levels to the final goal. 
 
-The old harbor is a place
+The main character is a colourful fairy who is kind is on a quest to find the magical potion at the end of the game . They must avoid obstacles and parkour their way through a tricky forest. The main character must reach the potion in time to heal their friend again as the poisonous mushrooms have already started to kick in.
 
- bustling with activity. It's always full of noise: the shouts of fishermen auctioning their fish, the loud thuds of crates being loaded off the boats, the cries of hungry seagulls.  is located at the heart of the harbor.
+The evil gnomes ,who are short stocky creatures with red and white stockings and a large pointy hat that covers their eyes. Are working together to try and stop the fairy from reaching the potion in time as they believe only they have the right to it and outsiders do not deserve it.
 
-In ,  reaches the harbor after surviving a shipwreck and being rescued by a fisherman. 
+My player is able to climb, walk and jump in my world. My player will move using the W, A, D keys and use E to climb up the ladder and Q to climb down the ladder. The player also uses a mouse click to shoot. The player follows conventional gravity aspects and uses a realistic movement speed set in the code.
 
-...
+In my world there are platforms that the user may use to their advantage such as being able to move up easier however if they miss that then the player must use ladders to climb which could result in the player colliding with something that harms them. 
 
-Inspiration
-... 
+My player can interact with several things in my world. To collect the coins to increase the score they must run into them. They can collide with anything that harms then such as the gnomes, cursed water and, poisonous mushrooms. This will result in a decrease of health. They climb up and down any of the ladders which I have implemented in my physics engine. The bullets the player can shoot interact with the gnomes and are able to kill them.
 
-# Story
+I thought it would be most conventional to have the gnomes as standing still enemies. When it comes into contact with the player their health decreases by one. The player has 5 health points. Once the player loses all points they must restart the game. To overcome the gnomes the player can either shoot them and kill them or simply avoid them.
 
-## Backstory 
-...
-## Key plot elements
-...
-# Characters
-
-## The Protagonist
- Backstory: 
-
- Personality: 
-
- Appearance:
-
- Special abilities:
-
-## Supporting Character #1
- Backstory:
-
- Personality:
-
- Appearance:
-
- Special abilities:
-
-## Supporting Character #2
- ...
 
 # Gameplay
 
-## Movement
-How is your player going to move? Do they respond to gravity? How is the user controlling them?
-...
-
-## Objects
-What things exist in your world? Are there collectables, keys, spikes or moveable blocks?
-...
-
-## Actions
-What does your player do? Do they interact with anything? If so, what and how?
-...
-
-## Combat
-Are there enemies in your game? How do they move? How do they hurt the player? How does the player overcome them? Do they respond to the player or simply act in a predefined way?
-...
-
-## Talking
-Do your characters communicate? Is it through audio or text? What key plot elements are represented through dialogue?
-...
-
+My player does not have any dialogue in my game in audio or text form. I would implement dialogue in my game if there was more than one main character like a main boss at the end of the game that my player needed to converse with for the plot. 
 
 ## UI elements
-How does the player know what is going on in the game? What key aspects of the state of the game need to be communicated to the player? Is there a menu or an inventory? Is there a tutorial? How will the player know how to interact with your game? 
-...
+
+The player knows which keys to use and how to move and interact with my game as I will have text on the screen describing which keys to use for certain movements. I do not have an inventory to my game. The player knows the purpose of the game as it will be described in the on view that is first displayed when then game is ran.
+
 
 # Technical Requirements
 ## Required Technologies
-How will your project be developed, what language will you use, what libraries will  you include. What attributes do these tools have that make it suitable 
-for using in your project. 
-What requirements will your end user have to run the game? How will you distribute it to them? 
+I will develop my game by writing the code for it and creating the map in tiled that the player will interact with. I am using the language of python to write my code. I used the program Aseprite to develop relevant art for my game to make it look attractive. I used the website beep box to design my own music for the game that fits the theme. For the player to run the game they must have an application that is able to run code as well as a folder with all the appropriate assets in the folder such as the art, the maps and, the mp3 files. I could distribute my game by sending them a compressed folder with everything necessary in there.
 
 # Required Assets
 ## Art 
@@ -148,7 +95,6 @@ Character #3
 
 ### Music
 
-### Voice
 ## Text
 
 
