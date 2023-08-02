@@ -269,6 +269,11 @@ class MyGame(arcade.Window):
         for coin in coins:
             self.score += 1
             coin.kill()
+        if self.score == 10:
+            self.level +1
+        elif self.score == 10 and self.level >=3:
+            game_win = GameWinView
+            self.window.show_view(game_win)
 
         #Is able to shoot enemy and kill them with bullets 
         #https://www.youtube.com/watch?v=m2aQEBAaKic
