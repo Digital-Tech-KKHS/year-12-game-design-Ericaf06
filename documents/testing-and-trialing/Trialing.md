@@ -4,8 +4,8 @@ _Name:_ Erica Ford
 _Date:_  4/04/2023
 
 Involved in the trial
->- Mitchell
->- Braedyn
+- Mitchell
+- Braedyn
 
 
 ## Trial goal:
@@ -13,7 +13,7 @@ Involved in the trial
 
 
 ## Describe the trail
->I made an arcade window for testing only the bullets and and set the speed to 6 first. I had the user test that speed and give feedback. i then changed the speed to 20 and had the users test that. I also first had rocks in the place of coins first then changed them to coins to see which they preferred. I also changed the shoot button from having the key Q to having the mouse press as my shoot button.
+>I made an arcade window for testing only the bullets and and set the speed to 6 first. I had the user test that speed and give feedback. I then changed the speed to 20 and had the users test that. I also first had rocks in the place of coins first then changed them to coins to see which they preferred. I also changed the shoot button from having the key Q to having the mouse press as my shoot button.
 
 ## Results
 > - Braedyn preferred having 20 as the speed.
@@ -25,19 +25,19 @@ Involved in the trial
 
 
 ## Breifly describe the changes you have made based on this trial
-> - I will keep the player and the type of coins I have the same.
-> - I will change the speed to something between 6 and 20.
-> - I will keep clicking the mouse as the method of shooting
+ - I will keep the player and the type of coins I have the same.
+ - I will change the speed to something between 6 and 20.
+ -  I will keep clicking the mouse as the method of shooting
 
 
 ## Trial #2
 _Date:_  10/05/2023
 
 Involved in the trial
->- Mitchell
->- Braedyn
->- Tawhiri
->- Ace
+- Mitchell
+- Braedyn
+- Tawhiri
+- Ace
 
 
 ## Trial goal:
@@ -68,9 +68,9 @@ Involved in the trial
 ## Trial 3:
 Date: 18/06/2023
 Involved in the trial
->- T Kiwa
->- Tawhiri
->- Ace
+- T Kiwa
+- Tawhiri
+- Ace
 
 
 ## Trial goal:
@@ -112,10 +112,12 @@ I created a trial map where the coins and do not touch objects where placed arou
 - I have decided to keep the red and white mushrooms as the do not touch layer.
 
 ## Trial 5:
-Date: /07/2023
+Date: 2/07/2023
 Involved in this trial:
 ## Trial goal
-- 
+- Ace
+- Ethan
+- Eamon
 ## Describe the trail
 
 ## Results
