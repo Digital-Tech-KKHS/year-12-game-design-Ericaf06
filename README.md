@@ -27,6 +27,6 @@ This template creates student repositories for senior game design projects.
 - [x] I have completed the Game Design Document.md
 - [ ] I have completed a sprint doc for every sprint
 - [ ] I have completed A B trials on end users for every sprint
-- [ ] I have tested each component of my program and documented the tests for each sprint
+- [x] I have tested each component of my program and documented the tests for each sprint
 - [x] I have checked my work against the assessment schedules. 
 - [ ] All my work is my own and I have clearly referenced code and assets from other sources in the comments.
