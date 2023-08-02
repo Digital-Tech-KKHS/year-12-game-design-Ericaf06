@@ -16,7 +16,7 @@ a4cf1d11a2c450bbfde277d1212855ceb1b48973
 ## **KANBAN board at the start of the sprint**
 
 ## **Screenshot of the game at the start of the sprint**
-
+![[Pasted image 20230720143441.png]]
 # Sprint Summary
 ## **Sprint Reflection and summary**
 I originally planned on achieving only moving enemies in my game. However I also ended up adding shooting bullets through mouse press. I also added ladder logic in my physics engine and key press. 
@@ -50,8 +50,6 @@ Testing these pieces of code allowed me to spot bugs such as the player not bein
 
 ## **Notes for next time, future improvements**
 Next time I should focus on completing one aspect at a time, because I worked on multiple aspects at one time I found it was all over the place and things didn't get fully completed. I also want to have a wider range of things on my kanban to work on to be more efficient. My main goal is developing and mvp therefore I should focus on completing the aspects that make an mvp before moving onto map design and art in future sprints.
-
-
 
 
 
