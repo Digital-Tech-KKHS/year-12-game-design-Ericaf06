@@ -6,11 +6,11 @@ import pathlib
 
 """Global variables"""
 PARENT_DIR = pathlib.Path(__file__).parent
-SCREEN_WIDTH = 1500
-SCREEN_HEIGHT = 1000
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 1200
 TITLE = "platform"
 PLAYER_MOVEMENT_SPEED = 13
-PLAYER_JUMP_SPEED = 5
+PLAYER_JUMP_SPEED = 4
 TILE_SCALING = 0.5
 SPRITE_PIXEL_SIZE = 128
 GRID_PIXEL_SIZE = (SPRITE_PIXEL_SIZE * TILE_SCALING)
@@ -30,7 +30,6 @@ class MyGame(arcade.Window):
         self.setup()
         self.tile_map = None
         self.score = 0
-        self.health_list = None
         self.level = 1
         #Loads Mp3 sounds used in game
         self.game_over_sound = arcade.load_sound(
@@ -49,7 +48,7 @@ class MyGame(arcade.Window):
             'jump_sound.mp3'
         )
         self.kill_sound = arcade.load_sound(
-            'ouch_sound.mp3'
+            'ouch_sound (3).mp3'
         )
         self.bullet_sound = arcade.load_sound(
             'bullet_sound.mp3'
@@ -70,9 +69,9 @@ class MyGame(arcade.Window):
         }
         self.level = 1
         #Loads in tile map and adds scene from tile map
-        self.tile_map = PARENT_DIR / f"./assets/LEVEL_{self.level}.tmx"
-        layer_options=layer_options
-        self.scene = arcade.Scene.from_tilemap(self.level)
+        self.tile_map = arcade.load_tilemap(
+            './Level_1.tmx', layer_options=layer_options)
+        self.scene = arcade.Scene.from_tilemap(self.tile_map)
         #Creates bullet list and adds to scene
         #Adds player to scene by referencing player class
         self.bullet_list = arcade.SpriteList()
@@ -88,6 +87,7 @@ class MyGame(arcade.Window):
             self.player,
             walls=self.scene['Ground'], 
             ladders=self.scene['Ladders'],
+            platforms=self.scene['Moving'],
             gravity_constant=GRAVITY,
         )
         #Creates cameras 
@@ -126,10 +126,52 @@ class MyGame(arcade.Window):
             arcade.csscolor.BLACK,
             20,
         )
+        #Draws texts explaining to the user how to move the player
+        w_text ='W key: Jump'
+        arcade.draw_text(
+            w_text,
+            20,
+            570,
+            arcade.csscolor.BLACK,
+            10
+        )
+        a_text = 'A key: Right'
+        arcade.draw_text(
+            a_text,
+            20,
+            555,
+            arcade.csscolor.BLACK,
+            10
+        )
+        d_text = 'D key: Left'
+        arcade.draw_text(
+            d_text,
+            20,
+            540,
+            arcade.csscolor.BLACK,
+            10
+        )
+        e_text = 'E key: Climb ladders'
+        arcade.draw_text(
+            e_text,
+            20,
+            525,
+            arcade.csscolor.BLACK,
+            10
+        )
+        shoot_text = 'Mouse click: Shoot bullets'
+        arcade.draw_text(
+            shoot_text,
+            20,
+            510,
+            arcade.csscolor.BLACK,
+            10
+        )
 
     def player_camera(self, x, y):
         """Takes coordinates of player and screen
         Which allows camera to centre on the player"""
+        #Camera code sourced from Python arcade library step 6- Adding a camera
 
         screen_center_x = self.player.center_x - (
             self.camera.viewport_width / 2)
@@ -154,6 +196,7 @@ class MyGame(arcade.Window):
         #Takes difference between x,y and start x,y
         #Using atan2, the difference taken allows bullet
         #To move in any direction the mouses' x and y are
+        #https://www.youtube.com/watch?v=m2aQEBAaKic
         start_x = self.player.center_x
         start_y = self.player.center_y
         bullet.center_x = start_x
@@ -186,11 +229,11 @@ class MyGame(arcade.Window):
         self.camera.move_to((camera_x, camera_y))
 
         #Checks for colisions with plsyer and tile layer
+        danger = arcade.check_for_collision_with_list(
+            self.player, self.scene['Danger'])
+        
         hurt = arcade.check_for_collision_with_list(
             self.player, self.scene['Hurt'])
-        
-        danger = arcade.check_for_collision_with_list(
-            self.player, self.scene['Enemy'])
         #If the player collides with the scene layer 
         #Stated in the hurt function, health will decrease by 1
         if hurt:
@@ -199,17 +242,21 @@ class MyGame(arcade.Window):
             arcade.play_sound(self.kill_sound)
             self.health_list.pop()
             game_over = GameOverView
-
+        if len(self.health_list) <= 0:
+            self.player.kill()
+            arcade.play_sound(self.game_over_sound)
+            self.window.show_view(game_over)
+        
         if danger:
             self.player.center_x = 400
             self.player.center_y = 400
             arcade.play_sound(self.kill_sound)
             self.health_list.pop()
             game_over = GameOverView()
-        '''if len(self.health_list) <= 0:
-              self.player.kill()
-             arcade.play_sound(self.game_over_sound)
-                self.window.show_view(game_over)'''
+        if len(self.health_list) <= 0:
+            self.player.kill()
+            arcade.play_sound(self.game_over_sound)
+            self.window.show_view(game_over)
         
         #Kills bullet after it has travelled past these points
         #This helps the game from crashing if too many bullets are fired
@@ -224,9 +271,10 @@ class MyGame(arcade.Window):
             coin.kill()
 
         #Is able to shoot enemy and kill them with bullets 
+        #https://www.youtube.com/watch?v=m2aQEBAaKic
         for self.bullet in self.bullet_list:
             enemy_bullet = arcade.check_for_collision_with_list(
-                self.bullet, self.scene['Enemy'])
+                self.bullet, self.scene['Hurt'])
             if len(enemy_bullet) > 0:
                 self.bullet.kill
                 enemy_bullet[0].kill()
@@ -270,9 +318,8 @@ class Player(arcade.Sprite):
     """Player class which manages players position, textures and movement"""
 
     def __init__(self):
-        super().__init__(
-            ':resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png'
-        )
+        super().__init__(PARENT_DIR/'Fairy-0001.png'
+            )
         self.center_x = 400
         self.center_y = 400
         self.face_direction = RIGHT_FACING
@@ -312,7 +359,7 @@ class GameWinView(arcade.View):
 
     def on_draw(self):
         self.clear()
-        arcade.draw_text("win", 200, 400)
+        arcade.draw_text("Congratulations you win!!. Press enter to play again.", 200, 400)
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ENTER:
@@ -332,7 +379,7 @@ class GameOverView(arcade.View):
 
     def on_draw(self):
         self.clear()
-        arcade.draw_text("dead", 200, 400)
+        arcade.draw_text("You couldn't save your friend in time. Press enter to play again", 200, 400)
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.ENTER:
