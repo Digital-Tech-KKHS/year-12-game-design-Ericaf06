@@ -21,7 +21,7 @@ This template creates student repositories for senior game design projects.
 
 # Hand in checklist: 
 - [x] I have a working program with main.py as the entry point
-- [ ] My program works on my end user's computer
+- [x] My program works on my end user's computer
 - [x] My code is PEP 8 compliant hand has informative comments
 - [x] There are multiple commits to this repo showing itterative development
 - [x] I have completed the Game Design Document.md
