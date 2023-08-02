@@ -1,8 +1,8 @@
-# {Arcade Game}
+# {Forest run}
 
 # Elevator pitch
 
-My game is 2D Arcade style MVP. It contains enemies, coins, and other interactables. It is set in a world I have created suing software I have created assets such as my own art and sound effects/music. I have coded this game using python.
+My game is 2D Arcade style MVP. It contains enemies, coins, and other interactibles. It is set in a world I have created suing software I have created assets such as my own art and sound effects/music. I have coded this game using python.
 
 # Concept Overview
 
@@ -30,14 +30,14 @@ My time line began in term one and carried through to the beginning of term 3. I
 Considering your intended audience and the objectives of your game come up with 5 or more criteria that you will use to determine if your game has been successful. 
 What evidence will you use to measure each criteria? 
 
-|     | Criteria | Evidence |
-| --- | -------- | -------- |
-| 1   |Player can kill enemies          |          |
-| 2   |Player can collect coins          |          |
-| 3   |Player can move, jump and, climb          |          |
-| 4   |Player can lose          |          |
-| 5   |Player can shoot          |          |
-| 6    | Art is relevant to game         |          |
+|     | Criteria                         | Evidence                                                                                                                                                                                            |
+| --- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Player can kill enemies          | During one of my trials I trialed x-axis and y-axis enemies. For this trial user had to have the ability to kill enemies. The player in the final game has this ability.                            |
+| 2   | Player can collect coins         | In my first trial I trialed which type of coins my players preferred collecting meaning my player in my game has the ability to collect coins.                                                                       |
+| 3   | Player can move, jump and, climb | For all of my trials the players had to have the ability to move jump and climb. Since I had the ability to carry out all of my trials it shows my game has these features.                         |
+| 4   | Player can lose                  | Once again because I had to trial different types of enemies in game the player had to have the ability to lose to those enemies.                                                                   |
+| 5   | Player can shoot                 | For my first trial I trialed which bullet sprite candidates preferred having. For this trial to work I had to implement the ability to shoot. This means my game successfully follows this criteria |
+| 6   | Art is relevant to game          | After speaking to some end users about my art they said that my art is relevant to what the theme and setting of my game is                                                                         |
 
 
 # Game Description
