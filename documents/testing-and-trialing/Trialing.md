@@ -6,7 +6,7 @@ _Date:_  4/04/2023
 Involved in the trial
 >- Mitchell
 >- Braedyn
->- 
+
 
 ## Trial goal:
 >To see which speed of the bullets the candidates prefer and if the having coins was better to collect than having rocks
@@ -66,38 +66,60 @@ Involved in the trial
 
 
 ## Trial 3:
-Date:
+Date: 18/06/2023
 Involved in the trial
->- Mitchell
->- Braedyn
+>- T Kiwa
 >- Tawhiri
 >- Ace
 
 
 ## Trial goal:
->To see whether candidates prefer Having the E key or the enter key for climbing a ladder.
+>To see whether candidates prefer Having the E key or the enter key for climbing a ladder or the Q key.
 
 ## Describe the trail
->I created a separate window from my main code and trialed candidates with first the E key for climbing, then the Enter key.
+>I created a trial map to use for this and trialed candidates with first the E key for climbing, then the Q key for going up.
 
 ## Results
-> 
+> - Ace made a suggestion that I should have a key for climbing up and down as I had only previously had a key for climbing up the ladder with a key and not down the ladder. 
+> - For this suggestion Ace said I should have the Q key for goin up then the E key for climbing down the ladder.
+> - T Kiwa said that he preferred having the E key to climb
 
 ## Briefly describe the changes you have made based on this trial
-
+- I have taken Ace up on their suggestion and added the climbing up and down feature. 
+- I have made the the E key for going up and the Q key for going down.
 
 
 ## Trial 4:
+Date: 26/07/2023
 Involved in this trial:
-- Bede
-- Braedyn
+- Tawhiri
+- T Kiwa
 - Ace
 
 ## Trial goal
-
+In this trial I got candidates to test whether they prefer having a red and white mushroom as coins which is full 128px by 128px size and a brown mushroom as a do not touch layer that kills the player. Or vice versa with the red and white mushroom being the do not touch layer and the brown mushrooms being the coins.
 ## Describe the trail 
+I created a trial map where the coins and do not touch objects where placed around the map where they could just test it out as they were playing the game. I then switched it around and see which one they preferred.
+## Results
+- Ace preferred having the brown mushrooms as coins mostly because of the fact they were smaller and having coins the same size as the player may be odd
+- Ace also preferred having the red and white mushrooms as the do not touch layer as it has connotations of red and white mushrooms being poisonous when consumed.
+- Ace however said that maybe I should design a mushroom that looks more poisonous to the touch.
+- Tawhiri said he preferred having the red and white mushrooms as the do not touch layer  he once again said that they were known to be poisonous
+- T Kiwa said that he preferred having the red and white mushrooms as the do not touch because it made sense
+- T Kiwa also made a suggestion that as well as the brown mushrooms for coins I could have different coloured mushrooms that give a different amount of points
+## Briefly describe the changes you have made based on this trial
+- I have added different types of mushrooms worth a different amount of points
+- I have decided to keep the red and white mushrooms as the do not touch layer.
+
+## Trial 5:
+Date: /07/2023
+Involved in this trial:
+## Trial goal
+- 
+## Describe the trail
 
 ## Results
-
+- 
+- 
+- 
 ## Briefly describe the changes you have made based on this trial
-
