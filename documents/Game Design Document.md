@@ -2,7 +2,7 @@
 
 # Elevator pitch
 
-My game is 2D Arcade style MVP. It contains enemies, coins, and other interactibles. It is set in a world I have created suing software I have created assets such as my own art and sound effects/music. I have coded this game using python.
+My game is 2D Arcade style MVP. It contains enemies, coins, and other interactables. It is set in a world I have created suing software I have created assets such as my own art and sound effects/music. I have coded this game using python.
 
 # Concept Overview
 
@@ -42,7 +42,7 @@ What evidence will you use to measure each criteria?
 
 # Game Description
 
-Set in a mystical forest. A fairy must travel through the forest and avoid the evil gnomes, poisonous mushrooms and cursed water. Fairy dust may be used as a weapon against the gnomes. There are 2 types of mushrooms, one is poisonous the other increases the fairy's score allowing them to move up levels to the final goal. 
+Set in a mystical forest. A fairy must travel through the forest and avoid the evil gnomes, poisonous mushrooms and cursed water. Fairy dust may be used as a weapon against the gnomes. The 
 
 The main character is a colourful fairy who is kind and on a quest to find the magical potion at the end of the game . The user playing as the fairy must avoid obstacles and parkour their way through a tricky forest. The main character must reach the potion in time to heal their friend again as the poisonous mushrooms have already started to kick in.
 
@@ -68,7 +68,7 @@ I will develop my game by writing the code for it and creating the map in tiled 
 # Required Assets
 ## Art 
 ### Objects
-- Coin "Brown mushroom"
+- Coin "Fairy wands"
 - Poisonous "Red and white mushroom"
 - Evil Gnome/Elf
 - Health
