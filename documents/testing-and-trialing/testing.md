@@ -132,9 +132,9 @@ Date: 09/05/2023
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-|Player lands on spikes layer | Health decreases by one and player restarts | Health list not functional yet
-|||
-| | |  
+|Player lands on spikes layer | Health decreases by one and player restarts | As expected|
+|Player misses spikes layer| Nothing happens to players health| As expected|
+|Player lands on spikes twice| Players health decreases by 2 |As expected  |
 
 ## Test 6: Enemy Collisions
 Date: 25/05/2023
