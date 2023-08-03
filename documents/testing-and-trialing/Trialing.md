@@ -108,4 +108,3 @@ For my last trial I compared the brown mushrooms and fairy wands to see which on
 - Bede preferred having the brown mushrooms as the coins as he liked the design of the mushrooms better
 ## Briefly describe the changes you have made based on this trial
 - After the results of this trial I have decided to change the brown mushrooms as the coins that players collect.
-- I have also decided to repurpose the brown mushrooms as a foreground to enhance the design of the map.
