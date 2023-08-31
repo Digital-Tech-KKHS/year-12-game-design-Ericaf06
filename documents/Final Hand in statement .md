@@ -1,5 +1,5 @@
-**Name:**    
-**Date submitted:**     
+**Name:** Erica Ford   
+**Date submitted:** 03/08/2023    
 **Final Git Hash:**
 
 # Requirements
@@ -8,30 +8,7 @@
 **Python version:**  
 
 **Arcade version:**
-
-**Aditional Libraries:**
-
-
 # Copyright information
-
-**Graphical Assets**
-
-| **Asset Name**  | **Created/Creator** |  **License** |
-| :-------: | :---: | :---: |
-| Add assets | here | like this |
-| Add assets | here | like this |
-| Add assets | here | like this |
-| Add assets | here | like this |
-
-
-**Sound Assets**
-
-| **Asset Name**  | **Created/Creator** |  **License** |
-| :-------: | :---: | :---: |
-| Add assets | here | like this |
-| Add assets | here | like this |
-| Add assets | here | like this |
-| Add assets | here | like this |
 
 **Code**
 
@@ -39,24 +16,23 @@ Code created by myself. Inspired by and adapted from the following tutorials
 
 | **Tutorial Name** | **Link** |
 | :--------: | :---: |
-| example tutorial | [Example link](https://www.youtube.com/watch?v=ipy88sNOgQk&list=PL-NaYeCEwvWg9he3WAr8zGtLNiO8pPMWc)
-| example tutorial | [Example link](https://www.youtube.com/watch?v=ipy88sNOgQk&list=PL-NaYeCEwvWg9he3WAr8zGtLNiO8pPMWc)
-| example tutorial | [Example link](https://www.youtube.com/watch?v=ipy88sNOgQk&list=PL-NaYeCEwvWg9he3WAr8zGtLNiO8pPMWc)
-| example tutorial | [Example link](https://www.youtube.com/watch?v=ipy88sNOgQk&list=PL-NaYeCEwvWg9he3WAr8zGtLNiO8pPMWc)
+| Shooting enemies in python arcade| (https://www.youtube.com/watch?v=m2aQEBAaKic)
+| Adding a moving camera | (https://api.arcade.academy/en/latest/examples/platform_tutorial/step_06.html)
+
 
 
 **Final Testing**
 
 Please describe how you know your final game works
 
-> Explain here 
+> I can be certain that my final game works because of all the rigorous testing and trialing I conducted. I have also run my code on a different machine to check if all my assets are in the right folder and work together well. 
 
 **Authenticity Statement**
 
 Other than using tutorials and example code, all this work is my own. I understand all of the code and can explain it. Every commit made from my account was made by me. 
 
-> **Signed:**   
-> **Date:**  
+> **Signed:**  Erica Ford 
+> **Date:**  03/08/2023
   
 
 # Handing in checklist

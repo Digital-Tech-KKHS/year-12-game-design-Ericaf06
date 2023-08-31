@@ -16,7 +16,7 @@ a4cf1d11a2c450bbfde277d1212855ceb1b48973
 ## **KANBAN board at the start of the sprint**
 
 ## **Screenshot of the game at the start of the sprint**
-
+![[Pasted image 20230720143441.png]]
 # Sprint Summary
 ## **Sprint Reflection and summary**
 I originally planned on achieving only moving enemies in my game. However I also ended up adding shooting bullets through mouse press. I also added ladder logic in my physics engine and key press. 
@@ -44,7 +44,7 @@ Testing these pieces of code allowed me to spot bugs such as the player not bein
 ## **KANBAN board at the end of the sprint**
 ![[Pasted image 20230501092005.png]]
 ## **Screenshot of the game at the end of the sprint**
-
+![[Pasted image 20230720143441.png]]
 ## Link to **Video of the game at the end of the sprint**
 
 

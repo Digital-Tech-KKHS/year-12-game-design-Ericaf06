@@ -28,9 +28,9 @@ The people I used in my trial have helped me decide what to do in relation to en
 I have not yet achieved an MVP as I still need to fix some errors however I have started implementing the winning functions and views.
 
 ## **Major Changes and Achievements Described**
--Map development
--Windows/views
--Enemies from different directions added
+- Map development
+- Windows/views
+- Enemies from different directions added
 
 ## **Brief Description of your testing**
 [[Testing]]

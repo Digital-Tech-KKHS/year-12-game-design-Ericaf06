@@ -68,7 +68,7 @@ Date: 4/05/2023
         
         self.bullet_list.append(bullet)
 
-````
+```
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
@@ -132,9 +132,9 @@ Date: 09/05/2023
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-|Player lands on spikes layer | Health decreases by one and player restarts | Health list not functional yet
-|||
-| | |  
+|Player lands on spikes layer | Health decreases by one and player restarts | As expected|
+|Player misses spikes layer| Nothing happens to players health| As expected|
+|Player lands on spikes twice| Players health decreases by 2 |As expected  |
 
 ## Test 6: Enemy Collisions
 Date: 25/05/2023
@@ -190,7 +190,73 @@ self.boss_diff_y = self.player.center_y - self.boss_center_y
         self.boss_change_x = 5 * cos(angle)
         self.boss_change_y = 5 * sin(angle)
 ```
-| Test Data | Expected | Observed |
-| --------- | -------- | -------- |
-|               |              |             |           
-|               |              |             |           |
+
+| Test Data                            | Expected                                   | Observed    |
+| ------------------------------------ | ------------------------------------------ | ----------- |
+| Player at 400,100                    | Enemy at 400, 100                          | As expected |
+| Player moves 100 back wards          | Enemy moves 100 backwards                  | As expected |
+| Player moves at a player speed of 10 | Enemy moves to the player at a speed of 10 | As expected |
+
+## Test 9: Centering camera to player
+Date: 31/07/2023
+
+```python
+ def player_camera(self, x, y):
+        screen_center_x = self.player.center_x - (
+        self.camera.viewport_width / 3)
+        screen_center_y = self.player.center_y - (
+            self.camera.viewport_height / 3
+            )
+
+        if screen_center_x < 0:
+            screen_center_x = 0
+        if screen_center_y < 0:
+            screen_center_y = 0
+            
+        player_centered = screen_center_x, screen_center_y
+
+        self.camera.move_to(player_centered)
+```
+
+| Test Data                             | Expected                                                       | Observed    |
+| ------------------------------------- | -------------------------------------------------------------- | ----------- |
+| Player at 400,200                     | Camera will center at screen center which is the player center | As expected |
+| self.camera.viewport_height,width >/3 | Camera will be below the player                                | As expected |
+| Player below 0,0                      | Camera will not function                                       | As expected |                                               |             |
+
+
+## Test 10: Spawning the health sprites
+Date: 31/07/2023
+```python
+  self.health_list = arcade.SpriteList()
+        for i in range(5):
+            health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png")
+            health.center_x = 35 + 40 * i
+            health.center_y = SCREEN_HEIGHT - 100
+            self.health_list.append(health)
+```
+
+| Test Data                                                                       | Expected                                                 | Observed    |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------- | ----------- |
+| for i in range(6)                                                               | Spawns 6 health sprites                                  | As expected |
+| health.center_y = SCREEN_HEIGHT - 50                                            | Spawns sprites closer to the top of the screen           | As expected |
+| health = arcade.Sprite(":resources:images/space_shooter/playerLife1_green.png") | Determines the image of the health sprite and imports it | As expected |
+
+## Test 11: Drawing the score
+Date: 31/07/2023
+```python
+ score_text = f"Score: {self.score}"
+        arcade.draw_text(
+            score_text,
+            10,
+            10,
+            arcade.csscolor.BLACK,
+            20,
+        )
+```
+
+| Test Data                             | Expected                                                       | Observed    |
+| ------------------------------------- | -------------------------------------------------------------- | ----------- |
+| arcade.csscolor.BLACK                    | Score text will be black | As expected |
+| score_text = f"Score: {self.score}" | self.score varibale will be drawm  | As expected |
+| 10,10,20       | Makes it x=10,y=10 and the font size 20  | As expected |                                               |             |

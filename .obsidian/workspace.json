@@ -4,55 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "b851b53a614cb889",
+        "id": "c6b1e6a477167664",
         "type": "tabs",
         "children": [
           {
-            "id": "1427018e5d813348",
+            "id": "a2c7b9ee928c2f7f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "documents/assets/Sprint Document 3.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "200b204f28a99bb1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "documents/assets/Sprint Document 3.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ac4f2cd4eab94959",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Sprint document 4.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "43c9662969deb96a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "documents/testing-and-trialing/Testing.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -110,7 +70,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -130,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documents/assets/Sprint Document 3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +106,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documents/assets/Sprint Document 3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -169,9 +127,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "documents/assets/Sprint Document 3.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -192,35 +148,44 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "1427018e5d813348",
+  "active": "a2c7b9ee928c2f7f",
   "lastOpenFiles": [
+    "documents/Kanban.md",
     "documents/testing-and-trialing/Testing.md",
-    "Sprint document 4.md",
+    "documents/Final Hand in statement .md",
+    "documents/Final Review.md",
+    "documents/Game Design Document.md",
     "documents/testing-and-trialing/Trialing.md",
-    "Pasted image 20230629141811.png",
     "documents/assets/Sprint Document 3.md",
+    "documents/assets/Sprint Document 2.md",
+    "Sprint Document 5.md",
+    "Sprint document 4.md",
+    "documents/assets/Sprint Document 1.md",
+    "Pasted image 20230802130100.png",
+    "documents/readme.md",
+    "documents/task/year-12/Year 12 Arcade Game Design Task.md",
+    "documents/task/year-12/Marking Schedule.md",
+    "2023-05-08.md",
+    "Untitled.md",
+    "Pasted image 20230731092430.png",
+    "README.md",
+    "Pasted image 20230720143738.png",
+    "Pasted image 20230720143709.png",
+    "Pasted image 20230720143441.png",
+    "Pasted image 20230720143141.png",
+    "Pasted image 20230629141811.png",
     "Pasted image 20230627102822.png",
     "Pasted image 20230627102808.png",
-    "documents/Kanban.md",
     "Pasted image 20230627102440.png",
     "squaree.tmx.rpiqSV",
-    "documents/assets/Sprint Document 1.md",
-    "Pasted image 20230626090344.png",
-    "documents/assets/Sprint Document 2.md",
     "documents/code-review.md",
     "documents/assets/Pasted image 20230501091904.png.md",
-    "Pasted image 20230529091846.png",
     "Pasted image 20230529091123.png.md",
-    "documents/assets/spritesheet_tiles.png",
-    "documents/assets/spritesheet_ground.png",
-    "documents/assets/spongey.png",
-    "documents/assets/Pasted image 20230529091110.png",
     "square.tmx.PYxrXK",
     "Sprint Document 2.md",
     "Sprint Document 3.md",
     "documents/sprint-docs/Sprint Document 1.md",
     "Pasted image 20230501091904.png.md",
-    "documents/Final Review.md",
     "square.tmx.FsmjPQ",
     "square.tmx.bMeVpa",
     "square.tmx",
@@ -231,12 +196,6 @@
     "ladderr.tmx.aRwpsB",
     "Untitled 1.canvas",
     "Untitled.canvas",
-    "2023-05-08.md",
-    "documents/Game Design Document.md",
-    "documents/readme.md",
-    "documents/sprint-docs/What is a Sprint.md",
-    "documents/Final Hand in statement .md",
-    "documents/Flash cards.md",
-    "menu_orange.png.md"
+    "documents/sprint-docs/What is a Sprint.md"
   ]
 }

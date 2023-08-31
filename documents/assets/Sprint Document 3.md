@@ -1,4 +1,3 @@
-
 # Details
 **Name:**
 Erica Ford
@@ -9,7 +8,7 @@ Erica Ford
 **Start Date:**
 15/05/2023
 **End Date:**
-
+26/5/23
 **Work hard rating**
 ☆☆☆☆
 
@@ -21,13 +20,13 @@ Erica Ford
 # Sprint Summary
 ## **Sprint Reflection and summary**
 In this sprint I focused on developing the mvp fully. To do this I still had to make a way for the player to win. Like I suggested I do in my last sprint I have begun adding a boss enemy which takes damage and when killed makes the player win and displays a win screen. 
-The main functions of this final boss that I have begun adding is that
+The main functions of this final boss that I have begun adding is that the boss follows my player using atan2 and that the player has to defeat the boss to be able to win.
 
 
 ## **Major Changes and Achievements Described**
--Code format changed to be better
--Boss added into the game
--Map design added
+- Code format changed to be better
+- Boss added into the game
+- Map design added
 
 
 ## **Brief Description of your testing**
@@ -45,4 +44,4 @@ For my testing in this sprint I tested the do not touch function which represent
 
 
 ## **Notes for next time, future improvements**
-From my trailing  that I did I will be implementing more key features that the users feel most comfortable using, I will also be moving more towards art design e.g. Characters, background and, tile sets. As well as making the map more interesting and fun for the player .
+From my trailing  that I did I will be implementing more key features that the users feel most comfortable using, I will also be moving more towards art design e.g. Characters, background and, tile sets. As well as making the map more interesting and fun for the player.
