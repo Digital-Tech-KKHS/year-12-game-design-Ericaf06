@@ -81,17 +81,14 @@ Involved in this trial:
 ## Trial goal
 In this trial I got candidates to test whether they prefer having a red and white mushroom as coins which is full 128px by 128px size and a brown mushroom as a do not touch layer that kills the player. Or vice versa with the red and white mushroom being the do not touch layer and the brown mushrooms being the coins.
 ## Describe the trail 
-I created a trial map where the coins and do not touch objects where placed around the map where they could just test it out as they were playing the game. I then switched it around and see which one they preferred.
+I altered the position of my boss from above the player for the purpose of the boss following/ flying towards the player. Compared to having it opposite to the player and changed it from a robot to a zombie.
 ## Results
-- Ace preferred having the brown mushrooms as coins mostly because of the fact they were smaller and having coins the same size as the player may be odd
-- Ace also preferred having the red and white mushrooms as the do not touch layer as it has connotations of red and white mushrooms being poisonous when consumed.
-- Ace however said that maybe I should design a mushroom that looks more poisonous to the touch.
-- Tawhiri said he preferred having the red and white mushrooms as the do not touch layer  he once again said that they were known to be poisonous
-- T Kiwa said that he preferred having the red and white mushrooms as the do not touch because it made sense
-- T Kiwa also made a suggestion that as well as the brown mushrooms for coins I could have different coloured mushrooms that give a different amount of points
+- Bede preferred having a zombie boss compared to having a robot as a boss.
+- For the position of the enemy bede preferred the boss to be above the player following the player
+- 
 ## Briefly describe the changes you have made based on this trial
-- I have added different types of mushrooms worth a different amount of points
-- I have decided to keep the red and white mushrooms as the do not touch layer.
+- For my future character design in the game I will incorporate having a zombie design for the final boss. This also means I should design my other characters and map design around the theme of zombies.
+- I will make my final boss a enemy that is able to fly above the player and follow them.
 
 ## Trial 5:
 Date: 3/07/2023
