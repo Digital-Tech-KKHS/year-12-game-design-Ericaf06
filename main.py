@@ -31,6 +31,7 @@ class MyGame(arcade.Window):
         self.tile_map = None
         self.score = 0
         self.level = 1
+        self.camera = None
         #Loads Mp3 sounds used in game
         self.game_over_sound = arcade.load_sound(
             'lose_sound.mp3'
@@ -91,12 +92,11 @@ class MyGame(arcade.Window):
             gravity_constant=GRAVITY,
         )
         #Creates cameras 
-        self.camera = arcade.Camera(
-            SCREEN_WIDTH, SCREEN_HEIGHT
+        self.camera = arcade.Camera(self.width, self.height
             )
-        self.HUD_camera = arcade.Camera(
-            SCREEN_WIDTH, SCREEN_HEIGHT
-            )
+        #self.HUD_camera = arcade.Camera(
+           # SCREEN_WIDTH, SCREEN_HEIGHT
+           # )
         #Creates health list and adds to scene
         self.health = 5
         self.health_list = arcade.SpriteList()
@@ -116,7 +116,7 @@ class MyGame(arcade.Window):
         self.bullet_list.draw()
         #self.health_list.draw()
         self.scene.draw()
-        self.HUD_camera.use()
+        #self.HUD_camera.use()
         #Draws the score text
         score_text = f"Score: {self.score}"
         arcade.draw_text(
@@ -227,6 +227,8 @@ class MyGame(arcade.Window):
         if camera_y < 20:
             camera_y = 20
         self.camera.move_to((camera_x, camera_y))
+        
+        self.center_camera__to_player()
 
         #Checks for colisions with plsyer and tile layer
         danger = arcade.check_for_collision_with_list(
