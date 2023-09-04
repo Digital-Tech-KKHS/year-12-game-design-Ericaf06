@@ -20,8 +20,12 @@ LEFT_FACING = 1
 RIGHT_FACING = 0
 BULLET_SPEED = 20
 BOSS_SPEED = 10
-
-    
+   
+LEFT_VIEWPOINT_MARGIN = 250
+RIGHT_VIEWPOINT_MARGIN = 250
+TOP_VIEWPOINT_MARGIN = 50
+BOTTOM_VIEWPOINT_MARGIN = 100
+        
 class MyGame(arcade.Window):
     """Game class"""
 
@@ -31,7 +35,8 @@ class MyGame(arcade.Window):
         self.tile_map = None
         self.score = 0
         self.level = 1
-        self.camera = None
+        self.view_bottom = 0
+        self.view_left = 0
         #Loads Mp3 sounds used in game
         self.game_over_sound = arcade.load_sound(
             'lose_sound.mp3'
@@ -92,11 +97,8 @@ class MyGame(arcade.Window):
             gravity_constant=GRAVITY,
         )
         #Creates cameras 
-        self.camera = arcade.Camera(self.width, self.height
-            )
-        #self.HUD_camera = arcade.Camera(
-           # SCREEN_WIDTH, SCREEN_HEIGHT
-           # )
+        self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.HUD_camera = arcade.Camera(SCREEN_HEIGHT, SCREEN_WIDTH)
         #Creates health list and adds to scene
         self.health = 5
         self.health_list = arcade.SpriteList()
@@ -113,10 +115,11 @@ class MyGame(arcade.Window):
 
         self.clear()
         self.camera.use()
+        self.HUD_camera.use()        
         self.bullet_list.draw()
-        #self.health_list.draw()
         self.scene.draw()
-        #self.HUD_camera.use()
+        self.camera.use()
+        self.HUD_camera.use()
         #Draws the score text
         score_text = f"Score: {self.score}"
         arcade.draw_text(
@@ -167,24 +170,6 @@ class MyGame(arcade.Window):
             arcade.csscolor.BLACK,
             10
         )
-
-    def player_camera(self, x, y):
-        """Takes coordinates of player and screen
-        Which allows camera to centre on the player"""
-        #Camera code sourced from Python arcade library step 6- Adding a camera
-
-        screen_center_x = self.player.center_x - (
-            self.camera.viewport_width / 2)
-        screen_center_y = self.player.center_y - (
-            self.camera.viewport_height / 2
-        )
-        if screen_center_x < 0:
-            screen_center_x = 0
-        if screen_center_y < 0:
-            screen_center_y = 0
-        player_centered = screen_center_x, screen_center_y
-
-        self.camera.move_to(player_centered)
         
     def on_mouse_press(self, x, y, button, modifiers):
         """Called when mouse is pressed"""
@@ -215,22 +200,52 @@ class MyGame(arcade.Window):
 
     def on_update(self, dt):
         """Updates scene"""
+        #Changes view port with player movement
+        changed = False
+
+        left_boundary = self.view_left + LEFT_VIEWPOINT_MARGIN
+        if self.player.left < left_boundary:
+            self.view_left -= left_boundary - self.player.left
+            changed = True
+        right_boundary = self.view_left + SCREEN_WIDTH - RIGHT_VIEWPOINT_MARGIN
+        if self.player.right > right_boundary:
+            self.view.left += self.player.right - right_boundary
+            changed = True
+
+        top_boundary = self.view_bottom + SCREEN_HEIGHT - TOP_VIEWPOINT_MARGIN
+        if self.player.top > top_boundary:
+            self.view_bottom += self.player.top - top_boundary
+            changed = True
+        
+        bottom_boundary = self.view_bottom + BOTTOM_VIEWPOINT_MARGIN
+        if self.player.bottom < bottom_boundary:
+            self.view_bottom -= bottom_boundary - self.player.bottom
+            changed = True
+
+        if changed:
+            self.view_bottom = int(self.view_bottom)
+            self.view_left = int(self.view_left)
+
+        arcade.set_viewport(self.view_left, 
+                            SCREEN_WIDTH, self.view_left, 
+                            self.view_bottom,
+                            SCREEN_HEIGHT, self.view_bottom)
+        
         self.bullet_list.update()
         self.physics_engine.update()
         self.player.update_animation()
-        camera_x = self.player.center_x / 2
-        camera_y = self.player.center_y / 2
+        camera_x = self.player.center_x - SCREEN_WIDTH 
+        camera_y = self.player.center_y - SCREEN_HEIGHT 
 
         if camera_x < 0:
             camera_x = 0
+        if camera_x < 0:
+            camera_y = 0
+        player_centered = camera_x, camera_y
 
-        if camera_y < 20:
-            camera_y = 20
-        self.camera.move_to((camera_x, camera_y))
-        
-        self.center_camera__to_player()
+        self.camera.move_to(player_centered)
 
-        #Checks for colisions with plsyer and tile layer
+        #Checks for colisions with player and tile layer
         danger = arcade.check_for_collision_with_list(
             self.player, self.scene['Danger'])
         
